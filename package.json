@@ -1,5 +1,5 @@
 {
-  "name": "webpack-starter-kit",
+  "name": "filmoteka-firebase-app",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hushkov/webpack-starter-kit.git"
+    "url": "git+https://github.com/hushkov/filmoteka-firebase-app.git"
   },
   "keywords": [],
   "author": "Alexander Hushkov <hush.kov.dev@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hushkov/webpack-starter-kit/issues"
+    "url": "https://github.com/hushkov/filmoteka-firebase-app/issues"
   },
-  "homepage": "https://github.com/hushkov/webpack-starter-kit#readme",
+  "homepage": "https://github.com/hushkov/filmoteka-firebase-app",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
