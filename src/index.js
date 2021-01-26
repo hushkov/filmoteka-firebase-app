@@ -3,7 +3,7 @@ import './js/components/refs';
 import './js/components/apiService';
 import apiService from './js/components/apiService';
 
-// // console.log();
+// console.log();
 // const input = document.querySelector('.input');
 // input.addEventListener('input', handleInput);
 
@@ -12,3 +12,5 @@ import apiService from './js/components/apiService';
 //   apiService.query = searchQuery;
 //   apiService.fetchMovies().then(data => console.log(data));
 // }
+
+apiService.fetchMovies().then(data => console.log(data));
