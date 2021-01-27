@@ -59,7 +59,7 @@ export default {
         let str = '';
         array.forEach(e => {
           const obj = {};
-          obj.pages = totalPages;
+          // obj.pages = totalPages;
           obj.id = e.id;
           obj.popularity = e.popularity;
           obj.poster_path = e.poster_path;
@@ -82,6 +82,7 @@ export default {
 
           filmArr.push(obj);
         });
+        filmArr.push({ totalPages, totalResults });
       })
       .catch(err => console.log(err));
     return filmArr;
