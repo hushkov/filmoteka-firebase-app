@@ -1,0 +1,39 @@
+.header-library {
+  background-image: url('../images/bg-library-mob.jpg');
+
+  @media screen and (min-width: 768px) {
+    background-image: url('../images/bg-library-tab.jpg');
+  }
+
+  @media screen and (min-width: 1024px) {
+    background-image: url('../images/bg-home-desk.jpg');
+  }
+}
+
+.top-flex-library {
+  @include flex(space-between, baseline);
+  margin-bottom: 49px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 45px;
+  }
+}
+
+.bottom-header {
+  @include flex();
+}
+
+.header-button {
+  min-width: 136px;
+  border: 1px solid $header-text-color;
+  color: $header-text-color;
+}
+
+.header-button:not(:last-child) {
+  margin-right: 15px;
+}
+
+.activBtn {
+  background-color: $accent-color;
+  border: none;
+}
