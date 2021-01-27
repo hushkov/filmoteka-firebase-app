@@ -8,6 +8,10 @@ export default {
   defaultSearch: 'https://api.themoviedb.org/3/search/movie',
   genres: [
     {
+      id: 10765,
+      name: 'Drama',
+    },
+    {
       id: 28,
       name: 'Action',
     },
