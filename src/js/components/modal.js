@@ -1,7 +1,9 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import apiService from './apiService';
 
-console.log(basicLightbox);
+console.log("apiService", apiService.fetchMovies());
+console.log("basicLightbox", basicLightbox);
 
 const openModalBtnRef = document.querySelector('button[data-open-modal]');
 const modalTemplate = document.querySelector('#modal');
