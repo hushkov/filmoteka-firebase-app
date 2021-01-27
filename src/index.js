@@ -2,6 +2,7 @@ import './main.scss';
 import './js/components/refs';
 import './js/components/apiService';
 import apiService from './js/components/apiService';
+import './js/composables/mainCards';
 
 // console.log();
 // const input = document.querySelector('.input');
