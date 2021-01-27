@@ -1,6 +1,6 @@
 import { projectAuth } from '@/firebase/config.js';
 
-const error = ref(null);
+const error = null;
 
 const login = async (email, password) => {
   error = null;
