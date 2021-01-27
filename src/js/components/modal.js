@@ -11,7 +11,7 @@ apiService.fetchMovies().then(({ results }) => {
 
 function showFilmInfo(data) {
    const film = data[0];
-   const popularity = Math.round(film.popularity);
+   const popularity = Math.round(film.popularity).toFixed(1);
 
    console.log(film.original_name);
    console.log(film.vote_average);
