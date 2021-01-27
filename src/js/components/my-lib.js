@@ -5,8 +5,6 @@ const refs = {
   libraryList: document.querySelector('.my-library__list'),
 };
 
-const key = '5c34acfe39a6372a620da68979c929b1';
-
 apiService.fetchMovies().then(data => {
   const markup = myLibTemp(data);
 
