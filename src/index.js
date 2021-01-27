@@ -14,4 +14,12 @@ import apiService from './js/components/apiService';
 //   apiService.fetchMovies().then(data => console.log(data));
 // }
 
-apiService.fetchMovies().then(data => console.log(data));
+// apiService.fetchMovies().then(data =>
+//   data.forEach(({ title, name }) => {
+//     if (title) {
+//       console.log(title);
+//     } else {
+//       console.log(name);
+//     }
+//   }),
+// );
