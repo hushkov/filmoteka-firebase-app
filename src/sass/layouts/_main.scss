@@ -9,3 +9,17 @@
     border-radius: 5px;
   }
 }
+
+.film-list-movie-description {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  .film-list-movie-genre {
+    color: #ff6b08;
+  }
+  .film-list-movie-title {
+    color: #000000;
+  }
+}
