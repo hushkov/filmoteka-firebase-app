@@ -1,6 +1,7 @@
 import './main.scss';
 import './js/components/refs';
 import './js/components/apiService';
+import './js/components/handleSignup';
 import apiService from './js/components/apiService';
 
 // console.log();
@@ -22,3 +23,5 @@ import apiService from './js/components/apiService';
 //     }
 //   }),
 // );
+
+// console.log(apiService.fetchMovies());
