@@ -3,6 +3,7 @@
 }
 
 .my-library {
+  padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;
@@ -13,28 +14,53 @@
   }
 
   @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-left: 75px;
+    padding-right: 75px;
     width: 768px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1024px) {
     width: 1024px;
+  }
+}
+
+.my-library__list {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
 .my-library__item {
   @media screen and (min-width: 320px) {
-    padding-top: 20px;
+    padding-bottom: 20px;
 
     &:last-child {
       padding-bottom: 40px;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 30px;
+
+    width: calc((100% - 2 * 30px) / 2);
+    margin: 15px;
+
+    &:last-child {
+      padding-bottom: 50px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: calc((100% - 3 * 30px) / 3);
+    margin: 15px;
+  }
 }
 
 .my-library__movie-poster {
   display: block;
-  //   margin-left: auto;
-  //   margin-right: auto;
+  margin-bottom: 10px;
   height: 398px;
   border-radius: 5px;
 
@@ -49,4 +75,29 @@
   @media screen and (min-width: 1024px) {
     width: 274px;
   }
+}
+
+.my-library__movie-title {
+  font-weight: 500;
+  font-size: $primary-font-size;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.my-library__movie-info {
+  margin-right: 10px;
+  color: $accent-color;
+}
+
+.my-library__movie-rate {
+  padding: 1px 10px;
+  line-height: 1.16;
+  color: $header-text-color;
+  background-color: $accent-color;
+  border-radius: 5px;
+}
+
+.my-library__movie-rate,
+.my-library__movie-info {
+  text-transform: none;
 }
