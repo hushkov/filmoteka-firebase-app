@@ -24,4 +24,4 @@ import apiService from './js/components/apiService';
 //   }),
 // );
 
-console.log(apiService.fetchMovies());
+console.log(apiService.getMoviesData());
