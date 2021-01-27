@@ -1,4 +1,5 @@
 import axios from 'axios';
+import refs from './refs';
 
 export default {
   page: 1,
@@ -16,12 +17,14 @@ export default {
 
     try {
       let res = await axios.get(this.baseURL);
-      res = await res.data.results;
+      res = await res.data;
+      // res = await res.data.results;
       this.error = null;
 
       return res;
     } catch (err) {
-      this.error = err.message;
+      console.log(err.message);
+      this.error = 'could not fetch data';
     }
   },
 
@@ -39,5 +42,40 @@ export default {
 
   set query(value) {
     this.searchQuery = value;
+  },
+  async getMoviesData() {
+    let array = [];
+    const filmArr = [];
+    await this.fetchMovies()
+      .then(data => {
+        console.log(data);
+        array = [...data.results];
+        let str = '';
+        array.forEach(e => {
+          const obj = {};
+          obj.id = e.id;
+          obj.popularity = e.popularity;
+          obj.poster_path = e.poster_path;
+          obj.title = e.title;
+          str = '';
+          let genreArray = [];
+          [...e.genre_ids].forEach(number => {
+            refs.genres.forEach(ref => {
+              if (number === ref.id) {
+                genreArray.push(ref.name);
+              }
+            });
+          });
+          str = genreArray.join(', ');
+          obj.genre_ids = str;
+          obj.overview = e.overview;
+          obj.vote_average = e.vote_average;
+          obj.vote_count = e.vote_count;
+
+          filmArr.push(obj);
+        });
+      })
+      .catch(err => console.log(err));
+    return filmArr;
   },
 };

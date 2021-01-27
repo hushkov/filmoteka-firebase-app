@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Filmoteka + Firebase</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Filmoteka + Firebase</title>
-</head>
+  <body>
+    <!-- Sign up -->
+    <form id="signupForm-js">
+      <h3>Sign up</h3>
+      <input
+        type="text"
+        name="displayName"
+        placeholder="Display Name"
+        id="displayName-js"
+      />
+      <input type="email" name="email" placeholder="Email" id="email-js" />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        id="password-js"
+      />
+      <!-- <div v-if="error" class="error">{{ error }}</div> -->
+      <button id="signupBtn-js">Sign up</button>
+      <!-- <button v-if="isPending" disabled>Loading...</button> -->
+    </form>
 
-<body>
-  <input type="text" class="input" />
-
-  <!-- My Library section -->
-  
-  <section class="my-library">
-    <ul class="my-library__list"></ul>
-  </section>
-</body>
-
+    <!-- My Library section -->
+    
+    <section class="my-library">
+      <ul class="my-library__list"></ul>
+    </section>
+  </body>
 </html>
