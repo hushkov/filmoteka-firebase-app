@@ -1,8 +1,9 @@
 {{#each this}}
-<li>
+<li class="film-list-li">
     <a href="#">
-        <img src="https://image.tmdb.org/t/p/w300/{{poster_path}}" alt="{{original_name}}{{original_title}}">
-        <h2>{{original_title}}{{original_name}} {{loud first_air_date}}{{loud release_date}}</h2>
+        <img class="film-list-img" src="https://image.tmdb.org/t/p/w300/{{poster_path}}" alt="{{original_name}}{{original_title}}">
+        <h3>{{upper original_title}}{{upper original_name}}</h3>
+        <p> | {{dataEdit first_air_date}}{{dataEdit release_date}}</p>
     </a>
 </li>
 {{/each}}
