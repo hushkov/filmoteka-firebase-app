@@ -10,7 +10,3 @@ apiService.fetchMovies().then(data => {
 
   refs.libraryList.insertAdjacentHTML('beforeend', markup);
 });
-
-// fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${key}&language=en-US`)
-//   .then(data => data.json())
-//   .then(e => console.log(e));
