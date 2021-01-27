@@ -1,3 +1,7 @@
+import useSignup from '../composables/useSignup';
+
+const { error, signup, isPending } = useSignup();
+
 const signupForm = document.querySelector('#signupForm-js');
 const displayName = document.querySelector('#displayName-js');
 const password = document.querySelector('#password-js');
@@ -8,8 +12,17 @@ signupForm.addEventListener('submit', handleSignup);
 
 async function handleSignup(e) {
   e.preventDefault();
+  const form = e.currentTarget;
+  const email = form.elements.email.value;
+  const password = form.elements.password.value;
+  const displayName = form.elements.displayName.value;
 
-  const displayName = displayName.value;
-  const email = email.value;
-  const password = password.value;
+  //   signupBtn.classList.add(disables);
+
+  const res = await signup(email, password, displayName);
+  form.reset();
+  console.log('user signed up');
+  //   if (error) {
+  //     console.log(error.message);
+  //   }
 }
