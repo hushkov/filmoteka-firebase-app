@@ -13,3 +13,5 @@ const instance = basicLightbox.create(modalTemplate, {
 });
 
 openModalBtnRef.addEventListener('click', instance.show);
+
+// ===
