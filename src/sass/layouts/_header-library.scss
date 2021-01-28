@@ -1,26 +1,29 @@
 .header-library {
-  background-image: url('../images/bg-library-mob.jpg');
+  background-image: url('/images/bg-library-mob.jpg');
 
   @media screen and (min-width: 768px) {
-    background-image: url('../images/bg-library-tab.jpg');
+    background-image: url('/images/bg-library-tab.jpg');
   }
 
   @media screen and (min-width: 1024px) {
-    background-image: url('../images/bg-home-desk.jpg');
+    background-image: url('/images/bg-library-desk.jpg');
   }
 }
 
 .top-flex-library {
-  @include flex(space-between, baseline);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   margin-bottom: 49px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 45px;
   }
 }
-
 .bottom-header {
-  @include flex();
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-button {
