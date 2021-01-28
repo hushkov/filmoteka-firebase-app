@@ -46,21 +46,27 @@ export default {
   async getMoviesData() {
     let array = [];
     const filmArr = [];
+    let totalPages = null;
+    let totalResults = null;
+
     await this.fetchMovies()
       .then(data => {
-        // console.log(data);
+        totalPages = data.total_pages;
+        totalResults = data.total_results;
+
         array = [...data.results];
         let str = '';
         array.forEach(e => {
           const obj = {};
+
           obj.id = e.id;
           obj.popularity = e.popularity;
           obj.poster_path = e.poster_path;
-          obj.title = e.title === undefined ? e.name : e.title;
-          obj.release_date =
-            e.release_date === undefined
-              ? e.first_air_date.substr(0, 4)
-              : e.release_date.substr(0, 4);
+
+          obj.title = !e.title ? e.name : e.title;
+          obj.release_date = !e.release_date
+            ? e.first_air_date.substr(0, 4)
+            : e.release_date.substr(0, 4);
           str = '';
           let genreArray = [];
           [...e.genre_ids].forEach(number => {
@@ -78,6 +84,7 @@ export default {
 
           filmArr.push(obj);
         });
+        filmArr.push({ totalPages, totalResults });
       })
       .catch(err => console.log(err));
     return filmArr;
