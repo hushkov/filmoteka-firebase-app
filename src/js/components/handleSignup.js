@@ -9,7 +9,7 @@ const email = document.querySelector('#signupForm-js.email-js');
 const errorMessage = document.querySelector('.error-signup');
 const signupBtn = document.querySelector('#signupBtn-js');
 
-signupForm.addEventListener('submit', handleSignup);
+// signupForm.addEventListener('submit', handleSignup);
 
 async function handleSignup(e) {
   e.preventDefault();
