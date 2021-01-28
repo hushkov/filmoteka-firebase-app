@@ -15,8 +15,9 @@ input.addEventListener('input', handleInput);
 //   refs.container.innerHTML = '';
 //   apiService.fetchMovies().then(data => markup(data));
 // }
-// apiService.fetchMovies().then(data =>
-//   data.forEach(({ title, name }) => {
+
+// apiService.fetchMovies().then(({ results }) =>
+//   results.forEach(({ title, name }) => {
 //     if (title) {
 //       console.log(title);
 //     } else {
@@ -25,4 +26,4 @@ input.addEventListener('input', handleInput);
 //   }),
 // );
 
-// console.log(apiService.fetchMovies();
+console.log(apiService.getMoviesData());
