@@ -1,6 +1,6 @@
-import { projectAuth } from '@/firebase/config.js';
+import { projectAuth } from '../../firebase/config';
 
-const error = ref(null);
+let error = null;
 
 const signup = async (email, password, displayName) => {
   error = null;
@@ -17,8 +17,10 @@ const signup = async (email, password, displayName) => {
 
     return res;
   } catch (err) {
-    console.log(err.message);
-    error = 'Incorrect login credantials';
+    // error = 'Incorrect login credantials';
+    error = err.message;
+    // console.log(error);
+    return error;
   }
 };
 
