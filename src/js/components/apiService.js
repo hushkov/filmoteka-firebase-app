@@ -16,8 +16,8 @@ export default {
 
     try {
       let res = await axios.get(this.baseURL);
-      res = await res.data;
-      // res = await res.data.results;
+      // res = await res.data;
+      res = await res.data.results;
       this.error = null;
 
       return res;

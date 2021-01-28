@@ -1,16 +1,14 @@
 {{#each this}}
-<div class="container">
+<li>
     <article>
-        <img src="{{poster_path}}" alt="{{title}}{{name}} poster">
+        <img src="https://image.tmdb.org/t/p/w300{{poster_path}}" alt="{{title}}{{name}} poster">
         <h2>{{title}}{{name}}</h2>
-        <p><span>Vote/Votes</span><span>{{vote_average}}</span> / {{vote_count}}</p>
-        <p><span>Popularity</span>{{popularity}}</p>
-        <p><span>Original Title</span>{{original_title}}{{original_name}}</p>
-        <p><span>Genre</span>{{}}</p>
+        <p><span>Vote/Votes </span><span> {{vote_average}}</span> / {{vote_count}}</p>
+        <p><span>Popularity </span>{{popularity}}</p>
+        <p><span>Original Title </span>{{original_title}}{{original_name}}</p>
+        <p><span>Genre </span>{{genre}}</p>
         <p>ABOUT</p>
         <p>{{overview}}</p>
     </article>
-    <button type="button" class="button">ADD TO WATCHED</button>
-    <button type="button" class="button">ADD TO QUE</button>
-</div>
+</li>
 {{/each}}
