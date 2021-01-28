@@ -16,12 +16,14 @@ export default {
 
     try {
       let res = await axios.get(this.baseURL);
-      res = await res.data.results;
+      res = await res.data;
+      // res = await res.data.results;
       this.error = null;
 
       return res;
     } catch (err) {
-      this.error = err.message;
+      console.log(err.message);
+      this.error = 'could not fetch data';
     }
   },
 

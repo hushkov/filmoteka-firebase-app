@@ -1,6 +1,7 @@
 import './main.scss';
 import './js/components/refs';
 import './js/components/apiService';
+import './js/components/handleSignup';
 import apiService from './js/components/apiService';
 import './js/composables/mainCards';
 
@@ -14,8 +15,8 @@ import './js/composables/mainCards';
 //   apiService.fetchMovies().then(data => console.log(data));
 // }
 
-// apiService.fetchMovies().then(data =>
-//   data.forEach(({ title, name }) => {
+// apiService.fetchMovies().then(({ results }) =>
+//   results.forEach(({ title, name }) => {
 //     if (title) {
 //       console.log(title);
 //     } else {
@@ -23,3 +24,5 @@ import './js/composables/mainCards';
 //     }
 //   }),
 // );
+
+console.log(apiService.fetchMovies());
