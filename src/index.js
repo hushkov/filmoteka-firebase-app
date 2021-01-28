@@ -25,4 +25,4 @@ import './js/composables/mainCards';
 //   }),
 // );
 
-console.log(apiService.fetchMovies());
+console.log(apiService.getMoviesData());
