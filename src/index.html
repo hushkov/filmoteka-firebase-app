@@ -23,10 +23,10 @@
       <nav>
         <ul class="site-nav list">
           <li class="nav-item">
-            <a href="../src/index.html" class="link current">Home</a>
+            <a href="" class="link current link-home">Home</a>
           </li>
           <li class="nav-item">
-            <a href="../src/my-library.html" class="link">my library</a>
+            <a href="" class="link link-library">my library</a>
           </li>
         </ul>
       </nav>
@@ -38,7 +38,12 @@
           <use href="../src/images/sprite.svg#icon-search-2"></use>
         </svg>
       </button>
+     
     </form>
+    <div class="bottom-header visually-hidden">
+      <button class="button header-button watched-btn">Watched</button>
+      <button class="button header-button queue-btn">queue</button>
+    </div>
 
     <p class="notification">
       Search result not successful. Enter the correct movie name and try again
@@ -46,34 +51,6 @@
   </div>
 </header>
 
-<!-- Heder library -->
-<header class="header-library header">
-  <div class="container">
-    <div class="top-flex-library">
-      <a href="./index.html" class="logo">
-        <svg width="24" height="24" class="logo-icon">
-          <use href="../src/images/sprite.svg#icon-film"></use>
-        </svg>
-        <p class="logo-title">Filmoteka</p>
-      </a>
-
-      <nav>
-        <ul class="site-nav list">
-          <li class="nav-item">
-            <a href="../src/index.html" class="link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="../src/my-library.html" class="link current">my library</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <div class="bottom-header">
-      <button class="button header-button watched-btn">Watched</button>
-      <button class="button header-button queue-btn">queue</button>
-    </div>
-  </div>
-</header>
 
     
   </body>
