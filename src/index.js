@@ -2,7 +2,7 @@ import './main.scss';
 import './js/components/refs';
 import './js/components/apiService';
 import './js/components/handleSignup';
-import apiService from './js/components/apiService';
+// import apiService from './js/components/apiService';
 
 // console.log();
 // const input = document.querySelector('.input');
@@ -24,4 +24,4 @@ import apiService from './js/components/apiService';
 //   }),
 // );
 
-console.log(apiService.getMoviesData());
+// console.log(apiService.getMoviesData());

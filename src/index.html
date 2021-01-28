@@ -15,17 +15,31 @@
         type="text"
         name="displayName"
         placeholder="Display Name"
-        id="displayName-js"
+        class="displayName-js"
       />
-      <input type="email" name="email" placeholder="Email" id="email-js" />
+      <input type="email" name="email" placeholder="Email" class="email-js" />
       <input
         type="password"
         name="password"
         placeholder="Password"
-        id="password-js"
+        class="password-js"
       />
-      <!-- <div v-if="error" class="error">{{ error }}</div> -->
+      <div class="error-signup error"></div>
       <button id="signupBtn-js">Sign up</button>
+      <!-- <button v-if="isPending" disabled>Loading...</button> -->
+    </form>
+    <!-- Log in -->
+    <form id="loginForm-js">
+      <h3>Log in</h3>
+      <input type="email" name="email" placeholder="Email" class="email-js" />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        class="password-js"
+      />
+      <div class="error-login error"></div>
+      <button id="loginBtn-js">Sign up</button>
       <!-- <button v-if="isPending" disabled>Loading...</button> -->
     </form>
   </body>
