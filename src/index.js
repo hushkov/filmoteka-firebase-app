@@ -9,11 +9,9 @@ const input = document.querySelector('.input');
 input.addEventListener('input', handleInput);
 
 // function handleInput(e) {
-//   // e.preventDefault();
 //   const searchQuery = e.target.value;
-//   apiService.query = searchQuery; //.elements.query.value;
-//   refs.container.innerHTML = '';
-//   apiService.fetchMovies().then(data => markup(data));
+//   apiService.query = searchQuery;
+//   apiService.fetchMovies().then(data => console.log(data));
 // }
 
 // apiService.fetchMovies().then(({ results }) =>
@@ -26,4 +24,4 @@ input.addEventListener('input', handleInput);
 //   }),
 // );
 
-console.log(apiService.getMoviesData());
+// console.log(apiService.getMoviesData());
