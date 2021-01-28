@@ -6,7 +6,8 @@ const refs = {
 };
 
 apiService.getMoviesData().then(data => {
-  const markup = myLibTemp(data);
+  // слайс прописан временно(для теста)
+  const markup = myLibTemp(data.slice(0, 9));
 
   refs.libraryList.insertAdjacentHTML('beforeend', markup);
 });
