@@ -6,7 +6,9 @@ const refs = {
 };
 
 apiService.fetchMovies().then(data => {
-  const markup = myLibTemp(data);
+  const markup = myLibTemp(data.results);
 
   refs.libraryList.insertAdjacentHTML('beforeend', markup);
 });
+
+// apiService.getMoviesData().then(data => console.log(data));
