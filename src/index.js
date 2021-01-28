@@ -6,8 +6,8 @@ import './js/components/handleSignup';
 // import apiService from './js/components/apiService';
 
 // console.log();
-// const input = document.querySelector('.input');
-// input.addEventListener('input', handleInput);
+const input = document.querySelector('.input');
+input.addEventListener('input', handleInput);
 
 // function handleInput(e) {
 //   const searchQuery = e.target.value;
