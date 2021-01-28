@@ -25,4 +25,4 @@ import apiService from './js/components/apiService';
 //   }),
 // );
 
-console.log(apiService.getMoviesData());
+// console.log(apiService.getMoviesData());

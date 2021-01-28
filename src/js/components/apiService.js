@@ -48,7 +48,7 @@ export default {
     const filmArr = [];
     await this.fetchMovies()
       .then(data => {
-        console.log(data);
+        // console.log(data);
         array = [...data.results];
         let str = '';
         array.forEach(e => {
@@ -56,7 +56,11 @@ export default {
           obj.id = e.id;
           obj.popularity = e.popularity;
           obj.poster_path = e.poster_path;
-          obj.title = e.title;
+          obj.title = e.title === undefined ? e.name : e.title;
+          obj.release_date =
+            e.release_date === undefined
+              ? e.first_air_date.substr(0, 4)
+              : e.release_date.substr(0, 4);
           str = '';
           let genreArray = [];
           [...e.genre_ids].forEach(number => {
