@@ -29,3 +29,7 @@ import apiService from './js/components/apiService';
 // console.log(apiService.fetchMovies());
 
 console.log(apiService.getMoviesData());
+
+import './js/components/handleSignup';
+
+import './js/components/header';

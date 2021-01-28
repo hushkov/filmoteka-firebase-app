@@ -20,7 +20,8 @@ a {
 }
 
 /* buttons */
-#signupForm-js > button {
+#signupForm-js > button,
+#loginForm-js > button {
   background: var(--secondary);
   border-radius: 8px;
   border: 0;
@@ -43,7 +44,8 @@ a {
 }
 
 /* forms */
-form#signupForm-js {
+form#signupForm-js,
+form#loginForm-js {
   max-width: 400px;
   margin: 0 auto;
   padding: 30px;
@@ -52,7 +54,8 @@ form#signupForm-js {
   border: 1px solid var(--secondary);
   background: white;
 }
-#signupForm-js > input {
+#signupForm-js > input,
+#loginForm-js > input {
   border: 0;
   border-bottom: 1px solid var(--secondary);
   padding: 10px;
@@ -64,7 +67,8 @@ form#signupForm-js {
 }
 
 /* error text */
-#signupForm-js > .error {
+#signupForm-js > .error,
+#loginForm-js > .error {
   color: var(--warning);
   font-size: 14px;
   margin: 16px 0;

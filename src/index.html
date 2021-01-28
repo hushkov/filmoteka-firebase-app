@@ -8,9 +8,53 @@
   </head>
 
   <body>
+    <!-- Heder home -->
 
-    <!-- DON`T FORGET TO DELETE IT :D -->
-    <h1>Hello Team!(❁´◡`❁)</h1>
+    <header class="header-home header">
+      <div class="container">
+        <div class="top-flex-home">
+          <a href="./index.html" class="logo">
+            <svg width="24" height="24" class="logo-icon">
+              <use href="../src/images/sprite.svg#icon-film"></use>
+            </svg>
+            <p class="logo-title">Filmoteka</p>
+          </a>
+
+          <nav>
+            <ul class="site-nav list">
+              <li class="nav-item">
+                <a href="" class="link current link-home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="link link-library">my library</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <form class="search-form" id="search-form">
+          <input
+            name="query"
+            class="search-input"
+            type="text"
+            autocomplete="off"
+            placeholder="Search movies"
+          />
+          <button type="submit" class="search-btn">
+            <svg width="12" height="12">
+              <use href="../src/images/sprite.svg#icon-search-2"></use>
+            </svg>
+          </button>
+        </form>
+        <div class="bottom-header visually-hidden">
+          <button class="button header-button watched-btn">Watched</button>
+          <button class="button header-button queue-btn">queue</button>
+        </div>
+
+        <p class="notification">
+          Search result not successful. Enter the correct movie name and try again
+        </p>
+      </div>
+    </header>
 
     <!-- Modal -->
     <button tupe="button" data-open-modal>Open Modal</button>
@@ -19,7 +63,11 @@
         <section class="modal-section">
           <div class="modal-container">
             <div class="modal-section__thumb">
-              <img class="modal-section__image" src="./images/modal-image.jpg" alt="some text">
+              <img
+                class="modal-section__image"
+                src="./images/modal-image.jpg"
+                alt="some text"
+              />
             </div>
             <div class="modal-section__meta">
               <h2 class="modal-meta__title">A fistful of lead</h2>
@@ -38,48 +86,68 @@
                 </ul>
               </div>
               <h3 class="modal-meta__title description">About</h3>
-              <p class="modal-meta__text">Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most corrupt settlement of the
-                gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of gold hide out in the
-                abandoned gold mine where they happen across another gang of three – who themselves were planning to hit the very same
-                bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled with lead... they’ve
-                been double crossed – but by who and how?
+              <p class="modal-meta__text">
+                Four of the West’s most infamous outlaws assemble to steal a huge
+                stash of gold from the most corrupt settlement of the gold rush
+                towns. But not all goes to plan one is killed and the other three
+                escapes with bags of gold hide out in the abandoned gold mine where
+                they happen across another gang of three – who themselves were
+                planning to hit the very same bank! As tensions rise, things go from
+                bad to worse as they realise the bags of gold are filled with lead...
+                they’ve been double crossed – but by who and how?
               </p>
               <div class="modal-meta__btn-wrap">
                 <button type="button">add to Watched</button>
                 <button type="button">add to queue</button>
               </div>
-              <button class="modal-btn__close" type="button" data-close-modal>x</button>
+              <button class="modal-btn__close" type="button" data-close-modal>
+                x
+              </button>
             </div>
           </div>
         </section>
       </div>
     </template>
 
+    <input type="text" class="input" />
+    <div class="js-container"></div>
     <!-- Sign up -->
-    <form id="signupForm-js">
+    <!-- <form id="signupForm-js">
       <h3>Sign up</h3>
       <input
         type="text"
         name="displayName"
         placeholder="Display Name"
-        id="displayName-js"
+        class="displayName-js"
       />
-      <input type="email" name="email" placeholder="Email" id="email-js" />
+      <input type="email" name="email" placeholder="Email" class="email-js" />
       <input
         type="password"
         name="password"
         placeholder="Password"
-        id="password-js"
+        class="password-js"
       />
-      <!-- <div v-if="error" class="error">{{ error }}</div> -->
+      <div class="error-signup error"></div>
       <button id="signupBtn-js">Sign up</button>
-      <!-- <button v-if="isPending" disabled>Loading...</button> -->
-    </form>
+    </form> -->
 
     <!-- My Library section -->
     
     <section class="my-library">
       <ul class="my-library__list"></ul>
     </section>
+    <!-- Log in -->
+    <!-- <form id="loginForm-js">
+      <h3>Log in</h3>
+      <input type="email" name="email" placeholder="Email" class="email-js" />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        class="password-js"
+      />
+      <div class="error-login error"></div>
+      <button id="loginBtn-js">Sign up</button>
+    </form> -->
   </body>
 </html>
