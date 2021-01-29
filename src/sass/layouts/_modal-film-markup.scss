@@ -18,6 +18,7 @@
     height: 514px;
     overflow: hidden;
     align-items: center;
+    border-radius: 5px;
   }
 
   .modal-section__image {
@@ -164,13 +165,14 @@
       &:nth-child(1) {
         margin-right: 15px;
         color: $header-text-color;
-        background: $accent-color;
+        background-color: $accent-color;
         border: none;
       }
 
       &:nth-child(2) {
         color: $main-text-color;
         border: 1px solid $main-text-color;
+        background-color: $header-text-color;
       }
     }
   }
