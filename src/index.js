@@ -11,3 +11,5 @@ import './js/composables/mainCards';
 // input.addEventListener('input', handleInput);
 
 import './js/components/header';
+
+import './js/components/scrollToTopBtn.js';
