@@ -26,3 +26,118 @@ a {
 button {
   cursor: pointer;
 }
+
+body {
+  color: #ff6b08;
+}
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  &.popup-open {
+    overflow: hidden;
+  }
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.button {
+  display: inline-block;
+  padding: 14px 10px 12px;
+  min-width: 170px;
+  cursor: pointer;
+
+  border: 1px solid #ff6b08;
+  border-radius: 5px;
+  outline: none;
+
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  color: #000000;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b08;
+    border-color: #ff6b08;
+    color: #ffffff;
+  }
+}
+
+.section {
+  min-width: 300px;
+  padding: 20px 0 40px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+.container {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 300px;
+  max-width: 768px - 1;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  @media screen and (min-width: 768px) and (max-width: 1024px - 1) {
+    max-width: 768px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1024px;
+    padding-left: 15pxk;
+    padding-right: 15px;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.visually-hidden {
+  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
