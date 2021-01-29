@@ -33,6 +33,6 @@ module.exports = env => ({
     quiet: true,
     clientLogLevel: 'warning',
     stats: 'errors-only',
-    open: true,
+    open: false,
   },
 });
