@@ -79,19 +79,37 @@ function displayPage() {
   });
 }
 displayPage();
-
+// console.log(parseInt((1 * 4) % 20));
 // pagination.movePageTo(10);
 //////////////////////////////
 //настройка страниц
+// console.log(pagination._options.totalItems);
 pagination.on('afterMove', function (eventData) {
   // alert('The current page is ' + eventData.page);
-  apiService.fetchMovies().then(data => {
-    const render = template(data.results, Handlebars); //results Если не будет работать удалить
+  const itemsPerPage = pagination._options.itemsPerPage;
+  const totalItems = pagination._options.totalItems;
+  let indexStartObj = 1;
+  if (screen.name === 'telephone') {
+    indexStartObj = parseInt(((eventData.page - 1) * 4) % 20);
+    const indexNumber = parseInt(
+      (eventData.page * itemsPerPage - itemsPerPage + 1) / 20 + 1,
+    );
+
+    apiService.page = indexNumber;
+  }
+  apiService.getMoviesData().then(response => {
+    // console.log(response);
+    // console.log(indexStartObj);
+    // console.log(indexStartObj + itemsPerPage + 1);
+    const data = response.slice(indexStartObj, indexStartObj + itemsPerPage);
+    // console.log(data);
+    const render = template(data, Handlebars); //results Если не будет работать удалить
+    ul.innerHTML = '';
     ul.insertAdjacentHTML('beforeend', render);
   });
 });
 
-apiService.getMoviesData().then(console.log);
+// apiService.getMoviesData().then(console.log);
 
 ///////////////////////////////////////////////////////
 //событие изменение размера экрана
