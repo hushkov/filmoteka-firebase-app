@@ -2,7 +2,7 @@ import axios from 'axios';
 import refs from './refs';
 
 export default {
-  page: 1,
+  _page: 1,
   searchQuery: '',
   keyApi: '5c34acfe39a6372a620da68979c929b1',
   baseURL: '',
@@ -29,11 +29,19 @@ export default {
   },
 
   resetPage() {
-    this.page = 1;
+    this._page = 1;
   },
 
   incrementPage() {
-    this.page += 1;
+    this._page += 1;
+  },
+
+  get page() {
+    return this._page;
+  },
+
+  set page(value) {
+    this._page = value;
   },
 
   get query() {
@@ -64,6 +72,12 @@ export default {
           obj.poster_path = e.poster_path;
 
           obj.title = !e.title ? e.name : e.title;
+
+          // добавил original title и name
+          obj.original_title = !e.original_title
+            ? e.original_name
+            : e.original_title;
+
           obj.release_date = !e.release_date
             ? e.first_air_date.substr(0, 4)
             : e.release_date.substr(0, 4);

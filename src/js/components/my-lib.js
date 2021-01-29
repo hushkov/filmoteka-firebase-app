@@ -10,19 +10,19 @@ const refs = {
   queueBtn: document.querySelector('.queue-btn'),
 };
 
-refs.myLibraryBtn.addEventListener('click', event => {
-  event.preventDefault();
+// refs.myLibraryBtn.addEventListener('click', event => {
+//   event.preventDefault();
 
-  refs.myLibrary.classList.remove('hidden');
+//   refs.myLibrary.classList.remove('hidden');
 
-  apiService.getMoviesData().then(data => {
-    // слайс прописан временно(для теста)
-    const markup = myLibTemp(data.slice(0, 9));
+// apiService.getMoviesData().then(data => {
+//   // слайс прописан временно(для теста)
+//   const markup = myLibTemp(data.slice(0, 9));
 
-    refs.libraryList.insertAdjacentHTML('beforeend', markup);
-  });
-});
+//   refs.libraryList.insertAdjacentHTML('beforeend', markup);
+// });
+// });
 
-refs.homeBtn.addEventListener('click', event => {
-  refs.myLibrary.classList.add('hidden');
-});
+// refs.homeBtn.addEventListener('click', event => {
+//   refs.myLibrary.classList.add('hidden');
+// });

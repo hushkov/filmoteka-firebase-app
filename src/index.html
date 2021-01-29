@@ -55,9 +55,17 @@
         </p>
       </div>
     </header>
+    <main>
+      <section class="js-section-film">
+        <h2 class="visually-hidden">Аcсортимент фильмов</h2>
+        <ul class="film-list js-ul-film"></ul>
+
+        <div id="tui-pagination-container" class="tui-pagination"></div>
+      </section>
+    </main>
 
     <!-- Modal -->
-    <button tupe="button" data-open-modal>Open Modal</button>
+    <button type="button" data-open-modal>Open Modal</button>
     <template id="modal">
       <div class="modal">
         <section class="modal-section">
@@ -110,25 +118,28 @@
     </template>
 
     <input type="text" class="input" />
-    <div class="js-container"></div>
+
+    <!-- проверка разметки -->
+    <!-- <div class="film-container"></div> -->
+
     <!-- Sign up -->
-    <!-- <form id="signupForm-js">
+    <!-- <form id="signupForm">
       <h3>Sign up</h3>
       <input
         type="text"
         name="displayName"
         placeholder="Display Name"
-        class="displayName-js"
+        class="signup-displayName"
       />
-      <input type="email" name="email" placeholder="Email" class="email-js" />
+      <input type="email" name="email" placeholder="Email" class="signup-email" />
       <input
         type="password"
         name="password"
         placeholder="Password"
-        class="password-js"
+        class="signup-password"
       />
       <div class="error-signup error"></div>
-      <button id="signupBtn-js">Sign up</button>
+      <button id="signupBtn">Sign up</button>
     </form> -->
 
     <!-- My Library section -->
@@ -151,5 +162,9 @@
       <div class="error-login error"></div>
       <button id="loginBtn-js">Sign up</button>
     </form> -->
+
+    <button class="scrollToTopBtn" id="scrollToTopButton" title="Go to top">
+      &#8679;
+    </button>
   </body>
 </html>
