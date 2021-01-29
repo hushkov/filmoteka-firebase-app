@@ -6,7 +6,3 @@ import './js/components/header';
 import './js/components/scrollToTopBtn.js';
 import './js/components/handleSignup';
 import './js/composables/mainCards';
-
-// console.log();
-// const input = document.querySelector('.input');
-// input.addEventListener('input', handleInput);

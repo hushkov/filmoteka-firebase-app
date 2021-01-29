@@ -36,6 +36,14 @@ export default {
     this.page += 1;
   },
 
+  getPage() {
+    return this.page;
+  },
+
+  setPage(pageNumber) {
+    this.page = pageNumber;
+  },
+
   get query() {
     return this.searchQuery;
   },
