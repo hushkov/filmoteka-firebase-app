@@ -2,7 +2,7 @@ import axios from 'axios';
 import refs from './refs';
 
 export default {
-  page: 1,
+  _page: 1,
   searchQuery: '',
   keyApi: '5c34acfe39a6372a620da68979c929b1',
   baseURL: '',
@@ -29,19 +29,19 @@ export default {
   },
 
   resetPage() {
-    this.page = 1;
+    this._page = 1;
   },
 
   incrementPage() {
-    this.page += 1;
+    this._page += 1;
   },
 
-  getPage() {
-    return this.page;
+  get page() {
+    return this._page;
   },
 
-  setPage(pageNumber) {
-    this.page = pageNumber;
+  set page(value) {
+    this._page = value;
   },
 
   get query() {
