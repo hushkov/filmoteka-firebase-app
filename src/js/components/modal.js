@@ -4,12 +4,12 @@ import updateMarkup from './singleFilmMarkup';
 import apiService from './apiService';
 
 const openModalBtnRef = document.querySelector('button[data-open-modal]');
-// const modalTemplate = document.querySelector('#modal');
+const modalTemplate = document.querySelector('#modal');
 
-// apiService.fetchMovies().then(data => console.log(data.results));
+// apiService.getMoviesData().then(data => console.log(data));
 // const modalTemplate = apiService
-//   .fetchMovies()
-//   .then(data => updateMarkup(data.results));
+//   .getMoviesData()
+//   .then(data => updateMarkup(data));
 
 const instance = basicLightbox.create(modalTemplate, {
   onShow: instance => {

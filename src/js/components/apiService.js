@@ -64,6 +64,12 @@ export default {
           obj.poster_path = e.poster_path;
 
           obj.title = !e.title ? e.name : e.title;
+
+          // добавил original title и name
+          obj.original_title = !e.original_title
+            ? e.original_name
+            : e.original_title;
+
           obj.release_date = !e.release_date
             ? e.first_air_date.substr(0, 4)
             : e.release_date.substr(0, 4);
