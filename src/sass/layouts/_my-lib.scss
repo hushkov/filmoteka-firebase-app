@@ -1,0 +1,115 @@
+.hidden {
+  display: none;
+}
+
+.my-library {
+  @media screen and (min-width: 320px) {
+    padding-top: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 45px;
+  }
+}
+
+.lib-container {
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 648px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 912px;
+  }
+}
+
+.my-library__list {
+  @media screen and (min-width: 320px) {
+    margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 46px;
+  }
+}
+
+.my-library__item {
+  cursor: pointer;
+
+  @media screen and (min-width: 320px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+    width: calc((100% - 2 * 30px) / 2);
+    margin: 15px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: calc((100% - 3 * 30px) / 3);
+  }
+}
+
+.my-library__movie-poster {
+  display: block;
+  margin-bottom: 10px;
+  height: 398px;
+
+  border-radius: 5px;
+
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 294px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 274px;
+  }
+}
+
+.my-library__movie-title {
+  font-weight: 500;
+  font-size: $primary-font-size;
+  color: $main-text-color;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.my-library__movie-info {
+  margin-right: 10px;
+
+  color: $accent-color;
+}
+
+.my-library__movie-rate {
+  padding: 1px 10px;
+
+  line-height: 1.16;
+
+  color: $header-text-color;
+  background-color: $accent-color;
+  border-radius: 5px;
+}
+
+.my-library__movie-rate,
+.my-library__movie-info {
+  text-transform: none;
+}
