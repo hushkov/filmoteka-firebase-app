@@ -54,6 +54,15 @@
   display: block;
 }
 
+.film-list-li {
+  transition: transform 500ms ease;
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      0px 1px 1px rgba(0, 0, 0, 0.12);
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .film-list {
     display: flex;
