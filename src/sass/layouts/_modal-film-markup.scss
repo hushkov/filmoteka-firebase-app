@@ -1,7 +1,41 @@
 // Modal Film Markup
 
+.modal-container {
+  background-color: $header-text-color;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100vh;
+  }
+
+  @media screen and (min-width: 320px) {
+    width: 320px;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    padding-top: 60px;
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-bottom: 60px;
+    width: 768px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding-left: 71px;
+    padding-right: 71px;
+    width: 1024px;
+  }
+}
+
 // Image
 .modal-section__thumb {
+  height: 416px;
+  background-color: $accent-color;
+  border-radius: 5px;
+
   @media screen and (max-width: 767px) {
     margin-bottom: 30px;
   }
@@ -18,7 +52,6 @@
     height: 514px;
     overflow: hidden;
     align-items: center;
-    border-radius: 5px;
   }
 
   .modal-section__image {

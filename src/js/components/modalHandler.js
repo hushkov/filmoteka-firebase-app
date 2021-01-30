@@ -7,40 +7,42 @@ const modalContentRef = document.querySelector('.modal-content');
 const closeModalBtn = document.querySelector('button[data-close-modal]');
 const backdropRef = document.querySelector(".js-backdrop");
 
-openSignupModalBtn.addEventListener("click", onOpenModal)
-openFilmModalBtn.addEventListener("click", onOpenModal)
-closeModalBtn.addEventListener("click", onCloseModal)
-backdropRef.addEventListener("click", onBackdropClick)
+openSignupModalBtn.addEventListener("click", onOpenModal);
+openFilmModalBtn.addEventListener("click", onOpenModal);
+closeModalBtn.addEventListener("click", onCloseModal);
+backdropRef.addEventListener("click", onBackdropClick);
 
+// Open 
 function onOpenModal(event) {
    window.addEventListener("keydown", onPressEscape);
-   document.body.classList.add("show-modal");
-
    const dataOpen = event.target.dataset.open
-   console.log(dataOpen);
 
    if (dataOpen === "signup") {
-      console.log("222");
+      document.body.classList.add("show-modal-signup");
       modalContentRef.innerHTML = signupMarkup();
    } else if (dataOpen === "film") {
-      console.log("111");
+      document.body.classList.add("show-modal-film");
       modalContentRef.innerHTML = filmMarkup();
    }
 };
 
+// Close by backdrop
 function onBackdropClick(event) {
    if (event.target === event.currentTarget) {
       onCloseModal();
    }
 };
 
+// Close by Esc
 function onPressEscape(event) {
    if (event.code === "Escape") {
       onCloseModal();
    }
 };
 
+// Close Modal
 function onCloseModal() {
    window.removeEventListener("keydown", onPressEscape);
-   document.body.classList.remove("show-modal");
+   document.body.classList.remove("show-modal-film");
+   document.body.classList.remove("show-modal-signup");
 }

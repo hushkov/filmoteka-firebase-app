@@ -27,5 +27,3 @@ import './js/components/modalHandler';
 
 // console.log(apiService.fetchMovies());
 
-console.log(apiService.getMoviesData());
-
