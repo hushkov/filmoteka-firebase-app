@@ -1,7 +1,7 @@
 import refs from '../components/refs';
 import useCollection from '../composables/useCollection';
 import { timestamp } from '../../firebase/config';
-// import getLibrary from './getLibrary';
+import getLibrary from './getLibrary';
 
 const { error, addDoc } = useCollection('queue');
 
@@ -17,7 +17,7 @@ const handleFilmID = async e => {
 
   const res = await addDoc({ ...preferMovie, createdAt: timestamp() });
 
-  //   getLibrary();
+  getLibrary();
 };
 
 trendList.addEventListener('click', handleFilmID);

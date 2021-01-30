@@ -2,18 +2,17 @@ import refs from '../components/refs';
 import getCollection from '../composables/getCollection';
 import getUser from '../composables/getUser';
 
-import getData from '../composables/getCollection';
-
-const getLibrary = data => {
+const getLibrary = () => {
   const { user } = getUser();
-  //   const { documents } = getData('queue', ['userId', '==', user.uid]);
-  //   console.log(documents);
-  //   console.log(res);
+  const { documents, error } = getCollection('queue');
 
-  data.forEach(doc => {
-    const guide = doc.data();
-    console.log(guide);
-  });
+  console.log(documents);
+  console.log(error);
 };
 
 export default getLibrary;
+
+const { documents, error } = getCollection('queue');
+
+console.log(documents);
+console.log(error);

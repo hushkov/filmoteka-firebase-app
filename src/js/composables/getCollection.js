@@ -1,13 +1,14 @@
 import { projectFirestore } from '../../firebase/config';
-import getLibrary from '../components/getLibrary';
-import refs from '../components/refs';
 
 const getCollection = (collection, query) => {
   let documents = null;
   let error = null;
 
   // register the firestore collection reference
-  let collectionRef = projectFirestore.collection(collection).orderBy('createdAt');
+  let collectionRef = projectFirestore
+    .collection(collection)
+    .orderBy('createdAt');
+  console.log(collectionRef);
 
   if (query) {
     collectionRef = collectionRef.where(...query);
@@ -40,18 +41,4 @@ const getCollection = (collection, query) => {
   return { error, documents };
 };
 
-// export default getCollection;
-
-const getData = () => {
-  projectFirestore
-    .collection('guides')
-    .get()
-    .then(snapshot => {
-      getLibrary(snapshot.docs);
-    });
-  //   return snapshot.docs.map(doc => doc.data());
-  //   refs.libraryQueue = [...myLib];
-  //   console.log(refs.libraryQueue);
-};
-
-export default getData;
+export default getCollection;
