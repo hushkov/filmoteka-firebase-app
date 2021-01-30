@@ -13,50 +13,27 @@
     <h1>Hello Team!(❁´◡`❁)</h1>
 
     <!-- Modal -->
-    <button tupe="button" data-open-modal>Open Modal</button>
-    <template id="modal">
+    <div class="film" data-open="film"></div>
+
+    <button class="button" data-open="signup">Open Modal</button>
+    
+    <div class=" backdrop js-backdrop">
       <div class="modal">
-        <section class="modal-section">
-          <div class="modal-container">
-            <div class="modal-section__thumb">
-              <img class="modal-section__image" src="./images/modal-image.jpg" alt="some text">
-            </div>
-            <div class="modal-section__meta">
-              <h2 class="modal-meta__title">A fistful of lead</h2>
-              <div class="modal-meta__info">
-                <ul class="modal-info__list">
-                  <li>Vote / Votes</li>
-                  <li>Popularity</li>
-                  <li>Original Title</li>
-                  <li>Genre</li>
-                </ul>
-                <ul class="modal-info__list">
-                  <li><span>7.3</span>/<span>1260</span></li>
-                  <li>100.2</li>
-                  <li>A fistful of lead</li>
-                  <li>Western</li>
-                </ul>
-              </div>
-              <h3 class="modal-meta__title description">About</h3>
-              <p class="modal-meta__text">Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most corrupt settlement of the
-                gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of gold hide out in the
-                abandoned gold mine where they happen across another gang of three – who themselves were planning to hit the very same
-                bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled with lead... they’ve
-                been double crossed – but by who and how?
-              </p>
-              <div class="modal-meta__btn-wrap">
-                <button type="button">add to Watched</button>
-                <button type="button">add to queue</button>
-              </div>
-              <button class="modal-btn__close" type="button" data-close-modal>x</button>
-            </div>
-          </div>
-        </section>
+        <div class="modal-content"></div>
+        <button type="button" class="button" data-close-modal>Close Modal</button>
       </div>
-    </template>
+    </div>
+
+    <!-- <template id="modal">
+      <div class="modal">
+        
+      </div>
+    </template> --> 
+
+    <!-- <form class="signupForm" id="signupForm-js"></form> -->
 
     <!-- Sign up -->
-    <form id="signupForm-js">
+    <!-- <form id="signupForm-js">
       <h3>Sign up</h3>
       <input
         type="text"
@@ -75,9 +52,9 @@
         id="password-js"
       />
       <!-- <div v-if="error" class="error">{{ error }}</div> -->
-      <button id="signupBtn-js">Sign up</button>
+      <!-- <button id="signupBtn-js">Sign up</button> -->
       <!-- <button v-if="isPending" disabled>Loading...</button> -->
-    </form>
+    <!-- </form> --> 
 
   </body>
 </html>
