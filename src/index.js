@@ -6,3 +6,4 @@ import './js/components/apiService';
 import './js/components/handleSignup';
 
 import './js/components/header';
+import './js/components/search-film';
