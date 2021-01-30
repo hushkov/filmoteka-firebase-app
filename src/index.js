@@ -3,6 +3,8 @@ import './js/components/refs';
 import './js/components/apiService';
 import './js/components/handleSignup';
 import apiService from './js/components/apiService';
+import './js/composables/footerModal';
+
 
 // console.log();
 // const input = document.querySelector('.input');
