@@ -6,6 +6,7 @@
 export default {
   apiKey: '5c34acfe39a6372a620da68979c929b1',
   defaultSearch: 'https://api.themoviedb.org/3/search/movie',
+  isPending: false,
   genres: [
     {
       id: 28,

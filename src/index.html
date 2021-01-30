@@ -123,24 +123,32 @@
     <!-- <div class="film-container"></div> -->
 
     <!-- Sign up -->
-    <!-- <form id="signupForm">
+    <form id="signup-form">
       <h3>Sign up</h3>
       <input
         type="text"
         name="displayName"
         placeholder="Display Name"
-        class="signup-displayName"
+        id="signup-displayName"
+        required
       />
-      <input type="email" name="email" placeholder="Email" class="signup-email" />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        id="signup-email"
+        required
+      />
       <input
         type="password"
         name="password"
         placeholder="Password"
-        class="signup-password"
+        id="signup-password"
+        required
       />
       <div class="error-signup error"></div>
-      <button id="signupBtn">Sign up</button>
-    </form> -->
+      <button id="signup-btn">Sign up</button>
+    </form>
 
     <!-- My Library section -->
     
@@ -150,18 +158,26 @@
       </div>
     </section>
     <!-- Log in -->
-    <!-- <form id="loginForm-js">
+    <form id="login-form">
       <h3>Log in</h3>
-      <input type="email" name="email" placeholder="Email" class="email-js" />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        id="login-email"
+        required
+      />
       <input
         type="password"
         name="password"
         placeholder="Password"
-        class="password-js"
+        id="login-password"
+        required
       />
       <div class="error-login error"></div>
-      <button id="loginBtn-js">Sign up</button>
-    </form> -->
+      <button id="login-btn">Log in</button>
+    </form>
 
     <button class="scrollToTopBtn" id="scrollToTopButton" title="Go to top">
       &#8679;
