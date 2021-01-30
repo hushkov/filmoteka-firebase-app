@@ -1,29 +1,17 @@
 import './main.scss';
 import './js/components/refs';
+import './js/components/modalHandler';
+import './js/components/header';
+import './js/components/scrollToTopBtn.js';
 import './js/components/apiService';
 import './js/components/handleSignup';
-import apiService from './js/components/apiService';
-import './js/components/modalHandler';
+import './js/components/handleLogin';
+import './js/components/handleLogout';
+import './js/composables/useLogin';
+import './js/composables/useSignup';
+import './js/composables/useLogout';
+import './js/composables/getUser';
 
-// console.log();
-// const input = document.querySelector('.input');
-// input.addEventListener('input', handleInput);
+import { displayStartPage } from './js/composables/mainCards.js';
 
-// function handleInput(e) {
-//   const searchQuery = e.target.value;
-//   apiService.query = searchQuery;
-//   apiService.fetchMovies().then(data => console.log(data));
-// }
-
-// apiService.fetchMovies().then(({ results }) =>
-//   results.forEach(({ title, name }) => {
-//     if (title) {
-//       console.log(title);
-//     } else {
-//       console.log(name);
-//     }
-//   }),
-// );
-
-// console.log(apiService.fetchMovies());
-
+displayStartPage();

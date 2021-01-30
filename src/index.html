@@ -5,12 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Filmoteka + Firebase</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+      integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
+      crossorigin="anonymous"
+    /> -->
   </head>
 
   <body>
+    <!-- Heder home -->
 
-    <!-- DON`T FORGET TO DELETE IT :D -->
-    <h1>Hello Team!(❁´◡`❁)</h1>
+    <header class="header-home header">
+      <div class="container">
+        <div class="top-flex-home">
+          <a href="./index.html" class="logo">
+            <svg width="24" height="24" class="logo-icon">
+              <use href="../src/images/sprite.svg#icon-film"></use>
+            </svg>
+            <p class="logo-title">Filmoteka</p>
+          </a>
+
+          <nav>
+            <ul class="site-nav list">
+              <li class="nav-item">
+                <a href="" class="link current link-home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="link link-library">my library</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <form class="search-form" id="search-form">
+          <input
+            name="query"
+            class="search-input"
+            type="text"
+            autocomplete="off"
+            placeholder="Search movies"
+          />
+          <button type="submit" class="search-btn">
+            <svg width="12" height="12">
+              <use href="../src/images/sprite.svg#icon-search-2"></use>
+            </svg>
+          </button>
+        </form>
+        <div class="bottom-header visually-hidden">
+          <button class="button header-button watched-btn">Watched</button>
+          <button class="button header-button queue-btn">queue</button>
+        </div>
+
+        <p class="notification">
+          Search result not successful. Enter the correct movie name and try again
+        </p>
+      </div>
+    </header>
+    <main>
+      <section class="js-section-film">
+        <h2 class="visually-hidden">Аcсортимент фильмов</h2>
+        <ul class="film-list js-ul-film"></ul>
+
+        <div id="tui-pagination-container" class="tui-pagination"></div>
+      </section>
+    </main>
 
     <!-- Modal -->
     <div class="film" data-open="film"></div>
@@ -23,29 +86,65 @@
       </div>
     </div>
 
+    <!-- проверка разметки -->
+    <!-- <div class="film-container"></div> -->
+
+    <!-- Logout -->
+
+    <button id="logout">Logout</button>
+
     <!-- Sign up -->
-    <form id="signupForm-js">
+    <form id="signup-form">
       <h3>Sign up</h3>
       <input
         type="text"
         name="displayName"
         placeholder="Display Name"
-        id="displayName-js"
+        id="signup-displayName"
+        required
       />
-      <input type="email" 
-        name="email" 
-        placeholder="Email" 
-        id="email-js" />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        id="signup-email"
+        required
+      />
       <input
         type="password"
         name="password"
         placeholder="Password"
-        id="password-js"
+        id="signup-password"
+        required
       />
-      <!-- <div v-if="error" class="error">{{ error }}</div> -->
-      <button id="signupBtn-js">Sign up</button>
-      <!-- <button v-if="isPending" disabled>Loading...</button> -->
-    </form> 
+      <div class="error-signup error"></div>
+      <button id="signup-btn">Sign up</button>
+    </form>
 
+    <!-- Log in -->
+    <form id="login-form">
+      <h3>Log in</h3>
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        id="login-email"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        id="login-password"
+        required
+      />
+      <div class="error-login error"></div>
+      <button id="login-btn">Log in</button>
+    </form>
+
+    <button class="scroll-to-top-btn" id="scroll-to-top-button" title="Go to top">
+      &#8679;
+    </button>
   </body>
 </html>

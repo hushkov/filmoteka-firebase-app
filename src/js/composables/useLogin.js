@@ -1,6 +1,6 @@
-import { projectAuth } from '@/firebase/config.js';
+import { projectAuth } from '../../firebase/config.js';
 
-const error = null;
+let error = null;
 
 const login = async (email, password) => {
   error = null;
@@ -13,6 +13,8 @@ const login = async (email, password) => {
     return res;
   } catch (err) {
     error = err.message;
+    console.log(err.message);
+    return error;
   }
 };
 
