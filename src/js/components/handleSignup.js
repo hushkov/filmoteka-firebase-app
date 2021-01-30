@@ -9,8 +9,6 @@ const signupBtn = document.querySelector('#signup-btn');
 
 signupForm.addEventListener('submit', handleSignup);
 
-console.log(signupForm);
-
 async function handleSignup(e) {
   e.preventDefault();
   const form = e.currentTarget;

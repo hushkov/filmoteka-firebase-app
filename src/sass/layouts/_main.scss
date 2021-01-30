@@ -2,6 +2,18 @@
   padding-top: 20px;
 }
 
+///////////////////////////////////////
+/*Скрываем скролл до конца страницы*/
+// a.tui-page-btn.tui-last,
+// a.tui-page-btn.tui-first,
+// span.tui-page-btn.tui-is-disabled.tui-first {
+//   visibility: hidden;
+// }
+//////////////////////////////////////
+.tui-pagination.pagination {
+  margin-top: 45px;
+}
+
 .film-list-img {
   max-width: 100%;
   // max-height: 400px;
@@ -52,6 +64,15 @@
 
 .movie-link {
   display: block;
+}
+
+.film-list-li {
+  transition: transform 500ms ease;
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      0px 1px 1px rgba(0, 0, 0, 0.12);
+  }
 }
 
 @media screen and (min-width: 1024px) {
