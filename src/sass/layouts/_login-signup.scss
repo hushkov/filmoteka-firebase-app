@@ -6,12 +6,13 @@
 }
 
 /* base styles  */
-// * {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'Nunito', sans-serif;
-//   color: var(--primary);
-// }
+#signup-form,
+#login-form {
+  margin: 0;
+  padding: 0;
+  // font-family: 'Nunito', sans-serif;
+  color: var(--primary);
+}
 body {
   background: #fafafa;
 }
@@ -20,8 +21,8 @@ a {
 }
 
 /* buttons */
-#signupForm-js > button,
-#loginForm-js > button {
+#signup-form > button,
+#login-form > button {
   background: var(--secondary);
   border-radius: 8px;
   border: 0;
@@ -44,8 +45,8 @@ a {
 }
 
 /* forms */
-form#signupForm-js,
-form#loginForm-js {
+form#signup-form,
+form#login-form {
   max-width: 400px;
   margin: 0 auto;
   padding: 30px;
@@ -54,8 +55,8 @@ form#loginForm-js {
   border: 1px solid var(--secondary);
   background: white;
 }
-#signupForm-js > input,
-#loginForm-js > input {
+#signup-form > input,
+#login-form > input {
   border: 0;
   border-bottom: 1px solid var(--secondary);
   padding: 10px;
@@ -67,8 +68,8 @@ form#loginForm-js {
 }
 
 /* error text */
-#signupForm-js > .error,
-#loginForm-js > .error {
+#signup-form > .error,
+#login-form > .error {
   color: var(--warning);
   font-size: 14px;
   margin: 16px 0;

@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Filmoteka + Firebase</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+      integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
+      crossorigin="anonymous"
+    /> -->
   </head>
 
   <body>
@@ -55,9 +66,17 @@
         </p>
       </div>
     </header>
+    <main>
+      <section class="js-section-film">
+        <h2 class="visually-hidden">Аcсортимент фильмов</h2>
+        <ul class="film-list js-ul-film"></ul>
+
+        <div id="tui-pagination-container" class="tui-pagination"></div>
+      </section>
+    </main>
 
     <!-- Modal -->
-    <button tupe="button" data-open-modal>Open Modal</button>
+    <button type="button" data-open-modal>Open Modal</button>
     <template id="modal">
       <div class="modal">
         <section class="modal-section">
@@ -109,48 +128,65 @@
       </div>
     </template>
 
-    <input type="text" class="input" />
-    <div class="js-container"></div>
+    <!-- проверка разметки -->
+    <!-- <div class="film-container"></div> -->
+
+    <!-- Logout -->
+
+    <button id="logout">Logout</button>
+
     <!-- Sign up -->
-    <!-- <form id="signupForm-js">
+    <form id="signup-form">
       <h3>Sign up</h3>
       <input
         type="text"
         name="displayName"
         placeholder="Display Name"
-        class="displayName-js"
+        id="signup-displayName"
+        required
       />
-      <input type="email" name="email" placeholder="Email" class="email-js" />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        id="signup-email"
+        required
+      />
       <input
         type="password"
         name="password"
         placeholder="Password"
-        class="password-js"
+        id="signup-password"
+        required
       />
       <div class="error-signup error"></div>
-      <button id="signupBtn-js">Sign up</button>
-    </form> -->
+      <button id="signup-btn">Sign up</button>
+    </form>
 
     <!-- Log in -->
-    <!-- <form id="loginForm-js">
+    <form id="login-form">
       <h3>Log in</h3>
-      <input type="email" name="email" placeholder="Email" class="email-js" />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        id="login-email"
+        required
+      />
       <input
         type="password"
         name="password"
         placeholder="Password"
-        class="password-js"
+        id="login-password"
+        required
       />
       <div class="error-login error"></div>
-      <button id="loginBtn-js">Sign up</button>
-    </form> -->
-    <main>
-      <section class="js-section-film">
-        <h2 class="visually-hidden">Аcсортимент фильмов</h2>
-        <ul class="film-list js-ul-film"></ul>
+      <button id="login-btn">Log in</button>
+    </form>
 
-        <div id="tui-pagination-container" class="tui-pagination pagination"></div>
-      </section>
-    </main>
+    <button class="scroll-to-top-btn" id="scroll-to-top-button" title="Go to top">
+      &#8679;
+    </button>
   </body>
 </html>
