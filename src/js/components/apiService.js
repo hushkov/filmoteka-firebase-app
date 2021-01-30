@@ -99,6 +99,7 @@ export default {
           filmArr.push(obj);
         });
         filmArr.push({ totalPages, totalResults });
+        refs.currentDataList = [...filmArr];
       })
       .catch(err => console.log(err));
     return filmArr;
