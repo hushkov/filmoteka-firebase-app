@@ -1,8 +1,10 @@
-const scrollToTopBtn = document.getElementById("scrollToTopButton");
+const scrollToTopBtn = document.getElementById("scroll-to-top-button");
 
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction();
+}
 
-scrollToTopBtn.addEventListener("click", onTopFunction)
+scrollToTopBtn.addEventListener("click", onTopFunction);
 
 function scrollFunction() {
   if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
@@ -12,7 +14,8 @@ function scrollFunction() {
   }
 }
 
-function onTopFunction() {
+function onTopFunction(e) {
+  e.preventDefault();
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
