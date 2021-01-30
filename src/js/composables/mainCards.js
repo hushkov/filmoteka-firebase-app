@@ -4,6 +4,8 @@ import Handlebars from 'handlebars';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
+import refs from '../components/refs';
+
 const ul = document.querySelector('.js-ul-film');
 const body = document.querySelector('body');
 var startDisplay = true;
@@ -77,6 +79,9 @@ function displayStartPage() {
       break;
   }
   apiService.getMoviesData().then(data => {
+    // ================ Привет, не удаляй^^ =========================
+    refs.currentMoviesList = [...data];
+    // ==============================================================
     pagination.setTotalItems(data[20].totalResults);
     pagination.reset();
     // console.log(pagination._options.itemsPerPage);
@@ -108,6 +113,10 @@ function generatePage(indexStartObj, itemsPerPage, eventData) {
       indexStartObj,
       indexStartObj + itemsPerPage,
     );
+
+    // ================ Привет, не удаляй^^ =========================
+    refs.currentMoviesList = [...data];
+    // ==============================================================
     const render = template(data, Handlebars); //results Если не будет работать удалить
     ul.innerHTML = '';
     ul.insertAdjacentHTML('beforeend', render);
