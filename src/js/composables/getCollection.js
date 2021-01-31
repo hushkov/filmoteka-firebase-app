@@ -1,4 +1,7 @@
 import { projectFirestore } from '../../firebase/config';
+import getLibrary from '../components/getLibrary';
+
+import refs from '../components/refs';
 
 const getCollection = (collection, query) => {
   let documents = null;
@@ -8,7 +11,6 @@ const getCollection = (collection, query) => {
   let collectionRef = projectFirestore
     .collection(collection)
     .orderBy('createdAt');
-  console.log(collectionRef);
 
   if (query) {
     collectionRef = collectionRef.where(...query);
@@ -17,14 +19,17 @@ const getCollection = (collection, query) => {
   const unsub = collectionRef.onSnapshot(
     snap => {
       let results = [];
+
       snap.docs.forEach(doc => {
         // must wait for the server to create the timestamp & send it back
 
-        doc.data().createdAt && results.push({ ...doc.data(), id: doc.id });
+        doc.data().createdAt && results.push({ ...doc.data(), idFire: doc.id });
       });
 
       // update values
       documents = results;
+
+      console.log('inside fn:', documents);
       error = null;
     },
     err => {
@@ -38,7 +43,9 @@ const getCollection = (collection, query) => {
   //     onInvalidate(() => unsub());
   //   });
 
-  return { error, documents };
+  //   return { error, documents };
+  console.log('near return:', documents);
+  return { documents };
 };
 
 export default getCollection;
