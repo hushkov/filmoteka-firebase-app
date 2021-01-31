@@ -7,8 +7,9 @@ import './js/components/my-lib';
 import './js/composables/mainCards';
 import './js/components/apiService';
 import './js/composables/footerModal';
+import './js/components/singleFilmMarkup';
 
-import './js/components/spinnerOnOff'
+import './js/components/spinnerOnOff';
 //===========================
 // import './js/components/handleSignup';
 // import './js/components/handleLogin';
@@ -24,8 +25,6 @@ import './js/composables/useLogout';
 //============================
 import { displayStartPage } from './js/composables/mainCards.js';
 displayStartPage();
-
-import apiService from './js/components/apiService';
 
 // apiService.query = 'wonder';
 

@@ -1,16 +1,5 @@
-{{#each this}}
-{{!-- <article>
-    <img src="https://image.tmdb.org/t/p/w300{{poster_path}}" alt="{{title}}{{name}} poster">
-    <h2>{{title}}{{name}}</h2>
-    <p><span>Vote/Votes </span><span> {{vote_average}}</span> / {{vote_count}}</p>
-    <p><span>Popularity </span>{{popularity}}</p>
-    <p><span>Original Title </span>{{original_title}}{{original_name}}</p>
-    <p><span>Genre </span>{{genre}}</p>
-    <p>ABOUT</p>
-    <p></p>
-</article> --}}
 <div class="modal-section__thumb">
-    <img class="modal-section__image" src="https://image.tmdb.org/t/p/w300{{poster_path}}"
+    <img class="modal-section__image" src="{{poster_path}}"
         alt="{{title}}{{name}} poster" />
 </div>
 <div class="modal-section__meta">
@@ -36,4 +25,3 @@
         <button type="button">add to queue</button>
     </div>
 </div>
-{{/each}}
