@@ -1,0 +1,132 @@
+.footer-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.footer {
+  padding-top: 28.71px;
+  padding-bottom: 29.7px;
+  color: $footer-text-color;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.17;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 28px;
+    font-size: 16px;
+  }
+}
+
+.footer-copyright {
+  margin-bottom: 9.9px;
+  padding-left: 47px;
+  padding-right: 46px;
+  @media screen and (min-width: 321px) {
+    text-align: center;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+  }
+}
+.footer-aboute-team-link {
+  padding-left: 28px;
+  padding-right: 16px;
+  @media screen and (min-width: 321px) {
+    text-align: center;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.footer-aboute-team-link,
+.footer-copyright {
+  text-transform: capitalize;
+}
+
+// .modal {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   visibility: hidden;
+// }
+// .modal.is-open {
+//   visibility: visible;
+// }
+// .modal-overlay {
+//   width: 100vw;
+//   height: 100vh;
+//   background-color: rgba(0, 0, 0, 0.8);
+// }
+// .modal-content {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   color: $footer-text-color;
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 1.17;
+//   background-color: white;
+//   border: 2px solid green;
+//   width: 280px;
+//   height: 400px;
+//   padding: 10px;
+// }
+
+// .footer-modal-link {
+//   text-decoration: underline;
+//   color: $footer-text-color;
+// }
+// .heart-svg {
+//   margin-left: 10px;
+//   margin-right: 10px;
+// }
+// .lower {
+//   text-transform: lowercase;
+// }
+// .upper {
+//   text-transform: uppercase;
+// }
+
+// .modal-button {
+//   position: absolute;
+//   top: 10px;
+//   right: 10px;
+//   width: 40px;
+//   height: 20px;
+//   background-color: $accent-color;
+//   border: $accent-color;
+//   border-radius: 4px;
+//   margin: auto;
+// }
+
+// .modal-team-item-teammates {
+//   text-align: left;
+//   font-size: 12px;
+// }
+// .modal-team-item-teammates-description {
+//   font-size: 10px;
+//   text-align: left;
+// }
+// .modal-container-wrapper {
+//   display: flex;
+//   align-items: center;
+// }
+// .modal-container-wrapper:not(:last-child) {
+//   margin-bottom: 15px;
+// }
+// .modal-title {
+//   font-size: 14px;
+//   align-content: center;
+// }
+// .modal-team-item:not(:last-child) {
+//   margin-bottom: 15px;
+// }

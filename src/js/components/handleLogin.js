@@ -20,7 +20,6 @@ async function handleLogin(e) {
   const res = await login(email, password);
   form.reset();
   // console.dir(res);
-  console.log(refs.currentDataList);
 
   //
   // res.user ? console.log('user signed up') : console.log(res);
