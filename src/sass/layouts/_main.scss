@@ -32,6 +32,7 @@
 
 .film-list-movie-genre,
 .film-list-movie-title {
+  // film-list-movie-title:
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -67,6 +68,7 @@
 }
 
 .film-list-li {
+  cursor: pointer;
   transition: transform 500ms ease;
   &:hover {
     transform: scale(1.02);
