@@ -7,7 +7,7 @@ const signupForm = document.querySelector('#signup-form');
 const errorMessage = document.querySelector('.error-signup');
 const signupBtn = document.querySelector('#signup-btn');
 
-signupForm.addEventListener('submit', handleSignup);
+// signupForm.addEventListener('submit', handleSignup);
 
 async function handleSignup(e) {
   e.preventDefault();

@@ -6,7 +6,8 @@
         "sass/base/_variables.scss",
         "sass/base/_common.scss",
         "sass/layouts/_header.scss",
-        "sass/layouts/_modal.scss"
+        "sass/layouts/_modal.scss",
+        "sass/layouts/_footer.scss"
     ],
     "names": [],
     "file": "main.css"

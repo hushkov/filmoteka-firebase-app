@@ -61,7 +61,6 @@ export default {
       .then(data => {
         totalPages = data.total_pages;
         totalResults = data.total_results;
-
         array = [...data.results];
         let str = '';
         array.forEach(e => {
@@ -78,9 +77,16 @@ export default {
             ? e.original_name
             : e.original_title;
 
-          obj.release_date = !e.release_date
-            ? e.first_air_date.substr(0, 4)
-            : e.release_date.substr(0, 4);
+          if (e.release_date || e.first_air_date) {
+            obj.release_date = !e.release_date
+              ? e.first_air_date.substr(0, 4)
+              : e.release_date.substr(0, 4);
+          }
+
+          // obj.release_date = !e.release_date
+          //   ? e.first_air_date.substr(0, 4)
+          //   : e.release_date.substr(0, 4);
+
           str = '';
           let genreArray = [];
           [...e.genre_ids].forEach(number => {
@@ -98,10 +104,14 @@ export default {
 
           filmArr.push(obj);
         });
-        filmArr.push({ totalPages, totalResults });
-        refs.currentDataList = [...filmArr];
+        if (totalPages) {
+          filmArr.push({ totalPages, totalResults });
+        }
+
+        // refs.currentMoviesList = [...filmArr];
       })
       .catch(err => console.log(err));
+
     return filmArr;
   },
 };
