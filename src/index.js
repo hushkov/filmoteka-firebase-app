@@ -7,6 +7,7 @@ import './js/components/my-lib';
 import './js/composables/mainCards';
 import './js/components/apiService';
 import './js/composables/footerModal';
+import './js/components/youtubeApi';
 
 //===========================
 // import './js/components/handleSignup';
