@@ -7,6 +7,7 @@ import './js/components/my-lib';
 import './js/composables/mainCards';
 import './js/components/apiService';
 import './js/composables/footerModal';
+import './js/components/singleFilmMarkup';
 
 //===========================
 // import './js/components/handleSignup';
@@ -23,11 +24,6 @@ import './js/composables/useLogout';
 //============================
 import { displayStartPage } from './js/composables/mainCards.js';
 displayStartPage();
-
-// import apiService from './js/components/apiService';
-// import markup from './js/components/singleFilmMarkup';
-
-// apiService.findMovie().then(data => console.log(data.genres));
 
 // apiService.query = 'wonder';
 

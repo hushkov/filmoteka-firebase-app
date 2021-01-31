@@ -7,7 +7,7 @@ export default {
   keyApi: '5c34acfe39a6372a620da68979c929b1',
   baseURL: '',
   error: null,
-  id: '532865',
+  id: '',
 
   async fetchMovies() {
     this.error = null;
@@ -29,6 +29,7 @@ export default {
     }
   },
 
+  // функция поиска фильма по id
   async findMovie() {
     this.error = null;
 
