@@ -3,21 +3,35 @@ import useCollection from '../composables/useCollection';
 import { timestamp } from '../../firebase/config';
 import getLibrary from './getLibrary';
 
-const { error, addDoc } = useCollection('queue');
-
 const trendList = document.querySelector('.js-ul-film');
 
 const handleFilmID = async e => {
   e.preventDefault();
-
   const targetID = e.target.dataset.id;
-
-  console.log(targetID);
-
+  const queueBtn = e.target.dataset.queue;
+  const watchedBtn = e.target.dataset.watched;
   const preferMovie = refs.currentMoviesList.find(({ id }) => targetID == id);
-  // console.log(preferMovie);
 
-  const res = await addDoc({ ...preferMovie, createdAt: timestamp() });
+  if (queueBtn) {
+    const { error, addDoc } = useCollection('queue');
+
+    const res = await addDoc({
+      ...preferMovie,
+      createdAt: timestamp(),
+    })
+      .then(data => console.log('successfuly added to queue list✔', data))
+      .catch(err => console.log('smthing was wrong', err.message));
+  } else if (watchedBtn) {
+    const { error, addDoc } = useCollection('watched');
+    const res = await addDoc({
+      ...preferMovie,
+      createdAt: timestamp(),
+    })
+      .then(data => console.log('successfuly added to queue list✔', data))
+      .catch(err => console.log('smthing was wrong', err.message));
+  }
+
+  // console.log(preferMovie);
 
   // getLibrary();
 };

@@ -26,11 +26,15 @@ const getLibrary = data => {
         </li>
       `;
       html += li;
+      refs.queueFire.push(movie);
+      console.log('queueFireBase:', refs.queueFire);
     });
     movieList.innerHTML = html;
   } else {
-    movieList.innerHTML = '<h5 class="center-align">Login to view guides</h5>';
+    movieList.innerHTML =
+      '<h5 class="center-align">Login to view yout favorites</h5>';
   }
 };
 
+// console.log('OUTERqueueFireBase:', refs.queueFire);
 export default getLibrary;

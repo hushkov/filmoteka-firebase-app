@@ -1,6 +1,7 @@
 import { projectAuth } from '../../firebase/config';
 import { projectFirestore } from '../../firebase/config';
 import getLibrary from '../components/getLibrary';
+import setupUI from '../components/setupUI';
 
 // refs
 let user = projectAuth.currentUser;
@@ -15,16 +16,19 @@ projectAuth.onAuthStateChanged(_user => {
 projectAuth.onAuthStateChanged(_user => {
   if (_user) {
     console.log('user logged in: ', user);
-    projectFirestore
+    setupUI(user);
+
+    var unsubscribe = projectFirestore
       .collection('queue')
-      .get()
-      .then(snapshot => {
+      .onSnapshot(snapshot => {
         getLibrary(snapshot.docs);
       });
   } else {
     console.log('user logged out');
     getLibrary([]);
+    setupUI();
   }
+  console.log(unsubscribe);
 });
 
 const getUser = () => {
