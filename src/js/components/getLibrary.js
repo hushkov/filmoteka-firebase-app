@@ -2,17 +2,35 @@ import refs from '../components/refs';
 import getCollection from '../composables/getCollection';
 import getUser from '../composables/getUser';
 
-const getLibrary = () => {
-  const { user } = getUser();
-  const { documents, error } = getCollection('queue');
+const movieList = document.querySelector('.getLib');
+let libArray = [];
 
-  console.log(documents);
-  console.log(error);
+const getLibrary = data => {
+  // console.log(data);
+
+  if (data.length) {
+    libArray = data.map(doc => doc.data());
+  }
+
+  // console.log(libArray);
+
+  if (data.length) {
+    let html = '';
+    data.forEach(doc => {
+      const movie = doc.data();
+      const li = `
+        <li>
+          <h3 class="collapsible-header grey lighten-4"> ${movie.title} </h3>
+          <p class="collapsible-body white"> ${movie.overview} </p>
+          
+        </li>
+      `;
+      html += li;
+    });
+    movieList.innerHTML = html;
+  } else {
+    movieList.innerHTML = '<h5 class="center-align">Login to view guides</h5>';
+  }
 };
 
 export default getLibrary;
-
-const { documents, error } = getCollection('queue');
-
-console.log(documents);
-console.log(error);

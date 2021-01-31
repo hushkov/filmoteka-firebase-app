@@ -17,16 +17,20 @@ displayStartPage();
 // import './js/components/handleSignup';
 // import './js/components/handleLogin';
 // import './js/components/handleLogout';
-// import './js/components/handleFilmID';
-// import './js/composables/getUser';
-// import './js/components/getLibrary';
+import './js/components/handleFilmID';
+import './js/composables/getUser';
+import './js/components/getLibrary';
 //=====================================
 import './js/composables/useLogin';
 import './js/composables/useSignup';
 import './js/composables/useLogout';
+import './js/composables/useCollection';
+import getCollection from './js/composables/getCollection';
 
 //=====================================
 // import './js/route.js';
 // import './js/router.js';
 // import './js/app.js';
 //=====================================
+
+getCollection('queue');
