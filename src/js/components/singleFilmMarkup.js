@@ -7,7 +7,6 @@ const trendList = document.querySelector('.js-ul-film');
 function updateMarkup(data) {
   const markup = singleFilmTpl(data);
   container.innerHTML = markup;
-  // container.insertAdjacentHTML('beforeend', markup);
 }
 
 const filmByID = async e => {
@@ -15,7 +14,6 @@ const filmByID = async e => {
   const targetID = e.target.dataset.id;
 
   const preferMovie = refs.currentMoviesList.find(({ id }) => targetID == id);
-  // const preferMovie = refs.currentMoviesList.find(({ id }) => targetID == id);
   updateMarkup(preferMovie);
 };
 
