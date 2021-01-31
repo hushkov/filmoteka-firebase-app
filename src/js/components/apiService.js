@@ -29,25 +29,6 @@ export default {
     }
   },
 
-  // функция поиска фильма по id
-  async findMovie() {
-    this.error = null;
-
-    try {
-      let res = await axios.get(
-        `https://api.themoviedb.org/3/movie/${this.id}?api_key=${this.keyApi}`,
-      );
-      res = await res.data;
-      // res = await res.data.results;
-      this.error = null;
-
-      return res;
-    } catch (err) {
-      console.log(err.message);
-      this.error = 'could not find movie';
-    }
-  },
-
   resetPage() {
     this._page = 1;
   },
@@ -71,6 +52,34 @@ export default {
   set query(value) {
     this.searchQuery = value;
   },
+
+  // функция поиска фильма по id
+  async findMovie() {
+    this.error = null;
+
+    try {
+      let res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${this.id}?api_key=${this.keyApi}`,
+      );
+      res = await res.data;
+      // res = await res.data.results;
+      this.error = null;
+
+      return res;
+    } catch (err) {
+      console.log(err.message);
+      this.error = 'could not find movie';
+    }
+  },
+
+  get id() {
+    return this.id;
+  },
+
+  set id(value) {
+    this.id = value;
+  },
+
   async getMoviesData() {
     let array = [];
     const filmArr = [];
