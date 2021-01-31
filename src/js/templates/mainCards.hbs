@@ -2,13 +2,17 @@
 <li class="film-list-li">
     <a href="#" class="movie-link" data-id="{{id}}">
         <div class="film-list-block-img" data-id="{{id}}">
-            <img class="film-list-img" src="https://image.tmdb.org/t/p/w300/{{poster_path}}" alt="{{name}}{{title}}" data-id="{{id}}">
+            <img class="film-list-img" src="https://image.tmdb.org/t/p/w300/{{poster_path}}" alt="{{name}}{{title}}"
+                data-id="{{id}}">
         </div>
+        <div class="show-movie-card-buttons"><button class="button movie-card-btn">add to watched</button><button
+                class="button movie-card-btn">add to
+                queue</button></div>
         <div class="film-list-movie-description" data-id="{{id}}">
             <h3 class="film-list-movie-title" data-id="{{id}}">{{upper title}}{{upper name}} </h3>
             <p class="film-list-movie-genre" data-id="{{id}}">{{genre_ids}} | {{release_date}} </p>
         </div>
-        
+
     </a>
 </li>
 {{/each}}
