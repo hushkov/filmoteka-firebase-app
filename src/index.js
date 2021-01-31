@@ -8,6 +8,7 @@ import './js/composables/mainCards';
 import './js/components/apiService';
 import './js/composables/footerModal';
 
+import './js/components/spinnerOnOff'
 //===========================
 // import './js/components/handleSignup';
 // import './js/components/handleLogin';
