@@ -3,6 +3,7 @@ import template from '../templates/mainCards.hbs';
 import Handlebars from 'handlebars';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import posterImg from '/images/poster-not-avalible.jpg';
 
 const ul = document.querySelector('.js-ul-film');
 const body = document.querySelector('body');
@@ -72,27 +73,28 @@ function displayStartPage() {
   startDisplay = true;
   apiService.page = 1;
   screen.updateScreenName();
-  // switch (screen.name) {
-  //   case 'telephone':
-  //     pagination.setItemsPerPage(4);
-  //     break;
-  //   case 'tablet':
-  //     pagination.setItemsPerPage(8);
-  //     break;
-  //   case 'monitor':
-  //     pagination.setItemsPerPage(9);
-  //     break;
-  // }
   apiService.getMoviesData().then(data => {
-    // console.log(data);
     pagination.setTotalItems(data[20].totalResults);
+    const result = posterEdit(data);
     pagination.reset();
-    // console.log(pagination._options.itemsPerPage);
-    data.length = pagination._options.itemsPerPage;
-    const render = template(data, Handlebars);
+    result.length = pagination._options.itemsPerPage;
+    const render = template(result, Handlebars);
     ul.innerHTML = '';
     ul.insertAdjacentHTML('beforeend', render);
   });
+}
+
+//возвращаем отредактированый объект с ссылками на картинки
+function posterEdit(obj) {
+  const result = obj.map(arr => {
+    const [arr1] = [...arr];
+    if (arr1.poster_path === null || arr1.poster_path === undefined)
+      arr1.poster_path = posterImg;
+    else
+      arr1.poster_path = 'https://image.tmdb.org/t/p/w300' + arr1.poster_path;
+    return arr1;
+  });
+  return result;
 }
 
 ///создание страницы Во время выбора страницы
@@ -112,14 +114,7 @@ function generatePage(indexStartObj, itemsPerPage, eventData) {
       indexStartObj + itemsPerPage,
     );
 
-    const result = data.map(arr => {
-      const [arr1] = [...arr];
-      if (arr1.poster_path === null || arr1.poster_path === undefined)
-        arr1.poster_path = './images/poster-not-available.jpg';
-      else
-        arr1.poster_path = 'https://image.tmdb.org/t/p/w300' + arr1.poster_path;
-      return arr1;
-    });
+    const result = posterEdit(data);
 
     const render = template(result, Handlebars);
     ul.innerHTML = '';
