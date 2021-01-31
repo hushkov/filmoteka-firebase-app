@@ -2,7 +2,7 @@ import signupMarkup from '../templates/modal-signup-markup.hbs';
 import filmMarkup from '../templates/modal-film-markup.hbs';
 
 const openSignupModalBtn = document.querySelector('button[data-open="signup"]');
-const openFilmModalBtn = document.querySelector('div[data-open="film"]');
+const openFilmModalBtn = document.querySelector('.js-section-film');
 const modalContentRef = document.querySelector('.modal-content');
 const closeModalBtn = document.querySelector('button[data-close-modal]');
 const backdropRef = document.querySelector(".js-backdrop");
@@ -15,6 +15,7 @@ backdropRef.addEventListener("click", onBackdropClick);
 // Open 
 function onOpenModal(event) {
    window.addEventListener("keydown", onPressEscape);
+   const dataSet = event.target.dataset;
    const dataOpen = event.target.dataset.open
 
    if (dataOpen === "signup") {
@@ -23,6 +24,8 @@ function onOpenModal(event) {
    } else if (dataOpen === "film") {
       document.body.classList.add("show-modal-film");
       modalContentRef.innerHTML = filmMarkup();
+      console.log(dataSet.id);
+      console.log(dataSet.src);
    }
 };
 
@@ -46,3 +49,5 @@ function onCloseModal() {
    document.body.classList.remove("show-modal-film");
    document.body.classList.remove("show-modal-signup");
 }
+
+// modalContentRef.insertAdjacentHTML = apiService.getMoviesData().then(data => filmMarkup(data[0]));
