@@ -1,7 +1,9 @@
+import myModal from './modal-trailer.js';
+
 const refs = {
   main: document.querySelector('main'),
-  frameWrapper: document.querySelector('.box-trailer'),
-  iframe: document.querySelector('.movie-trailer'),
+  frameWrapper: document.querySelector('.modal-youtube__window'),
+  iframe: document.querySelector('.modal-youtube__frame'),
 };
 
 const apiYoutube = {
@@ -16,7 +18,9 @@ const apiYoutube = {
         const isSuccess = !Array.isArray(results) || results.length === 0;
 
         if (isSuccess) {
+          // Temp------------------------------
           console.log('Trailer not found');
+          //   -----------------------------------
         } else {
           const { key } = results[0];
 
@@ -26,11 +30,14 @@ const apiYoutube = {
   },
 
   setUrlTrailer(key) {
-    refs.iframe.setAttribute('src', `https://www.youtube.com/embed/${key}`);
+    const url = `https://www.youtube.com/embed/${key}`;
+
+    myModal(url).open();
   },
 };
 
 // Test ----------->>>>>>>
+
 refs.main.addEventListener('click', event => {
   const movieId = event.target.dataset.id;
 
@@ -38,5 +45,4 @@ refs.main.addEventListener('click', event => {
     apiYoutube.getMovieTrailer(movieId);
   }
 });
-
-//  <<<<<<<<<----------------
+// <<<<<<<<<-------------------------

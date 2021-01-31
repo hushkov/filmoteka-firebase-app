@@ -1,0 +1,51 @@
+.modal-youtube.open .modal-youtube__overlay,
+.modal-youtube.open .modal-youtube__window {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.modal-youtube__overlay,
+.modal-youtube__window {
+  opacity: 0;
+  z-index: -1;
+}
+
+.modal-youtube__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-youtube__window {
+  width: 882px;
+
+  margin: 150px auto;
+}
+
+.modal-youtube__frame {
+  width: 882px;
+  height: 514px;
+}
+
+.modal-youtube__close {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+
+  background-color: rgba(255, 244, 244, 0.74);
+  border-radius: 50%;
+  font-size: 42px;
+  color: black;
+
+  cursor: pointer;
+}
