@@ -35,6 +35,16 @@ body.show-modal-signup .modal {
   transform: scale(1);
 }
 
+body.show-modal-footer .backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
+
+body.show-modal-footer .modal {
+  transform: scale(1);
+}
+
 .backdrop {
   display: flex;
   justify-content: center;
@@ -45,7 +55,7 @@ body.show-modal-signup .modal {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 999;
+  z-index: 1001;
 
   pointer-events: none;
   opacity: 0;
