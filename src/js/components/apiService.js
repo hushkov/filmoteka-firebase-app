@@ -72,12 +72,12 @@ export default {
     }
   },
 
-  get id() {
-    return this.id;
+  get filmId() {
+    return this._id;
   },
 
-  set id(value) {
-    this.id = value;
+  set filmId(value) {
+    this._id = value;
   },
 
   async getMoviesData() {
