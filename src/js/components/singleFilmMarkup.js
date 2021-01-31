@@ -14,6 +14,7 @@ const filmByID = async e => {
   const targetID = e.target.dataset.id;
 
   const preferMovie = refs.currentMoviesList.find(({ id }) => targetID == id);
+
   updateMarkup(preferMovie);
 };
 
