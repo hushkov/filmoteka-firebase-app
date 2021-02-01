@@ -14,17 +14,20 @@ const myModal = function (url) {
     destroy() {
       modalWindowMarkup.parentNode.removeChild(modalWindowMarkup);
       modalWindowMarkup.removeEventListener('click', listener);
+      window.removeEventListener('keydown', listener);
+
       destroyed = true;
     },
   };
   const listener = event => {
-    if (event.target.dataset.close) {
+    if (event.target.dataset.close || event.code === 'Escape') {
       modal.close();
       modal.destroy();
     }
   };
 
   modalWindowMarkup.addEventListener('click', listener);
+  window.addEventListener('keydown', listener);
 
   return modal;
 };
