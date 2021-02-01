@@ -9,6 +9,7 @@ import './js/components/apiService';
 // import './js/composables/footerModal';
 import './js/components/singleFilmMarkup';
 import './js/components/spinnerOnOff';
+import './js/components/search- film';
 
 import { displayStartPage } from './js/composables/mainCards.js';
 displayStartPage();
