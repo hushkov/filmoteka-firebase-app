@@ -71,7 +71,6 @@ function onCloseModal() {
    rfs.bodyClass.remove("show-modal-footer");
 
    rfs.closeModal.classList.add('hidden');
-   rfs.modalContentRef.innerHTML = "";
    window.removeEventListener("keydown", onPressEscape);
 };
 
