@@ -1,49 +1,6 @@
-{{!-- <section class="modal-section"> --}}
-    <div class="modal-container">
-        <div class="modal-section__thumb">
-            <img class="modal-section__image" src="#" alt="some text">
-        </div>
-        <div class="modal-section__meta">
-            <h2 class="modal-meta__title">A fistful of lead</h2>
-            <div class="modal-meta__info">
-                <ul class="modal-info__list">
-                    <li>Vote / Votes</li>
-                    <li>Popularity</li>
-                    <li>Original Title</li>
-                    <li>Genre</li>
-                </ul>
-                <ul class="modal-info__list">
-                    <li><span>7.3</span>/<span>1260</span></li>
-                    <li>100.2</li>
-                    <li>A fistful of lead</li>
-                    <li>Western</li>
-                </ul>
-            </div>
-            <h3 class="modal-meta__title description">About</h3>
-            <p class="modal-meta__text">Four of the West’s most infamous outlaws assemble to steal a huge stash of gold
-                from the most corrupt settlement of the
-                gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of gold
-                hide out in the
-                abandoned gold mine where they happen across another gang of three – who themselves were planning to hit
-                the very same
-                bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled with
-                lead... they’ve
-                been double crossed – but by who and how?
-            </p>
-            <div class="modal-meta__btn-wrap">
-                <button type="button">add to Watched</button>
-                <button type="button">add to queue</button>
-            </div>
-            {{!-- <button class="modal-btn__close" type="button" data-close-modal>x</button> --}}
-        </div>
-    </div>
-    {{!--
-</section> --}}
-
-{{!-- {{#each this}}
 <div class="modal-container">
     <div class="modal-section__thumb">
-        <img class="modal-section__image" src="https://image.tmdb.org/t/p/w300{{poster_path}}"
+        <img class="modal-section__image" src="{{poster_path}}" alt="{{title}}{{name}} poster"
             alt="{{title}}{{name}} poster">
     </div>
     <div class="modal-section__meta">
@@ -70,4 +27,3 @@
         </div>
     </div>
 </div>
-{{/each}} --}}
