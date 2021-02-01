@@ -82,9 +82,9 @@
 
     <!-- MAIN -->
 
-    <div class="loader-div" id="spinner-loader" style="display:none;text-align:center;">
-      <img class="loader-spinner" src="../src/images/loader.gif" style="display:inline;">
-    </div>
+    <!-- <div class="loader-div" id="spinner-loader" style="display:none;text-align:center;">
+      <img class="loader-spinner" src="../src/images/loader-min.gif" style="display:inline;">
+    </div> -->
 
     <main>
       <section class="js-section-film">
@@ -96,14 +96,14 @@
 
       <!-- My Library section -->
 
-      <!-- <section class="my-library hidden">
+      <section class="my-library hidden">
         <div class="lib-container">
           <ul class="my-library__list">
           </ul>
         </div>
-      </section> -->
+      </section>
 
-      <section  class="my-library " id="app">
+      <!-- <section  class="my-library " id="app">
         <div class="lib-container">
           <ul class="my-library__list">
             <li v-for="movie in queue"  class="my-library__item" :data-id=movie.id>
@@ -117,25 +117,24 @@
             </li>
           </ul>
         </div>
-      </section>
+      </section> -->
 
  
 
     </main>
 
     <!-- Modal -->
-    <!-- <div class="film" data-open="film"></div>
-    <button class="button" data-open="signup">Open Modal</button>
+    <button class="button" data-open="signup">Sign Up</button>
+    <button class="button" data-open="login">Log In</button>
     
     <div class=" backdrop js-backdrop">
       <div class="modal">
         <div class="modal-content"></div>
         <button type="button" class="close-modal" data-close-modal>x</button>
       </div>
-    </div> -->
+    </div>
 
-    <!-- проверка разметки -->
-    <div class="film-container"></div>
+
 
 
 
@@ -208,14 +207,14 @@
             <svg class="heart-svg" width="14" height="12.75">
               <use href="./images/sprite.svg#icon-favorite"></use></svg></svg>by
           </span>
-          <a class="footer-modal-link" href="">
+          <a class="footer-modal-link" data-open="footer" href="#">
             go <span class="upper">it</span> students
           </a>
         </p>
       </footer>
     </div>
     <!-- =========================== -->
-    <div class="modal">
+    <!-- <div class="modal">
       <div class="modal-overlay">
         <div class="modal-content">
           <div class="modal-container-wrapper">
