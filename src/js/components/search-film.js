@@ -1,5 +1,5 @@
 import apiService from './apiService.js'
-import myLibTemp from './templates/my-library.hbs';
+import myLibTemp from '../templates/my-library.hbs';
 // import loaderToggle from './loader';
 
 const refs = {
@@ -16,14 +16,15 @@ refs.searchForm.addEventListener('submit', onSearch);
 function onSearch(event) {
   event.preventDefault();
   
-   refs.mainSectionFilm.classList.add('hidden');
+  refs.mainSectionFilm.classList.add('hidden');
   refs.sectionLib.classList.remove('hidden');
-  apiService.query = event.currentTarget.elements.query.value ;
+  apiService.query = event.currentTarget.elements.query.value;
    
   apiService.getMoviesData().then(data => {
-    const markup = myLibTemp(data.slice(0, 3));
-  })
+    const markup = myLibTemp(data.slice(0, 9));
+  
     refs.libraryList.innerHTML = '';
     refs.libraryList.insertAdjacentHTML('beforeend', markup);
   
+  });
 };
