@@ -38,9 +38,18 @@
               <li class="nav-item">
                 <a href="" class="link current link-home">Home</a>
               </li>
-              <li class="nav-item">
-                <a href="" class="link link-library">my library</a>
+              <li class="nav-item" >
+               <a href="" class="link link-library">my library</a>
               </li>
+              <li class="logged-in" style="display: none;">
+                 <a href="#" class="link link-library" id="logout">Logout</a>
+               </li>
+              <li class="logged-out" style="display: none;">
+                  <a href="#" class="link link-library" data-target="modal-login">Login</a>
+               </li>
+                <li class="logged-out" style="display: none;">
+                  <a href="#" class="link link-library" data-target="modal-signup">Sign up</a>
+                </li>
             </ul>
           </nav>
         </div>
@@ -70,6 +79,9 @@
       </div>
     </header>
 
+    <div class="account-details"></div>
+    <ul class="getLib"></ul>
+
     <!-- MAIN -->
 
     <!-- <div class="loader-div" id="spinner-loader" style="display:none;text-align:center;">
@@ -88,14 +100,34 @@
 
       <section class="my-library hidden">
         <div class="lib-container">
-          <ul class="my-library__list"></ul>
+          <ul class="my-library__list">
+          </ul>
         </div>
       </section>
+
+      <!-- <section  class="my-library " id="app">
+        <div class="lib-container">
+          <ul class="my-library__list">
+            <li v-for="movie in queue"  class="my-library__item" :data-id=movie.id>
+              <a href="#" class="movie-link" :data-id=movie.id>
+              <img :src=movie.poster_path :alt=movie.title :data-id=movie.id>
+                  <p class="my-library__movie-title" :data-id=movie.id>{{movie.title}} {{movie.name}}</br>
+                <span class="my-library__movie-info">{{movie.genre_ids}} | {{movie.first_air_date}} {{movie.release_date}}</span>
+                <span class="my-library__movie-rate">{{movie.vote_average}}</span>
+                  </p>
+                  </a>
+            </li>
+          </ul>
+        </div>
+      </section> -->
+
+ 
+
     </main>
 
     <!-- Modal -->
-    <button class="button" data-open="signup">Sign Up</button>
-    <button class="button" data-open="login">Log In</button>
+    <!-- <button class="button" data-open="signup">Sign Up</button>
+    <button class="button" data-open="login">Log In</button> -->
     
     <div class=" backdrop js-backdrop">
       <div class="modal">
@@ -104,13 +136,11 @@
       </div>
     </div>
 
-    <!-- проверка разметки -->
-    <div class="film-container"></div>
 
-    <!-- Logout -->
-    <!-- <button id="logout">Logout</button> -->
 
-    <!-- Sign up -->
+
+
+    <!--Sign up -->
     <!-- <form id="signup-form">
       <h3>Sign up</h3>
       <input
@@ -167,93 +197,24 @@
     >
       &#8679;
     </button>
+
+    <!------footer--------->
     <div class="footer-container">
-      <footer class="footer">
+      <footer class="footer-section">
         <p class="footer-copyright">
           &copy; 2020 | all rights reserved |&nbsp;
         </p>
-        <p class="footer-aboute-team-link">
-          developed
-          <span class="lower"
-            >with
-            <svg class="heart-svg" width="14" height="12.75">
+        <p class="footer-aboute-team-link">developed<span class="footer-text-lower"> 
+          with<svg class="footer-favorite-svg" width="14" height="12.75">
               <use href="./images/sprite.svg#icon-favorite"></use></svg></svg>by
           </span>
-          <a class="footer-modal-link" data-open="footer" href="#">
-            go <span class="upper">it</span> students
+          <a data-open="footer" class="footer-modal-link" href="#">go<span class="footer-text-upper">it       
+          </span> students
           </a>
         </p>
       </footer>
     </div>
-    <!-- =========================== -->
-    <!-- <div class="modal">
-      <div class="modal-overlay">
-        <div class="modal-content">
-          <div class="modal-container-wrapper">
-            <h2 class="modal-title">Команда_2_проект</h2>
-            <button class="modal-button" type="button">Close</button>
-          </div>
-          <ul class="modal-team">
-            <li class="modal-team-item">
-              <div class="modal-container-wrapper">
-                <svg class="heart-svg" width="40" height="40">
-                  <use href="./images/sprite.svg#icon-bender"></use>
-                </svg>
-                <p class="modal-team-item-teammates">Alexander Gashkov</p>
-              </div>
-              <p class="modal-team-item-teammates-description">
-                Team leader - систематизирует коллективный разум, консультирует
-                и просто излучает позитив
-              </p>
-              <p></p>
-            </li>
-
-            <li class="modal-team-item">
-              <div class="modal-container-wrapper">
-                <img
-                  src="./images/user-group.png"
-                  width="50"
-                  height="50"
-                  alt="иконка-группа"
-                />
-                <ul class="modal-team-item-teammates">
-                  <li>Andriy Rudkovsky</li>
-                  <li>Grangel Dima</li>
-                  <li>Evgenii</li>
-
-                  <li>Stanislav Kazikin</li>
-                  <li>Maksym Sereda</li>
-                  <li>Serhii Stanislav</li>
-                  <li>Valerii</li>
-                </ul>
-              </div>
-              <p class="modal-team-item-teammates-description">
-                Без 5 минут программисты. Вносят неоценимый вклад в проект.
-              </p>
-            </li>
-
-            <li class="modal-team-item">
-              <div class="modal-container-wrapper">
-                <img
-                  src="./images/user-group-creative.png"
-                  width="50"
-                  height="50"
-                  alt="иконка-группа-креатив"
-                />
-                <ul class="modal-team-item-teammates">
-                  <li>Ludmila Gavrish</li>
-                  <li>Halina Prokopiv</li>
-                  <li>Kara</li>
-                </ul>
-              </div>
-              <p class="modal-team-item-teammates-description">
-                Креативная группа, почти веб-разработчики. Вносят красоту в
-                проект.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
+        <!-- vue js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </body>
 </html>
