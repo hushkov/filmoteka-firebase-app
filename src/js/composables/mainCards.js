@@ -4,7 +4,7 @@ import Handlebars from 'handlebars';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import refs from '../components/refs';
-// import posterImg from '/images/poster-not-avalible.jpg';
+import posterImg from '/images/poster-not-avalible.jpg';
 // const posterImg = 'https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg';
 const ul = document.querySelector('.js-ul-film');
 const body = document.querySelector('body');
@@ -93,8 +93,7 @@ function posterEdit(obj) {
   const result = obj.map(arr => {
     const [arr1] = [...arr];
     if (arr1.poster_path === null || arr1.poster_path === undefined)
-      // arr1.poster_path = posterImg;
-      console.log("Закомментировал posterImg");
+      arr1.poster_path = posterImg;
     else
       arr1.poster_path = 'https://image.tmdb.org/t/p/w300' + arr1.poster_path;
     return arr1;
