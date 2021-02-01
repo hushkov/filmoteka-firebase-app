@@ -5,7 +5,7 @@ const accountDetails = document.querySelectorAll('.account-details');
 const setupUI = user => {
   if (user) {
     // acc info
-    console.log(accountDetails);
+
     const html = `
     <h3> Logged in as ${user.email}</h3>
         `;

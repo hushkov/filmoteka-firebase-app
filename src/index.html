@@ -96,11 +96,31 @@
 
       <!-- My Library section -->
 
-      <section class="my-library hidden">
+      <!-- <section class="my-library hidden">
         <div class="lib-container">
-          <ul class="my-library__list"></ul>
+          <ul class="my-library__list">
+          </ul>
+        </div>
+      </section> -->
+
+      <section  class="my-library " id="app">
+        <div class="lib-container">
+          <ul class="my-library__list">
+            <li v-for="movie in queue"  class="my-library__item" :data-id=movie.id>
+              <a href="#" class="movie-link" :data-id=movie.id>
+              <img :src=movie.poster_path :alt=movie.title :data-id=movie.id>
+                  <p class="my-library__movie-title" :data-id=movie.id>{{movie.title}} {{movie.name}}</br>
+                <span class="my-library__movie-info">{{movie.genre_ids}} | {{movie.first_air_date}} {{movie.release_date}}</span>
+                <span class="my-library__movie-rate">{{movie.vote_average}}</span>
+                  </p>
+                  </a>
+            </li>
+          </ul>
         </div>
       </section>
+
+ 
+
     </main>
 
     <!-- Modal -->
@@ -264,5 +284,7 @@
         </div>
       </div>
     </div>
+     <!-- vue js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </body>
 </html>

@@ -18,8 +18,9 @@ projectAuth.onAuthStateChanged(_user => {
     console.log('user logged in: ', user);
     setupUI(user);
 
-    var unsubscribe = projectFirestore
+    projectFirestore
       .collection('queue')
+      .orderBy('createdAt')
       .onSnapshot(snapshot => {
         getLibrary(snapshot.docs);
       });
@@ -28,7 +29,6 @@ projectAuth.onAuthStateChanged(_user => {
     getLibrary([]);
     setupUI();
   }
-  console.log(unsubscribe);
 });
 
 const getUser = () => {

@@ -1,6 +1,7 @@
 import refs from '../components/refs';
 import useCollection from '../composables/useCollection';
 import { timestamp } from '../../firebase/config';
+import getUser from '../composables/getUser';
 import getLibrary from './getLibrary';
 
 const trendList = document.querySelector('.js-ul-film');
@@ -11,12 +12,13 @@ const handleFilmID = async e => {
   const queueBtn = e.target.dataset.queue;
   const watchedBtn = e.target.dataset.watched;
   const preferMovie = refs.currentMoviesList.find(({ id }) => targetID == id);
-
+  const { user } = getUser();
   if (queueBtn) {
     const { error, addDoc } = useCollection('queue');
 
     const res = await addDoc({
       ...preferMovie,
+      userId: user.uid,
       createdAt: timestamp(),
     })
       .then(data => console.log('successfuly added to queue list✔', data))
@@ -25,9 +27,10 @@ const handleFilmID = async e => {
     const { error, addDoc } = useCollection('watched');
     const res = await addDoc({
       ...preferMovie,
+      userId: user.uid,
       createdAt: timestamp(),
     })
-      .then(data => console.log('successfuly added to queue list✔', data))
+      .then(data => console.log('successfuly added to watched list✔', data))
       .catch(err => console.log('smthing was wrong', err.message));
   }
 

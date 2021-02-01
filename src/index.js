@@ -36,3 +36,25 @@ import './js/composables/useCollection';
 
 import getCollection from './js/composables/getCollection';
 // getCollection('queue');
+import { projectFirestore } from './firebase/config';
+import apiService from './js/components/apiService';
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    queue: [],
+  },
+  mounted() {
+    const ref = projectFirestore
+      .collection('queue')
+      .orderBy('createdAt', 'desc');
+    ref.onSnapshot(snapshot => {
+      let queue = [];
+      snapshot.forEach(doc => {
+        queue.push({ ...doc.data(), idFire: doc.id });
+      });
+
+      this.queue = queue;
+    });
+  },
+});
