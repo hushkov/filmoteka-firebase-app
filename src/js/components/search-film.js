@@ -1,5 +1,5 @@
 import apiService from './apiService.js'
-import myLibTemp from '../templates/my-library.hbs';
+import myLibTemp from './templates/my-library.hbs';
 // import loaderToggle from './loader';
 
 const refs = {
