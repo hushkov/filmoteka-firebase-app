@@ -900,7 +900,6 @@ body.show-modal-film .modal {
 
 .modal-section__thumb {
   height: 416px;
-  background-color: #ff6b08;
   border-radius: 5px;
 }
 
@@ -1112,22 +1111,24 @@ body.show-modal-film .modal {
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.12);
 }
 
+/*-------------footer-section------------*/
 .footer-container {
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.footer {
+.footer-section {
   padding-top: 28.71px;
   padding-bottom: 29.7px;
   color: #545454;
+  background-color: #f7f7f7;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.17;
 }
 
 @media screen and (min-width: 768px) {
-  .footer {
+  .footer-section {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -1139,20 +1140,11 @@ body.show-modal-film .modal {
 
 .footer-copyright {
   margin-bottom: 9.9px;
-  padding-left: 47px;
-  padding-right: 46px;
-}
-
-@media screen and (min-width: 321px) {
-  .footer-copyright {
-    text-align: center;
-  }
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
   .footer-copyright {
-    padding-left: 0;
-    padding-right: 0;
     margin-bottom: 0;
   }
 }
@@ -1175,8 +1167,131 @@ body.show-modal-film .modal {
   }
 }
 
+.footer-modal-link {
+  text-decoration: underline;
+  color: #545454;
+}
+
+.footer-modal-link:hover, .footer-modal-link:focus {
+  color: #ff6b08;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-favorite-svg {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .footer-aboute-team-link,
 .footer-copyright {
   text-transform: capitalize;
+}
+
+.footer-text-lower {
+  text-transform: lowercase;
+}
+
+.footer-text-upper {
+  text-transform: uppercase;
+}
+
+/*-----------footer-modal---------------*/
+.footer-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  color: #545454;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.17;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+  min-width: 280px;
+  min-height: 400px;
+}
+
+.footer-modal-title {
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.footer-modal-title::after {
+  content: ' ';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+
+.footer-modal-team-item-teammates {
+  text-align: left;
+  font-size: 12px;
+}
+
+.modal-team-item-teammate-name {
+  font-size: 16px;
+}
+
+.modal-team-item-teammate-name:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.team-leader {
+  font-size: 16px;
+}
+
+.footer-modal-teammates-description {
+  font-size: 14px;
+  text-align: left;
+}
+
+.footer-modal-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.footer-modal-wrapper:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.footer-modal-team-item {
+  font-size: 14px;
+  align-content: center;
+}
+
+.footer-modal-team-item:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.footer-img {
+  margin-right: 20px;
+  border: 2px solid #8c8c8c;
+  border-radius: 4px;
+}
+
+.user-group::before {
+  background-image: url(./images/user-group.png);
+}
+
+.user-group-creative::before {
+  background-image: url(./images/user-group-creative.png);
+}
+
+.user-group-creative::before,
+.user-group::before {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 20px;
+  border: 2px solid #8c8c8c;
+  border-radius: 4px;
 }
 /*# sourceMappingURL=main.css.map */

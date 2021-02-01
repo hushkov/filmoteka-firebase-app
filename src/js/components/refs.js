@@ -8,6 +8,7 @@ export default {
   defaultSearch: 'https://api.themoviedb.org/3/search/movie',
   isPending: false,
   currentMoviesList: [],
+  queueFire: [],
 
   genres: [
     {
