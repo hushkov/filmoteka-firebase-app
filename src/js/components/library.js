@@ -8,6 +8,7 @@ const refs = {
 const WATCHED_ARR = JSON.parse(localStorage.getItem('watched-movie-list'));
 const QUEUE_ARR = JSON.parse(localStorage.getItem('queue-movie-list'));
 
+// вешаем события по клику
 refs.watchedBtnEl.addEventListener('click', onWatchedBtnClick);
 refs.queueBtnEl.addEventListener('click', onQueueBtnClick);
 
