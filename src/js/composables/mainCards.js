@@ -96,7 +96,7 @@ function posterEdit(obj) {
     arr1.id = 4;
     if (arr1.poster_path === null || arr1.poster_path === undefined) {
       arr1.poster_path = posterImg;
-      console.log('Закомментировал posterImg');
+      // console.log('Закомментировал posterImg');
     } else
       arr1.poster_path = 'https://image.tmdb.org/t/p/w300' + arr1.poster_path;
     return arr1;
