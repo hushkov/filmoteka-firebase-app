@@ -29,7 +29,6 @@ function onOpenModal(event) {
       modalContentRef.innerHTML = signupMarkup();
    } else if (dataOpen === "login") {
       console.log("login");
-
       document.body.classList.add("show-modal-signup");
       modalContentRef.innerHTML = loginMarkup();
    } else if (dataOpen === "film") {

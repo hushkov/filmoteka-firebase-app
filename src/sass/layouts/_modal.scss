@@ -4,45 +4,41 @@
   --animation-duration: 250ms;
 }
 
-.film {
-  background-color: darkred;
-  width: 80px;
-  height: 150px;
-}
-
 /* Backdrop */
-body.show-modal-film .backdrop {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: initial;
-}
-
-body.show-modal-film .modal {
-  transform: scale(1);
-
-  @media screen and (max-width: 767px) {
-    background-color: $header-text-color;
+body {
+  &.show-modal-film,
+  &.show-modal-signup,
+  &.show-modal-footer {
+    overflow: hidden;
   }
-}
 
-body.show-modal-signup .backdrop {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: initial;
-}
+  &.show-modal-film .backdrop,
+  &.show-modal-signup .backdrop,
+  &.show-modal-footer .backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+  }
 
-body.show-modal-signup .modal {
-  transform: scale(1);
-}
+  &.show-modal-film .backdrop {
+    @media screen and (max-width: 767px) {
+      align-items: start;
+    }
+  }
 
-body.show-modal-footer .backdrop {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: initial;
-}
+  &.show-modal-signup .modal,
+  &.show-modal-footer .modal {
+    transform: scale(1);
+  }
 
-body.show-modal-footer .modal {
-  transform: scale(1);
+  &.show-modal-film .modal {
+    transform: scale(1);
+
+    @media screen and (max-width: 767px) {
+      background-color: $header-text-color;
+      min-height: 100%;
+    }
+  }
 }
 
 .backdrop {
@@ -55,16 +51,26 @@ body.show-modal-footer .modal {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1001;
 
+  z-index: 1001;
+  overflow-y: scroll;
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
   transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+
+  // @media screen and (max-width: 414px) {
+  //   background-color: $header-text-color;
+  // }
+
+  @media screen and (min-width: 768px) {
+    align-items: center;
+  }
 }
 
 .modal {
-  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
   transform: scale(1.1);
   transition: transform 200ms ease-in-out;
 }
