@@ -5,7 +5,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import refs from '../components/refs';
 import posterImg from '/images/poster-not-avalible.jpg';
-// const posterImg = 'https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg';
+//const posterImg = 'https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg';
 const ul = document.querySelector('.js-ul-film');
 const body = document.querySelector('body');
 var startDisplay = true;
