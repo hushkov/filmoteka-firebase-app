@@ -1,12 +1,12 @@
 import './main.scss';
 import './js/components/refs';
-//import './js/components/modalHandler';
+import './js/components/modalHandler';
 import './js/components/header';
 import './js/components/scrollToTopBtn.js';
 import './js/components/my-lib';
 import './js/composables/mainCards';
 import './js/components/apiService';
-import './js/composables/footerModal';
+//import './js/composables/footerModal';
 
 //===========================
 // import './js/components/handleSignup';
