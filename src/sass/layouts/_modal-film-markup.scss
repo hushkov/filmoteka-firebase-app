@@ -53,6 +53,18 @@
     align-items: center;
   }
 
+  .trailer-btn {
+    display: none;
+    font-size: 36px;
+  }
+
+  &:hover {
+    .trailer-btn {
+      position: absolute;
+      display: block;
+    }
+  }
+
   .modal-section__image {
     width: 100%;
     height: auto;
