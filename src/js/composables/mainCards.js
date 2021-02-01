@@ -4,8 +4,8 @@ import Handlebars from 'handlebars';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import refs from '../components/refs';
-// import posterImg from '/images/poster-not-avalible.jpg';
-// const posterImg = 'https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg';
+import posterImg from '/images/poster-not-avalible.jpg';
+
 const ul = document.querySelector('.js-ul-film');
 const body = document.querySelector('body');
 var startDisplay = true;
@@ -76,12 +76,13 @@ function displayStartPage() {
   screen.updateScreenName();
   apiService.getMoviesData().then(data => {
     pagination.setTotalItems(data[20].totalResults);
-    const result = posterEdit(data);
+
     // ================ Привет, не удаляй^^ =========================
-    refs.currentMoviesList = [...result];
+    refs.currentMoviesList = [...data];
     // ==============================================================
     pagination.reset();
-    result.length = pagination._options.itemsPerPage;
+    data.length = pagination._options.itemsPerPage;
+    const result = posterEdit(data);
     const render = template(result, Handlebars);
     ul.innerHTML = '';
     ul.insertAdjacentHTML('beforeend', render);
@@ -91,11 +92,12 @@ function displayStartPage() {
 //возвращаем отредактированый объект с ссылками на картинки
 function posterEdit(obj) {
   const result = obj.map(arr => {
-    const [arr1] = [...arr];
-    if (arr1.poster_path === null || arr1.poster_path === undefined)
-      // arr1.poster_path = posterImg;
-      console.log("Закомментировал posterImg");
-    else
+    const arr1 = { ...arr };
+    arr1.id = 4;
+    if (arr1.poster_path === null || arr1.poster_path === undefined) {
+      arr1.poster_path = posterImg;
+      console.log('Закомментировал posterImg');
+    } else
       arr1.poster_path = 'https://image.tmdb.org/t/p/w300' + arr1.poster_path;
     return arr1;
   });
