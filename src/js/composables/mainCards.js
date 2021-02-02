@@ -3,34 +3,13 @@ import template from '../templates/mainCards.hbs';
 import Handlebars from 'handlebars';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-
 import refs from '../components/refs';
-
+import posterImg from '../../images/poster-not-avalible.jpg';
+// const posterImg = 'https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg';
 const ul = document.querySelector('.js-ul-film');
 const body = document.querySelector('body');
 var startDisplay = true;
-const screen = {
-  name: null,
-  updateScreenName: function () {
-    const width = body.clientWidth;
-    if (width < 768) {
-      if (this.name !== 'telephone') {
-        this.name = 'telephone';
-        return true;
-      }
-    } else if (width < 1024) {
-      if (this.name !== 'tablet') {
-        this.name = 'tablet';
-        return true;
-      }
-    } else if (this.name !== 'monitor') {
-      this.name = 'monitor';
-      return true;
-    }
-  },
-};
 
-screen.updateScreenName();
 const options = {
   totalItems: 1,
   itemsPerPage: 4,
@@ -40,7 +19,8 @@ const options = {
   lastItemClassName: 'tui-last-child',
   template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
     moveButton:
       '<a href="#" class="tui-page-btn tui-{{type}}">' +
       '<span class="tui-ico-{{type}}">{{type}}</span>' +
@@ -58,46 +38,70 @@ const options = {
 
 const pagination = new Pagination('tui-pagination-container', options);
 
+const screen = {
+  name: null,
+  updateScreenName: function () {
+    const width = window.innerWidth;
+
+    if (width < 768) {
+      if (this.name !== 'telephone') {
+        this.name = 'telephone';
+        pagination.setItemsPerPage(4);
+        return true;
+      }
+    } else if (width < 1024) {
+      if (this.name !== 'tablet') {
+        this.name = 'tablet';
+        pagination.setItemsPerPage(8);
+        return true;
+      }
+    } else if (this.name !== 'monitor') {
+      this.name = 'monitor';
+      pagination.setItemsPerPage(9);
+      return true;
+    }
+  },
+};
+
 //Добавить текст в вверхний регистр
 Handlebars.registerHelper('upper', function (aString) {
   if (aString === undefined) return '';
   return aString.toUpperCase();
 });
 
-//создание страницы
+//создание страницы №1
 function displayStartPage() {
   startDisplay = true;
-  switch (screen.name) {
-    case 'telephone':
-      pagination.setItemsPerPage(4);
-      break;
-    case 'tablet':
-      pagination.setItemsPerPage(8);
-      break;
-    case 'monitor':
-      pagination.setItemsPerPage(9);
-      break;
-  }
+  apiService.page = 1;
+  screen.updateScreenName();
   apiService.getMoviesData().then(data => {
-    // ================ Привет, не удаляй^^ =========================
-    refs.currentMoviesList = [...data];
-    // ==============================================================
     pagination.setTotalItems(data[20].totalResults);
+    const result = posterEdit(data);
+    // ================ Привет, не удаляй^^ =========================
+    refs.currentMoviesList = [...result];
+    // ==============================================================
     pagination.reset();
-    // console.log(pagination._options.itemsPerPage);
-    data.length = pagination._options.itemsPerPage;
-    const render = template(data, Handlebars);
+    result.length = pagination._options.itemsPerPage;
+    const render = template(result, Handlebars);
     ul.innerHTML = '';
     ul.insertAdjacentHTML('beforeend', render);
   });
 }
 
-/////////////////////////
+//возвращаем отредактированый объект с ссылками на картинки
+function posterEdit(obj) {
+  const result = obj.map(arr => {
+    const [arr1] = [...arr];
+    if (arr1.poster_path === null || arr1.poster_path === undefined)
+      arr1.poster_path = posterImg;
+    else
+      arr1.poster_path = 'https://image.tmdb.org/t/p/w300' + arr1.poster_path;
+    return arr1;
+  });
+  return result;
+}
 
-// displayPage();
-
-//////////////////////////////
-
+///создание страницы Во время выбора страницы
 function generatePage(indexStartObj, itemsPerPage, eventData) {
   const indexNumber = parseInt(
     (eventData.page * itemsPerPage - itemsPerPage + 1) / 20 + 1,
@@ -114,15 +118,17 @@ function generatePage(indexStartObj, itemsPerPage, eventData) {
       indexStartObj + itemsPerPage,
     );
 
+    const result = posterEdit(data);
     // ================ Привет, не удаляй^^ =========================
-    refs.currentMoviesList = [...data];
+    refs.currentMoviesList = [...result];
     // ==============================================================
-    const render = template(data, Handlebars); //results Если не будет работать удалить
+    const render = template(result, Handlebars);
     ul.innerHTML = '';
     ul.insertAdjacentHTML('beforeend', render);
   });
 }
 
+/////////Срабатывание пагинации во время выбора страницы
 pagination.on('afterMove', async function (eventData) {
   // alert('The current page is ' + eventData.page);
   const itemsPerPage = pagination._options.itemsPerPage;
@@ -136,7 +142,6 @@ pagination.on('afterMove', async function (eventData) {
     apiService.page = indexNumber;
     apiService.getMoviesData().then(response => {
       const data = response.slice(indexStartObj, indexStartObj + itemsPerPage);
-      // console.log(data);
       const render = template(data, Handlebars);
       ul.innerHTML = '';
       ul.insertAdjacentHTML('beforeend', render);
@@ -168,7 +173,6 @@ pagination.on('afterMove', async function (eventData) {
     };
     obj.addEventListener(type, func);
   };
-
   /* init - you can init any event */
   throttle('resize', 'optimizedResize');
 })();

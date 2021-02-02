@@ -4,6 +4,7 @@ const refs = {
   main: document.querySelector('main'),
   frameWrapper: document.querySelector('.modal-youtube__window'),
   iframe: document.querySelector('.modal-youtube__frame'),
+  modalContent: document.querySelector('.modal-content'),
 };
 
 const apiYoutube = {
@@ -38,11 +39,11 @@ const apiYoutube = {
 
 // Test ----------->>>>>>>
 
-refs.main.addEventListener('click', event => {
+refs.modalContent.addEventListener('click', event => {
   const movieId = event.target.dataset.id;
-
-  if (event.target.nodeName === 'IMG') {
+  if (event.target.id === 'modal-trailer-youtube') {
     apiYoutube.getMovieTrailer(movieId);
   }
+  // console.dir(event.target.id);
 });
 // <<<<<<<<<-------------------------

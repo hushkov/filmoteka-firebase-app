@@ -7,6 +7,7 @@ export default {
   keyApi: '5c34acfe39a6372a620da68979c929b1',
   baseURL: '',
   error: null,
+  id: '',
 
   async fetchMovies() {
     this.error = null;
@@ -51,6 +52,34 @@ export default {
   set query(value) {
     this.searchQuery = value;
   },
+
+  // функция поиска фильма по id
+  async findMovie() {
+    this.error = null;
+
+    try {
+      let res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${this.id}?api_key=${this.keyApi}`,
+      );
+      res = await res.data;
+      // res = await res.data.results;
+      this.error = null;
+
+      return res;
+    } catch (err) {
+      console.log(err.message);
+      this.error = 'could not find movie';
+    }
+  },
+
+  get filmId() {
+    return this._id;
+  },
+
+  set filmId(value) {
+    this._id = value;
+  },
+
   async getMoviesData() {
     let array = [];
     const filmArr = [];
