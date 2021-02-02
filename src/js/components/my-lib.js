@@ -14,14 +14,6 @@ refs.myLibraryBtn.addEventListener('click', event => {
 
   refs.mainSectionFilm.classList.add('hidden');
   refs.sectionLib.classList.remove('hidden');
-
-  // Test -------->>>>
-  // apiService.getMoviesData().then(data => {
-  //   const markup = myLibTemp(data.slice(0, 3));
-  //   // <<<----------
-  //   refs.libraryList.innerHTML = '';
-  //   refs.libraryList.insertAdjacentHTML('beforeend', markup);
-  // });
 });
 
 refs.homeBtn.addEventListener('click', event => {

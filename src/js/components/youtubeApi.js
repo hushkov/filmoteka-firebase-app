@@ -37,13 +37,9 @@ const apiYoutube = {
   },
 };
 
-// Test ----------->>>>>>>
-
 refs.modalContent.addEventListener('click', event => {
   const movieId = event.target.dataset.id;
   if (event.target.id === 'modal-trailer-youtube') {
     apiYoutube.getMovieTrailer(movieId);
   }
-  // console.dir(event.target.id);
 });
-// <<<<<<<<<-------------------------
