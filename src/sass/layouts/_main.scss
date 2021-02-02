@@ -37,6 +37,10 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .film-list-movie-genre {
   color: #ff6b08;
@@ -70,7 +74,14 @@
     transform: scale(1.02);
     box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
       0px 1px 1px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
   }
+}
+
+.movie-link:hover .film-list-movie-title,
+.movie-link:hover .film-list-movie-genre {
+  overflow: visible;
+  white-space: unset;
 }
 
 // buttons on movie cards

@@ -1,11 +1,13 @@
+/*-------------footer-section------------*/
 .footer-container {
   padding-left: 20px;
   padding-right: 20px;
 }
-.footer {
+.footer-section {
   padding-top: 28.71px;
   padding-bottom: 29.7px;
   color: $footer-text-color;
+  background-color: $footer-background-color;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.17;
@@ -21,20 +23,15 @@
 
 .footer-copyright {
   margin-bottom: 9.9px;
-  padding-left: 47px;
-  padding-right: 46px;
-  @media screen and (min-width: 321px) {
-    text-align: center;
-  }
+  text-align: center;
   @media screen and (min-width: 768px) {
-    padding-left: 0;
-    padding-right: 0;
     margin-bottom: 0;
   }
 }
 .footer-aboute-team-link {
   padding-left: 28px;
   padding-right: 16px;
+
   @media screen and (min-width: 321px) {
     text-align: center;
   }
@@ -42,6 +39,20 @@
     padding-left: 0;
     padding-right: 0;
   }
+}
+.footer-modal-link {
+  text-decoration: underline;
+  color: $footer-text-color;
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.footer-favorite-svg {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .footer-aboute-team-link,
@@ -49,84 +60,101 @@
   text-transform: capitalize;
 }
 
-// .modal {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   visibility: hidden;
-// }
-// .modal.is-open {
-//   visibility: visible;
-// }
-// .modal-overlay {
-//   width: 100vw;
-//   height: 100vh;
-//   background-color: rgba(0, 0, 0, 0.8);
-// }
-// .modal-content {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   color: $footer-text-color;
-//   font-weight: 400;
-//   font-size: 14px;
-//   line-height: 1.17;
-//   background-color: white;
-//   border: 2px solid green;
-//   width: 280px;
-//   height: 400px;
-//   padding: 10px;
-// }
+.footer-text-lower {
+  text-transform: lowercase;
+}
+.footer-text-upper {
+  text-transform: uppercase;
+}
 
-// .footer-modal-link {
-//   text-decoration: underline;
-//   color: $footer-text-color;
-// }
-// .heart-svg {
-//   margin-left: 10px;
-//   margin-right: 10px;
-// }
-// .lower {
-//   text-transform: lowercase;
-// }
-// .upper {
-//   text-transform: uppercase;
-// }
+/*-----------footer-modal---------------*/
 
-// .modal-button {
-//   position: absolute;
-//   top: 10px;
-//   right: 10px;
-//   width: 40px;
-//   height: 20px;
-//   background-color: $accent-color;
-//   border: $accent-color;
-//   border-radius: 4px;
-//   margin: auto;
-// }
+.footer-modal-content {
+  padding: 10px;
+  color: $footer-text-color;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.17;
+  background-color: $footer-background-color;
+  border-radius: 4px;
+  min-width: 300px;
 
-// .modal-team-item-teammates {
-//   text-align: left;
-//   font-size: 12px;
-// }
-// .modal-team-item-teammates-description {
-//   font-size: 10px;
-//   text-align: left;
-// }
-// .modal-container-wrapper {
-//   display: flex;
-//   align-items: center;
-// }
-// .modal-container-wrapper:not(:last-child) {
-//   margin-bottom: 15px;
-// }
-// .modal-title {
-//   font-size: 14px;
-//   align-content: center;
-// }
-// .modal-team-item:not(:last-child) {
-//   margin-bottom: 15px;
-// }
+  @media screen and (min-width: 768px) {
+    min-width: 600px;
+    padding: 20px 20px 30px 20px;
+  }
+}
+.footer-modal-title {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+  color: $main-text-color;
+  text-transform: uppercase;
+  &::after {
+    content: ' ';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+  }
+}
+
+.footer-modal-team-item-teammates {
+  text-align: left;
+  font-size: $primary-font-size;
+}
+
+.modal-team-item-teammate-name {
+  font-size: 16px;
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+.team-leader {
+  font-size: 16px;
+}
+.footer-modal-teammates-description {
+  font-size: 14px;
+  text-align: left;
+  text-indent: 10px;
+}
+.footer-modal-wrapper {
+  display: flex;
+  align-items: center;
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.footer-modal-team-item {
+  font-size: 14px;
+  align-content: center;
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.footer-img {
+  margin-right: 20px;
+  border: 2px solid $about-text-color;
+  border-radius: 4px;
+}
+.user-group::before {
+  background-image: url(./images/user-group.png);
+}
+.user-group-creative::before {
+  background-image: url(./images/user-group-creative.png);
+}
+.user-group-creative::before,
+.user-group::before {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 20px;
+  border: 2px solid $about-text-color;
+  border-radius: 4px;
+}

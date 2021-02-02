@@ -5,7 +5,6 @@ import Handlebars from 'handlebars';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import refs from '../components/refs';
-
 const ul = document.querySelector('.js-ul-film');
 const body = document.querySelector('body');
 let dataOfAddedMovies = null;

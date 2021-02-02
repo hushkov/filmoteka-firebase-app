@@ -19,12 +19,12 @@ const getLibrary = data => {
       html.push(movie);
     });
     // movieList.innerHTML = html;
-
     // console.log('html:', html);
   } else {
+    movieList.innerHTML =
+      '<h5 class="center-align">Login to view yout favorites</h5>';
   }
   // console.log('lib: ', libArray);
-  // listOfAddedMovies(libArray);
 };
 
 export default getLibrary;
