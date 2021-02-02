@@ -29,6 +29,24 @@ import './js/composables/useLogin';
 import './js/composables/useSignup';
 import './js/composables/useLogout';
 import './js/composables/useCollection';
+//=====================================
+import Router from './Router';
+
+const router = new Router({
+  mode: 'hash',
+  root: '/',
+});
+
+router
+  .add(/mylibrary/, () => {
+    console.log('welcome in about page');
+  })
+  .add(/mylibrary\/watched/, () => {
+    console.log('welcome in about page');
+  })
+  .add(/mylibrary\/queue/, () => {
+    console.log('welcome in about page');
+  });
 
 //=====================================
 // import './js/route.js';
