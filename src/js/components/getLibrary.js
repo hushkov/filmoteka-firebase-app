@@ -1,6 +1,7 @@
 import refs from '../components/refs';
 import getCollection from '../composables/getCollection';
 import getUser from '../composables/getUser';
+import listOfAddedMovies from '../composables/mainCards';
 
 const movieList = document.querySelector('.getLib');
 let libArray = [];
@@ -24,6 +25,7 @@ const getLibrary = data => {
       '<h5 class="center-align">Login to view yout favorites</h5>';
   }
   // console.log('lib: ', libArray);
+  listOfAddedMovies(libArray);
 };
 
 export default getLibrary;
