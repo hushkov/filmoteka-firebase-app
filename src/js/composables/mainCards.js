@@ -93,10 +93,6 @@ function displayStartPage() {
   screen.updateScreenName();
   apiService.getMoviesData().then(data => {
     pagination.setTotalItems(data[20].totalResults);
-
-    // ================ Привет, не удаляй^^ =========================
-    refs.currentMoviesList = [...data];
-    // ==============================================================
     pagination.reset();
     data.length = pagination._options.itemsPerPage;
     const result = posterEdit(data);
@@ -110,7 +106,6 @@ function displayStartPage() {
 function posterEdit(obj) {
   const result = obj.map(arr => {
     const arr1 = { ...arr };
-    arr1.id = 4;
     if (arr1.poster_path === null || arr1.poster_path === undefined) {
       arr1.poster_path = '../../images/poster-not-avalible.jpg';
       // console.log('Закомментировал posterImg');
@@ -119,6 +114,9 @@ function posterEdit(obj) {
     }
     return arr1;
   });
+  // ================ Привет, не удаляй^^ =========================
+  refs.currentMoviesList = [...result];
+  // ==============================================================
   return result;
 }
 
@@ -140,9 +138,6 @@ function generatePage(indexStartObj, itemsPerPage, eventData) {
     );
 
     const result = posterEdit(data);
-    // ================ Привет, не удаляй^^ =========================
-    refs.currentMoviesList = [...result];
-    // ==============================================================
     const render = template(result, Handlebars);
     ul.innerHTML = '';
     ul.insertAdjacentHTML('beforeend', render);

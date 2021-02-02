@@ -184,3 +184,6 @@
     }
   }
 }
+.film-list-li:nth-last-child(-n + 1) {
+  margin-bottom: 40px;
+}
