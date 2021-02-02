@@ -21,7 +21,7 @@ const getLibrary = data => {
     // console.log('html:', html);
   } else {
     movieList.innerHTML =
-      '<h5 class="center-align">Login to view yout favorites</h5>';
+      '<h5 class="center-align">Add smthing to view yout favorites</h5>';
   }
   // console.log('lib: ', libArray);
 };
