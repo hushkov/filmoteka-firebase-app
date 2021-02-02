@@ -1,6 +1,5 @@
 {{#each this}}
 <li class="my-library__item" data-id="{{id}}">
-<<<<<<< HEAD
     <a href="#" class="movie-link" data-id="{{id}}">
         <img class="my-library__movie-poster" src="{{this.poster_path}}"
             alt="{{title}} {{name}}" data-id="{{id}}">
@@ -9,13 +8,5 @@
             <span class="my-library__movie-rate">{{vote_average}}</span>
         </p>
     </a>
-=======
-    <img class="my-library__movie-poster" src="{{this.poster_path}}"
-        alt="{{title}} {{name}}" data-id="{{id}}">
-    <p class="my-library__movie-title" data-id="{{id}}">{{title}} {{name}}</br>
-        <span class="my-library__movie-info">{{genre_ids}} | {{first_air_date}} {{release_date}}</span>
-        <span class="my-library__movie-rate">{{vote_average}}</span>
-    </p>
->>>>>>> main
 </li>
 {{/each}}
