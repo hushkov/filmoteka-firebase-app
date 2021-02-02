@@ -10,7 +10,7 @@ const refs = {
 };
 
 refs.myLibraryBtn.addEventListener('click', event => {
-  event.preventDefault();
+  // event.preventDefault();
 
   refs.mainSectionFilm.classList.add('hidden');
   refs.sectionLib.classList.remove('hidden');
