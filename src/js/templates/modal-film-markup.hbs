@@ -1,12 +1,15 @@
 <div class="modal-container">
     <div class="modal-section__thumb">
         <div class="trailer-btn__overlay">
-            <span class="material-icons trailer-btn">
+            <span  id="modal-trailer-youtube" class="material-icons trailer-btn" data-id="{{id}}">
                 play_circle_outline
             </span>
         </div>
         <img class="modal-section__image" src="{{poster_path}}" alt="{{title}}{{name}} poster"
             alt="{{title}}{{name}} poster">
+        {{!-- <span id="modal-trailer-youtube" class="material-icons trailer-btn" data-id="{{id}}">
+            play_circle_outline
+        </span> --}}
     </div>
     <div class="modal-section__meta">
         <h2 class="modal-meta__title">{{title}}{{name}}</h2>
