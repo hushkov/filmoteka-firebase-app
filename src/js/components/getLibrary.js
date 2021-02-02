@@ -1,6 +1,7 @@
 import refs from '../components/refs';
 import getCollection from '../composables/getCollection';
 import getUser from '../composables/getUser';
+import { listOfAddedMovies } from '../composables/mainCards';
 
 const movieList = document.querySelector('.getLib');
 let libArray = [];

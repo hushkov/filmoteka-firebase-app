@@ -1,14 +1,30 @@
 import apiService from '../components/apiService';
 import template from '../templates/mainCards.hbs';
+import library from '../templates/my-library.hbs';
 import Handlebars from 'handlebars';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import refs from '../components/refs';
-import posterImg from '/images/poster-not-avalible.jpg';
-//const posterImg = 'https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg';
 const ul = document.querySelector('.js-ul-film');
 const body = document.querySelector('body');
-var startDisplay = true;
+let dataOfAddedMovies = null;
+
+const eventListner = {
+  startPage: false,
+  addList: false,
+  displayStartPage() {
+    this.startPage = true;
+    this.addList = false;
+  },
+  displayAddList() {
+    this.startPage = false;
+    this.addList = true;
+  },
+  displayPage() {
+    if (this.startPage) displayStartPage();
+    else if (this.addList) listOfAddedMovies();
+  },
+};
 
 const options = {
   totalItems: 1,
@@ -71,17 +87,19 @@ Handlebars.registerHelper('upper', function (aString) {
 
 //создание страницы №1
 function displayStartPage() {
-  startDisplay = true;
+  eventListner.displayStartPage();
+
   apiService.page = 1;
   screen.updateScreenName();
   apiService.getMoviesData().then(data => {
     pagination.setTotalItems(data[20].totalResults);
-    const result = posterEdit(data);
+
     // ================ Привет, не удаляй^^ =========================
-    refs.currentMoviesList = [...result];
+    refs.currentMoviesList = [...data];
     // ==============================================================
     pagination.reset();
-    result.length = pagination._options.itemsPerPage;
+    data.length = pagination._options.itemsPerPage;
+    const result = posterEdit(data);
     const render = template(result, Handlebars);
     ul.innerHTML = '';
     ul.insertAdjacentHTML('beforeend', render);
@@ -91,11 +109,14 @@ function displayStartPage() {
 //возвращаем отредактированый объект с ссылками на картинки
 function posterEdit(obj) {
   const result = obj.map(arr => {
-    const [arr1] = [...arr];
-    if (arr1.poster_path === null || arr1.poster_path === undefined)
-      arr1.poster_path = posterImg;
-    else
+    const arr1 = { ...arr };
+    arr1.id = 4;
+    if (arr1.poster_path === null || arr1.poster_path === undefined) {
+      arr1.poster_path = '../../images/poster-not-avalible.jpg';
+      // console.log('Закомментировал posterImg');
+    } else {
       arr1.poster_path = 'https://image.tmdb.org/t/p/w300' + arr1.poster_path;
+    }
     return arr1;
   });
   return result;
@@ -105,7 +126,7 @@ function posterEdit(obj) {
 function generatePage(indexStartObj, itemsPerPage, eventData) {
   const indexNumber = parseInt(
     (eventData.page * itemsPerPage - itemsPerPage + 1) / 20 + 1,
-  );
+  ); //Определяем номер страницы для отрисовки
   apiService.page = indexNumber;
   const page1 = apiService.getMoviesData();
   apiService.page = indexNumber + 1;
@@ -128,13 +149,26 @@ function generatePage(indexStartObj, itemsPerPage, eventData) {
   });
 }
 
-/////////Срабатывание пагинации во время выбора страницы
+//Создаем страницы добавленных фильмов. //передавать нужно Номер страницы и количество карточек
+function generatePageOfAddedMovies(page, call) {
+  const result = dataOfAddedMovies.slice(page * call - call, page * call);
+  const render = library(result);
+  ul.innerHTML = '';
+  ul.insertAdjacentHTML('beforeend', render);
+}
+
+/////////Срабатывание пагинации во время выбора страницы //eventData.page - номер страницы на которую нажал пользователь
 pagination.on('afterMove', async function (eventData) {
   // alert('The current page is ' + eventData.page);
-  const itemsPerPage = pagination._options.itemsPerPage;
+  const itemsPerPage = pagination._options.itemsPerPage; // Сколько карточек на странице должно быть
   const totalItems = pagination._options.totalItems;
   let indexStartObj = 1;
   if (screen.name === 'telephone') {
+    //Вызывается при условии что сейчас нужно показывать добавленные фильмы
+    if (eventListner.addList) {
+      generatePageOfAddedMovies(eventData.page, 4);
+      return;
+    }
     indexStartObj = parseInt(((eventData.page - 1) * 4) % 20); //число 4 это число карточек
     const indexNumber = parseInt(
       (eventData.page * itemsPerPage - itemsPerPage + 1) / 20 + 1,
@@ -147,9 +181,19 @@ pagination.on('afterMove', async function (eventData) {
       ul.insertAdjacentHTML('beforeend', render);
     });
   } else if (screen.name === 'tablet') {
+    //Вызывается при условии что сейчас нужно показывать добавленные фильмы
+    if (eventListner.addList) {
+      generatePageOfAddedMovies(eventData.page, 8);
+      return;
+    }
     indexStartObj = parseInt(((eventData.page - 1) * 8) % 20); //число 8 это число карточек
     generatePage(indexStartObj, itemsPerPage, eventData);
   } else if (screen.name === 'monitor') {
+    //Вызывается при условии что сейчас нужно показывать добавленные фильмы
+    if (eventListner.addList) {
+      generatePageOfAddedMovies(eventData.page, 9);
+      return;
+    }
     indexStartObj = parseInt(((eventData.page - 1) * 9) % 20); //число 9 это число карточек
     generatePage(indexStartObj, itemsPerPage, eventData);
   }
@@ -177,14 +221,36 @@ pagination.on('afterMove', async function (eventData) {
   throttle('resize', 'optimizedResize');
 })();
 
-// handle event
-window.addEventListener('optimizedResize', eventStartPage);
+// Запускает функцию если изменился размер.
+window.addEventListener('optimizedResize', eventDisplayPage);
 
-function eventStartPage(event) {
+function eventDisplayPage(event) {
   //  console.log(event.target.innerWidth);
-  if (screen.updateScreenName()) displayStartPage();
+  ///Проверяет, если изменился экран, тогда все обновится и страницы сбросятся.
+  if (screen.updateScreenName()) {
+    eventListner.displayPage();
+  }
 }
 
-function listOfAddedMovies(arr) {}
+//отображает  добавленные фильмы
+function listOfAddedMovies(data = dataOfAddedMovies) {
+  console.log(data);
+  dataOfAddedMovies = data.slice();
+  eventListner.displayAddList(); //Нужно запускать. оно выставляет какие страницы нужно листать
+  screen.updateScreenName();
+  pagination.setTotalItems(data.length);
+
+  // data.length = pagination._options.itemsPerPage;
+  pagination.reset();
+  // const result = posterEdit(data);
+  // //загрузка через другой шаблон.
+  // console.log(result);
+  const render = library(data.slice(0, pagination._options.itemsPerPage));
+  ul.innerHTML = '';
+  ul.insertAdjacentHTML('beforeend', render);
+}
 
 export { displayStartPage, listOfAddedMovies };
+
+// apiService.query = 'car';
+// console.log(apiService.getMoviesData());
