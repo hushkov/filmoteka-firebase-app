@@ -5,6 +5,10 @@ import filmMarkup from '../templates/modal-film-markup.hbs';
 import rfs from './modalRefs.js';
 import refs from './refs';
 
+// ---
+
+// ---
+
 rfs.openFilmModalBtn.addEventListener("click", onOpenModal);
 rfs.openSignupModalBtn.addEventListener("click", onOpenModal);
 rfs.openLoginModalBtn.addEventListener("click", onOpenModal);
@@ -74,7 +78,27 @@ function onCloseModal() {
    window.removeEventListener("keydown", onPressEscape);
 };
 
+// Trailer Modal
+// function showTrailer() {
+//    const trailerModal = document.querySelector('.modal-content__trailer');
+//    const button = document.querySelector('.trailer-btn__overlay');
+   
+//    button.addEventListener('click', (e) => {
+//       e.currentTarget || e.target
+//          ? trailerModal.classList.add('show-trailer-modal')
+//          : console.log("No trailer");
+      
+//       const trailerCloseModalBtn = document.querySelector('.modal-content__trailer-btn');
+//       trailerCloseModalBtn.addEventListener('click', closeTrailer, trailerCloseModalBtn);
+//    });
 
+//    const closeTrailer = (btn) => {
+//       trailerModal.classList.remove('show-trailer-modal');
+//       btn.path[0].removeEventListener('click', closeTrailer);
+//    };
+// };
+
+// showTrailer();
 
 
 // === Del --v
