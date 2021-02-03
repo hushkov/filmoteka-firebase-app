@@ -17,18 +17,15 @@ function onSearch(event) {
   event.preventDefault();
   apiService.query = event.currentTarget.elements.query.value;
   apiService.getMoviesData();
-  let total =  apiService.getMoviesData().then((data) => {
-    return data 
-  })
-  console.log (total)
+  // let total =  apiService.getMoviesData().then((data) => {
+  //   return data 
+  // })
+  // console.log (total)
   displayStartPage();
-<<<<<<< Updated upstream
-     refs.notification.classList.add('active')
-=======
+  
  }
-function notification() {
-  refs.notification.classList.add('active')
->>>>>>> Stashed changes
-}
+// function notification() {
+//   refs.notification.classList.add('active')
+// }
 
 
