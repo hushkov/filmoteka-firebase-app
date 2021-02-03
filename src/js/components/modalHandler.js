@@ -52,16 +52,23 @@ function appendSimilarMovies(preferMovie)
   apiService.fetchSimilarMovies(preferMovie.id) 
       .then(data => {
         const movies = [...data.results];
-        const showTotalMovies = 3;
+        const showTotalMovies = 5;
 
-        let content = ''; 
-      
-        for(let i = 0; i < showTotalMovies ; i++){
-          console.log(movies[i]);
-          content += similarFilmMarkup(movies[i]);
+        const similarRef = rfs.modalContentRef.querySelector('.modal-meta_similar-movies');
+        similarRef.classList.add('hidden');
+
+        let content = '';
+
+        if(movies.length){
+          for(let i = 0; i < showTotalMovies ; i++){
+            const movie = movies[i];
+            movie.release_date = movie.release_date.substr(0, 4);
+            content += similarFilmMarkup(movie);
+          }
+        
+          similarRef.querySelector('.modal-meta_similar-movies-list').innerHTML = content;
+          similarRef.classList.remove('hidden');
         }
-      
-        rfs.modalContentRef.querySelector('.modal-meta_similar-movies-list').innerHTML = content;
       });
 }
 
