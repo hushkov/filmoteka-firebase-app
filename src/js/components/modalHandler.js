@@ -2,6 +2,8 @@ import signupMarkup from '../templates/modal-signup-markup.hbs';
 import loginMarkup from '../templates/modal-login-markup.hbs';
 import footerMarkup from '../templates/modal-footer-markup.hbs';
 import filmMarkup from '../templates/modal-film-markup.hbs';
+import similarFilmMarkup from '../templates/similar-film-markup.hbs';
+import apiService from './apiService.js';
 import rfs from './modalRefs.js';
 import refs from './refs';
 
@@ -32,6 +34,8 @@ function onOpenModal(e) {
     case 'film':
       rfs.bodyClass.add('show-modal-film');
       updateModalMarkup(filmMarkup, preferMovie, dataOpen);
+
+      appendSimilarMovies(preferMovie);
       break;
     case 'footer':
       rfs.bodyClass.add('show-modal-footer');
@@ -40,7 +44,25 @@ function onOpenModal(e) {
   }
 
   window.addEventListener('keydown', onPressEscape);
-  rfs.closeModal.classList.remove('hidden');
+  rfs.closeModal.classList.remove('hidden');  
+}
+
+function appendSimilarMovies(preferMovie)
+{
+  apiService.fetchSimilarMovies(preferMovie.id) 
+      .then(data => {
+        const movies = [...data.results];
+        const showTotalMovies = 3;
+
+        let content = ''; 
+      
+        for(let i = 0; i < showTotalMovies ; i++){
+          console.log(movies[i]);
+          content += similarFilmMarkup(movies[i]);
+        }
+      
+        rfs.modalContentRef.querySelector('.modal-meta_similar-movies-list').innerHTML = content;
+      });
 }
 
 // Update Markup
