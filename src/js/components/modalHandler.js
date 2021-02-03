@@ -2,6 +2,8 @@ import signupMarkup from '../templates/modal-signup-markup.hbs';
 import loginMarkup from '../templates/modal-login-markup.hbs';
 import footerMarkup from '../templates/modal-footer-markup.hbs';
 import filmMarkup from '../templates/modal-film-markup.hbs';
+import similarFilmMarkup from '../templates/similar-film-markup.hbs';
+import apiService from './apiService.js';
 import rfs from './modalRefs.js';
 import refs from './refs';
 
@@ -40,6 +42,8 @@ function onOpenModal(e) {
     case 'film':
       rfs.bodyClass.add('show-modal-film');
       updateModalMarkup(filmMarkup, preferMovie, dataOpen);
+
+      appendSimilarMovies(preferMovie);
       break;
     case 'footer':
       rfs.bodyClass.add('show-modal-footer');
@@ -48,7 +52,32 @@ function onOpenModal(e) {
   }
 
   window.addEventListener('keydown', onPressEscape);
-  rfs.closeModal.classList.remove('hidden');
+  rfs.closeModal.classList.remove('hidden');  
+}
+
+function appendSimilarMovies(preferMovie)
+{
+  apiService.fetchSimilarMovies(preferMovie.id) 
+      .then(data => {
+        const movies = [...data.results];
+        const showTotalMovies = 5;
+
+        const similarRef = rfs.modalContentRef.querySelector('.modal-meta_similar-movies');
+        similarRef.classList.add('hidden');
+
+        let content = '';
+
+        if(movies.length){
+          for(let i = 0; i < showTotalMovies ; i++){
+            const movie = movies[i];
+            movie.release_date = movie.release_date.substr(0, 4);
+            content += similarFilmMarkup(movie);
+          }
+        
+          similarRef.querySelector('.modal-meta_similar-movies-list').innerHTML = content;
+          similarRef.classList.remove('hidden');
+        }
+      });
 }
 
 // Update Markup

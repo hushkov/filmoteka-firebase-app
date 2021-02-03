@@ -27,6 +27,17 @@ export default {
     }
   },
 
+  async fetchSimilarMovies(movieId) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${this.keyApi}&language=en-US&page=1`;
+
+    try {
+      let res = await axios.get(url);
+      return res.data;
+    } catch (err) {
+      this.error = 'could not fetch similar movies';
+    }
+  },
+
   get showError() {
     return this._error;
   },

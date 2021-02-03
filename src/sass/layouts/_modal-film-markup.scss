@@ -251,4 +251,21 @@
       }
     }
   }
+
+  // Similar
+  .modal-meta_similar-movies {
+    padding-top: 20px;
+  }
+
+  .modal-meta_similar-movies h3 {
+    padding-bottom: 10px;
+  }
+
+  .modal-meta_similar-movies .film-list-li {
+    width: 78px;
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
 }
