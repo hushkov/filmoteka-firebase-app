@@ -15,7 +15,7 @@ const showNotify = () => {
     );
 
     wrapperTrailer.remove();
-  }, 3000);
+  }, 2000);
 };
 
 export default showNotify;

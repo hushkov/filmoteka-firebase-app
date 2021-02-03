@@ -45,5 +45,5 @@ refs.modalContent.addEventListener(
     if (event.target.id === 'modal-trailer-youtube') {
       apiYoutube.getMovieTrailer(movieId);
     }
-  }, 3100),
+  }, 2100),
 );
