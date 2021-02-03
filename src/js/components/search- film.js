@@ -22,7 +22,13 @@ function onSearch(event) {
   })
   console.log (total)
   displayStartPage();
+<<<<<<< Updated upstream
      refs.notification.classList.add('active')
+=======
+ }
+function notification() {
+  refs.notification.classList.add('active')
+>>>>>>> Stashed changes
 }
 
 
