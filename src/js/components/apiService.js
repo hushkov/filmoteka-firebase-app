@@ -6,27 +6,32 @@ export default {
   searchQuery: '',
   keyApi: '5c34acfe39a6372a620da68979c929b1',
   baseURL: '',
-  error: null,
+  _error: null,
   id: '',
 
   async fetchMovies() {
-    this.error = null;
     this.searchQuery
       ? (this.baseURL = `https://api.themoviedb.org/3/search/movie?api_key=${this.keyApi}&language=en-US&query=${this.searchQuery}&page=${this.page}&include_adult=false`)
       : (this.baseURL = `https://api.themoviedb.org/3/trending/all/day?api_key=${this.keyApi}&page=${this.page}`);
-    // return axios.get(this.baseURL).then(({ data }) => data.results);
 
     try {
       let res = await axios.get(this.baseURL);
       res = await res.data;
-      // res = await res.data.results;
-      this.error = null;
+      // if (!res.results.length) {
+      //   return;
+      // }
 
       return res;
     } catch (err) {
       console.log(err.message);
-      this.error = 'could not fetch data';
+      this._error = 'could not fetch data';
+
+      return this._error;
     }
+  },
+
+  get showError() {
+    return this._error;
   },
 
   resetPage() {
@@ -112,10 +117,6 @@ export default {
               : e.release_date.substr(0, 4);
           }
 
-          // obj.release_date = !e.release_date
-          //   ? e.first_air_date.substr(0, 4)
-          //   : e.release_date.substr(0, 4);
-
           str = '';
           let genreArray = [];
           [...e.genre_ids].forEach(number => {
@@ -139,7 +140,11 @@ export default {
 
         // refs.currentMoviesList = [...filmArr];
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        // console.log(err);
+        this._error = 'cillsdfjlsdjfl';
+        return this._error;
+      });
 
     return filmArr;
   },
