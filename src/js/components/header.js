@@ -1,3 +1,5 @@
+import mainRefs from './refs';
+
 const refs = {
   home: document.querySelector('.link-home'),
   library: document.querySelector('.link-library'),
@@ -11,6 +13,7 @@ refs.library.addEventListener('click', onlibrary);
 
 function onHome(e) {
   // e.preventDefault();
+
   refs.header.classList.replace('header-library', 'header-home');
   refs.search.classList.remove('visually-hidden');
   refs.bottom.classList.add('visually-hidden');
@@ -20,6 +23,7 @@ function onHome(e) {
 
 function onlibrary(e) {
   // e.preventDefault();
+
   refs.header.classList.replace('header-home', 'header-library');
   refs.bottom.classList.remove('visually-hidden');
   refs.search.classList.add('visually-hidden');

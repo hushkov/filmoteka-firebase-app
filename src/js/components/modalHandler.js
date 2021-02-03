@@ -7,9 +7,15 @@ import apiService from './apiService.js';
 import rfs from './modalRefs.js';
 import refs from './refs';
 
+//===============================================================
+import handleLogin from './handleLogin';
+const loginForm = document.querySelector('#login-form');
+
+//===============================================================
+
 rfs.openFilmModalBtn.addEventListener('click', onOpenModal);
-// rfs.openSignupModalBtn.addEventListener("click", onOpenModal);
-// rfs.openLoginModalBtn.addEventListener("click", onOpenModal);
+rfs.openSignupModalBtn.addEventListener('click', onOpenModal);
+rfs.openLoginModalBtn.addEventListener('click', onOpenModal);
 rfs.openFooterModalBtn.addEventListener('click', onOpenModal);
 rfs.closeModalBtn.addEventListener('click', onCloseModal);
 rfs.backdropRef.addEventListener('click', onBackdropClick);
@@ -30,6 +36,8 @@ function onOpenModal(e) {
     case 'login':
       rfs.bodyClass.add('show-modal-signup');
       updateModalMarkup(loginMarkup);
+      loginForm.addEventListener('submit', handleLogin);
+
       break;
     case 'film':
       rfs.bodyClass.add('show-modal-film');

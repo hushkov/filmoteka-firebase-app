@@ -7,7 +7,7 @@ const loginForm = document.querySelector('#login-form');
 const errorMessage = document.querySelector('.error-login');
 const loginBtn = document.querySelector('#login-btn');
 
-loginForm.addEventListener('submit', handleLogin);
+// loginForm.addEventListener('submit', handleLogin);
 
 async function handleLogin(e) {
   e.preventDefault();
@@ -27,3 +27,5 @@ async function handleLogin(e) {
     errorMessage.textContent = res;
   }
 }
+
+export default handleLogin;
