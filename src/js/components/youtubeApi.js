@@ -1,4 +1,6 @@
+import _throttle from 'lodash.throttle';
 import myModal from './modal-trailer.js';
+import showNotify from './trailer-notification.js';
 
 const refs = {
   main: document.querySelector('main'),
@@ -19,9 +21,7 @@ const apiYoutube = {
         const isSuccess = !Array.isArray(results) || results.length === 0;
 
         if (isSuccess) {
-          // Temp------------------------------
-          console.log('Trailer not found');
-          //   -----------------------------------
+          showNotify();
         } else {
           const { key } = results[0];
 
@@ -37,9 +37,13 @@ const apiYoutube = {
   },
 };
 
-refs.modalContent.addEventListener('click', event => {
-  const movieId = event.target.dataset.id;
-  if (event.target.id === 'modal-trailer-youtube') {
-    apiYoutube.getMovieTrailer(movieId);
-  }
-});
+refs.modalContent.addEventListener(
+  'click',
+  _throttle(event => {
+    const movieId = event.target.dataset.id;
+
+    if (event.target.id === 'modal-trailer-youtube') {
+      apiYoutube.getMovieTrailer(movieId);
+    }
+  }, 3000),
+);
