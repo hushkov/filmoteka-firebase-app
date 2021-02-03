@@ -13,7 +13,7 @@ const getLibrary = data => {
     libArray = data.map(doc => doc.data());
   }
 
-  console.log('lib: ', libArray);
+  // console.log('lib: ', libArray);
 };
 
 export default getLibrary;

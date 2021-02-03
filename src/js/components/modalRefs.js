@@ -10,5 +10,5 @@ const modalRefs = {
   closeModal: document.querySelector('.js-backdrop').childNodes[1]
     .childNodes[3],
 };
-console.log(modalRefs.openLoginModalBtn);
+
 export default modalRefs;

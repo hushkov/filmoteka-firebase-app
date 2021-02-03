@@ -9,7 +9,7 @@ import refs from './refs';
 
 //===============================================================
 import handleLogin from './handleLogin';
-const loginForm = document.querySelector('#login-form');
+import handleSignup from './handleSignup';
 
 //===============================================================
 
@@ -32,12 +32,27 @@ function onOpenModal(e) {
     case 'signup':
       rfs.bodyClass.add('show-modal-signup');
       updateModalMarkup(signupMarkup);
+      const signupForm = document.querySelector('#signup-form');
+      const clickLogin = document.querySelector(
+        'span[data-click="click-login"]',
+      );
+      console.log(signupForm);
+      signupForm.addEventListener('submit', handleSignup);
+      clickLogin.addEventListener('click', () => {
+        updateModalMarkup(loginMarkup);
+      });
       break;
     case 'login':
       rfs.bodyClass.add('show-modal-signup');
       updateModalMarkup(loginMarkup);
+      const loginForm = document.querySelector('#login-form');
+      const clickSignup = document.querySelector(
+        'span[data-click="click-signup"]',
+      );
       loginForm.addEventListener('submit', handleLogin);
-
+      clickSignup.addEventListener('click', () => {
+        updateModalMarkup(signupMarkup);
+      });
       break;
     case 'film':
       rfs.bodyClass.add('show-modal-film');
@@ -52,32 +67,34 @@ function onOpenModal(e) {
   }
 
   window.addEventListener('keydown', onPressEscape);
-  rfs.closeModal.classList.remove('hidden');  
+  rfs.closeModal.classList.remove('hidden');
 }
 
-function appendSimilarMovies(preferMovie)
-{
-  apiService.fetchSimilarMovies(preferMovie.id) 
-      .then(data => {
-        const movies = [...data.results];
-        const showTotalMovies = 5;
+function appendSimilarMovies(preferMovie) {
+  apiService.fetchSimilarMovies(preferMovie.id).then(data => {
+    const movies = [...data.results];
+    const showTotalMovies = 5;
 
-        const similarRef = rfs.modalContentRef.querySelector('.modal-meta_similar-movies');
-        similarRef.classList.add('hidden');
+    const similarRef = rfs.modalContentRef.querySelector(
+      '.modal-meta_similar-movies',
+    );
+    similarRef.classList.add('hidden');
 
-        let content = '';
+    let content = '';
 
-        if(movies.length){
-          for(let i = 0; i < showTotalMovies ; i++){
-            const movie = movies[i];
-            movie.release_date = movie.release_date.substr(0, 4);
-            content += similarFilmMarkup(movie);
-          }
-        
-          similarRef.querySelector('.modal-meta_similar-movies-list').innerHTML = content;
-          similarRef.classList.remove('hidden');
-        }
-      });
+    if (movies.length) {
+      for (let i = 0; i < showTotalMovies; i++) {
+        const movie = movies[i];
+        movie.release_date = movie.release_date.substr(0, 4);
+        content += similarFilmMarkup(movie);
+      }
+
+      similarRef.querySelector(
+        '.modal-meta_similar-movies-list',
+      ).innerHTML = content;
+      similarRef.classList.remove('hidden');
+    }
+  });
 }
 
 // Update Markup
@@ -98,6 +115,7 @@ function onBackdropClick(e) {
 function onPressEscape(e) {
   if (e.code === 'Escape') {
     onCloseModal();
+    console.log(1);
   }
 }
 
@@ -111,6 +129,8 @@ function onCloseModal() {
   // rfs.modalContentRef.innerHTML = '';
   window.removeEventListener('keydown', onPressEscape);
 }
+
+export default onCloseModal;
 
 // === Del --v
 

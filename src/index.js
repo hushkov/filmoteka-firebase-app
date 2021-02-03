@@ -19,7 +19,7 @@ displayStartPage();
 
 //=====================================
 // import './js/components/handleSignup';
-import './js/components/handleLogin';
+// import './js/components/handleLogin';
 import './js/components/handleLogout';
 import './js/components/handleFilmID';
 import './js/composables/getUser';

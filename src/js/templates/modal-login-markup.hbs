@@ -1,4 +1,7 @@
-    <form id="login-form">
+   
+     <div class="welcome container">
+
+      <form id="login-form">
       <h3>Log in</h3>
 
       <input
@@ -6,6 +9,7 @@
         name="email"
         placeholder="Email"
         id="login-email"
+        data-email="email"
         required
       />
       <input
@@ -17,4 +21,9 @@
       />
       <div class="error-login error"></div>
       <button id="login-btn">Log in</button>
-    </form>
+  
+      <p>
+        No account yet? <span  data-click="click-signup">Signup</span> instead.
+      </p>
+        </form>
+      </div>
