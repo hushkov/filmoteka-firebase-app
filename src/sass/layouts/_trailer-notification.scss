@@ -1,0 +1,23 @@
+.trailer-notification--text {
+  top: 45px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.trailer-notification--sign {
+  top: 0;
+  padding-top: 5px;
+  font-size: 40px;
+}
+
+.trailer-notification {
+  position: absolute;
+  left: 0;
+  z-index: 1003;
+
+  width: 100%;
+
+  text-align: center;
+  color: #ffffff;
+  background-color: rgba(194, 70, 70, 0.95);
+}
