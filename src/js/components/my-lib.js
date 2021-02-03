@@ -9,14 +9,14 @@ const refs = {
   libraryList: document.querySelector('.my-library__list'),
 };
 
-refs.myLibraryBtn.addEventListener('click', event => {
-  // event.preventDefault();
+// refs.myLibraryBtn.addEventListener('click', event => {
+//   // event.preventDefault();
 
-  refs.mainSectionFilm.classList.add('hidden');
-  refs.sectionLib.classList.remove('hidden');
-});
+//   refs.mainSectionFilm.classList.add('hidden');
+//   refs.sectionLib.classList.remove('hidden');
+// });
 
-refs.homeBtn.addEventListener('click', event => {
-  refs.sectionLib.classList.add('hidden');
-  refs.mainSectionFilm.classList.remove('hidden');
-});
+// refs.homeBtn.addEventListener('click', event => {
+//   refs.sectionLib.classList.add('hidden');
+//   refs.mainSectionFilm.classList.remove('hidden');
+// });

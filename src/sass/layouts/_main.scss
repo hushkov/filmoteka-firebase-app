@@ -78,11 +78,11 @@
   }
 }
 
-.movie-link:hover .film-list-movie-title,
-.movie-link:hover .film-list-movie-genre {
-  overflow: visible;
-  white-space: unset;
-}
+// .movie-link:hover .film-list-movie-title,
+// .movie-link:hover .film-list-movie-genre {
+//   overflow: visible;
+//   white-space: unset;
+// }
 
 // buttons on movie cards
 .movie-card-btn {
@@ -183,7 +183,4 @@
       margin-bottom: 20px;
     }
   }
-}
-.film-list-li:nth-last-child(-n + 1) {
-  margin-bottom: 40px;
 }

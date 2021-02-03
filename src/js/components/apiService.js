@@ -17,9 +17,6 @@ export default {
     try {
       let res = await axios.get(this.baseURL);
       res = await res.data;
-      // if (!res.results.length) {
-      //   return;
-      // }
 
       return res;
     } catch (err) {
@@ -93,6 +90,13 @@ export default {
 
     await this.fetchMovies()
       .then(data => {
+        const mainError = document.querySelector('#mainError');
+        if (!data.results.length) {
+          mainError.style.opacity = '1';
+        } else {
+          mainError.style.opacity = '0';
+        }
+
         totalPages = data.total_pages;
         totalResults = data.total_results;
         array = [...data.results];
@@ -143,6 +147,7 @@ export default {
       .catch(err => {
         // console.log(err);
         this._error = 'cillsdfjlsdjfl';
+
         return this._error;
       });
 

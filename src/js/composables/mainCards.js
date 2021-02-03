@@ -3,7 +3,7 @@ import template from '../templates/mainCards.hbs';
 import library from '../templates/my-library.hbs';
 import Handlebars from 'handlebars';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 import refs from '../components/refs';
 const ul = document.querySelector('.js-ul-film');
 const body = document.querySelector('body');
@@ -173,8 +173,9 @@ pagination.on('afterMove', async function (eventData) {
       const data = response.slice(indexStartObj, indexStartObj + itemsPerPage);
       const render = template(data, Handlebars);
       ul.innerHTML = '';
-      ul.insertAdjacentHTML('beforeend', render);
+      // ul.insertAdjacentHTML('beforeend', render);
     });
+    generatePage(indexStartObj, itemsPerPage, eventData);
   } else if (screen.name === 'tablet') {
     //Вызывается при условии что сейчас нужно показывать добавленные фильмы
     if (eventListner.addList) {
@@ -229,7 +230,7 @@ function eventDisplayPage(event) {
 
 //отображает  добавленные фильмы
 function listOfAddedMovies(data = dataOfAddedMovies) {
-  console.log(data);
+  // console.log(data);
   dataOfAddedMovies = data.slice();
   eventListner.displayAddList(); //Нужно запускать. оно выставляет какие страницы нужно листать
   screen.updateScreenName();
