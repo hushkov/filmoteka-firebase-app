@@ -9,6 +9,7 @@ const refs = {
   mainSectionFilm: document.querySelector('.js-section-film'),
   sectionLib: document.querySelector('.my-library'),
   libraryList: document.querySelector('.my-library__list'),
+  notification: document.querySelector('.notification'),
 };
 
 refs.searchForm.addEventListener('submit', onSearch);
