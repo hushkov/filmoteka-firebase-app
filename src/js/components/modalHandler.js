@@ -20,6 +20,8 @@ rfs.openFooterModalBtn.addEventListener('click', onOpenModal);
 rfs.closeModalBtn.addEventListener('click', onCloseModal);
 rfs.backdropRef.addEventListener('click', onBackdropClick);
 
+// ======= Open Modal =======
+
 // Open
 function onOpenModal(e) {
   e.preventDefault();
@@ -64,12 +66,12 @@ function onOpenModal(e) {
       rfs.bodyClass.add('show-modal-footer');
       updateModalMarkup(footerMarkup);
       break;
-  }
+  };
 
   window.addEventListener('keydown', onPressEscape);
-  // rfs.closeModal.classList.remove('hidden');
-}
+};
 
+// Trailer
 function appendSimilarMovies(preferMovie) {
   apiService.fetchSimilarMovies(preferMovie.id).then(data => {
     const movies = [...data.results];
@@ -97,14 +99,18 @@ function appendSimilarMovies(preferMovie) {
   });
 }
 
-// Update Markup
+// Update Modal Markup
 function updateModalMarkup(fn, data, dataOpen) {
   dataOpen === 'film'
     ? (rfs.modalContentRef.innerHTML = fn(data))
     : (rfs.modalContentRef.innerHTML = fn());
-}
+  
+  rfs.closeModalBtn.classList.remove('hidden');
+};
 
-// Close by backdrop
+// ======= Close Modal =======
+
+// Close Modal by backdrop
 function onBackdropClick(e) {
   if (e.target === e.currentTarget) {
     onCloseModal();
@@ -124,65 +130,8 @@ function onCloseModal() {
   rfs.bodyClass.remove('show-modal-signup');
   rfs.bodyClass.remove('show-modal-footer');
 
-  rfs.closeModal.classList.add('hidden');
+  rfs.closeModalBtn.classList.add('hidden');
   window.removeEventListener('keydown', onPressEscape);
-}
-
-// Trailer Modal
-// function showTrailer() {
-//    const trailerModal = document.querySelector('.modal-content__trailer');
-//    const button = document.querySelector('.trailer-btn__overlay');
-
-//    button.addEventListener('click', (e) => {
-//       e.currentTarget || e.target
-//          ? trailerModal.classList.add('show-trailer-modal')
-//          : console.log("No trailer");
-
-//       const trailerCloseModalBtn = document.querySelector('.modal-content__trailer-btn');
-//       trailerCloseModalBtn.addEventListener('click', closeTrailer, trailerCloseModalBtn);
-//    });
-
-//    const closeTrailer = (btn) => {
-//       trailerModal.classList.remove('show-trailer-modal');
-//       btn.path[0].removeEventListener('click', closeTrailer);
-//    };
-// };
-
-// showTrailer();
+};
 
 export default onCloseModal;
-
-// === Del --v
-
-// if (dataOpen === "film") {
-//    rfs.modalContentRef.innerHTML = fn(data);
-// } else {
-//    rfs.modalContentRef.innerHTML = fn();
-// }
-
-//    if (dataOpen === "signup") {
-//       document.body.classList.add("show-modal-signup");
-//       updateModalMarkup(signupMarkup);
-//    } else if (dataOpen === "login") {
-//       document.body.classList.add("show-modal-signup");
-//       updateModalMarkup(loginMarkup);
-//    } else if (dataOpen === "film") {
-//       document.body.classList.add("show-modal-film");
-//       updateModalMarkup(filmMarkup, preferMovie, dataOpen);
-//    } else if (dataOpen === "footer") {
-//       document.body.classList.add("show-modal-footer");
-//       updateModalMarkup(footerMarkup);
-//    }
-
-// --
-
-// function updateMarkup(data) {
-//    const markup = singleFilmTpl(data);
-//    modalContentRef.innerHTML = markup;
-// }
-
-// --
-
-// modalContentRef.insertAdjacentHTML = apiService.getMoviesData().then(data => filmMarkup(data[0]));
-
-// --
