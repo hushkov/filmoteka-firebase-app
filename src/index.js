@@ -4,11 +4,14 @@ import './js/components/modalHandler';
 import './js/components/header';
 import './js/components/scrollToTopBtn.js';
 import './js/components/my-lib';
+import './js/components/library';
 import './js/composables/mainCards';
 import './js/components/apiService';
 // import './js/composables/footerModal';
 import './js/components/singleFilmMarkup';
 import './js/components/spinnerOnOff';
+import posterImg from '/images/poster-not-avalible.jpg';
+import './js/components/search- film';
 
 import { displayStartPage } from './js/composables/mainCards.js';
 displayStartPage();

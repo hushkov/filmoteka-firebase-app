@@ -8,7 +8,7 @@ let libArray = [];
 
 const getLibrary = data => {
   if (data.length) {
-    libArray = data.map(doc => doc.data());
+    refs.libraryFire = data.map(doc => doc.data());
   }
 
   if (data.length) {
@@ -22,10 +22,10 @@ const getLibrary = data => {
     // console.log('html:', html);
   } else {
     movieList.innerHTML =
-      '<h5 class="center-align">Login to view yout favorites</h5>';
+      '<h5 class="center-align">Add smthing to view your favorites</h5>';
   }
   // console.log('lib: ', libArray);
-  listOfAddedMovies(libArray);
+  // listOfAddedMovies(libArray);
 };
 
 export default getLibrary;
