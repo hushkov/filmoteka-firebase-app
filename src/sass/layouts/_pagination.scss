@@ -41,3 +41,10 @@
 .non-display {
   display: none;
 }
+
+@media screen and (max-width: 767px) {
+  .tui-first,
+  .tui-last {
+    display: none;
+  }
+}
