@@ -8,12 +8,18 @@ body.dark-theme {
      .modal-container {
        background-color: #efefef;
      }
-     .film-list-movie-title, .tui-page-btn {
+     .film-list-movie-title {
        color: #ebebeb;
      }
-     .tui-page-btn:hover {
-       background-color: #fa802ef8;
+    .tui-page-btn {
+       color: #ebebeb;
      }
+    .tui-next, .tui-prev  {
+      background-color: #191919;
+    }
+    .footer-container {
+      padding: 0;
+    }
   }
   
   .toolbar {
