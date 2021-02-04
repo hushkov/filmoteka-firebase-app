@@ -43,8 +43,8 @@ const options = {
       let template = '';
       if (type == 'next') {
         template =
-          `<a href="#" class="tui-page-btn tui-${type}">` +
-          `<span class="tui-ico-${type}">=></span>` +
+          `<a href="#" class="tui-page-btn tui-${type} ">` +
+          `<span class="tui-ico-${type} material-icons">arrow_forward</span>` +
           '</a>';
       }
       if (type == 'last') {
@@ -56,13 +56,13 @@ const options = {
       if (type == 'first') {
         template =
           `<a href="#" class="tui-page-btn tui-${type}">` +
-          `<span class="tui-ico-${type}">1</span>` +
+          `<span class="tui-ico-${type} ">1</span>` +
           '</a>';
       }
       if (type == 'prev') {
         template =
           `<a href="#" class="tui-page-btn tui-${type}">` +
-          `<span class="tui-ico-${type}"><=</span>` +
+          `<span class="tui-ico-${type} material-icons">arrow_back</span>` +
           '</a>';
       }
       return template;
@@ -73,7 +73,7 @@ const options = {
       if (type == 'next') {
         template =
           `<a href="#" class="tui-page-btn tui-${type}">` +
-          `<span class="tui-ico-${type}">=></span>` +
+          `<span class="tui-ico-${type} material-icons">arrow_forward</span>` +
           '</a>';
       }
       if (type == 'last') {
@@ -83,12 +83,12 @@ const options = {
           '</a>';
       }
       if (type == 'first') {
-        template = `<a href="#" class="non-display"></a>`;
+        template = `<a href="#" class="non-display">arrow_back</a>`;
       }
       if (type == 'prev') {
         template =
           `<a href="#" class="tui-page-btn tui-${type}">` +
-          `<span class="tui-ico-${type}"><=</span>` +
+          `<span class="tui-ico-${type} material-icons">arrow_back</span>` +
           '</a>';
       }
       return template;
