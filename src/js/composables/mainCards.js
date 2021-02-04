@@ -6,6 +6,7 @@ import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
 import refs from '../components/refs';
 const ul = document.querySelector('.js-ul-film');
+
 const body = document.querySelector('body');
 let dataOfAddedMovies = null;
 
@@ -33,18 +34,65 @@ const options = {
   page: 1,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
+  centerAlign: true,
   template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
     currentPage:
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
+    moveButton({ type }) {
+      let template = '';
+      if (type == 'next') {
+        template =
+          `<a href="#" class="tui-page-btn tui-${type} ">` +
+          `<span class="tui-ico-${type} material-icons">arrow_forward</span>` +
+          '</a>';
+      }
+      if (type == 'last') {
+        template =
+          `<a href="#" class="tui-page-btn tui-${type}">` +
+          `<span class="tui-ico-${type}">2000</span>` +
+          '</a>';
+      }
+      if (type == 'first') {
+        template =
+          `<a href="#" class="tui-page-btn tui-${type}">` +
+          `<span class="tui-ico-${type} ">1</span>` +
+          '</a>';
+      }
+      if (type == 'prev') {
+        template =
+          `<a href="#" class="tui-page-btn tui-${type}">` +
+          `<span class="tui-ico-${type} material-icons">arrow_back</span>` +
+          '</a>';
+      }
+      return template;
+    },
+
+    disabledMoveButton({ type }) {
+      let template = '';
+      if (type == 'next') {
+        template =
+          `<a href="#" class="tui-page-btn tui-${type}">` +
+          `<span class="tui-ico-${type} material-icons">arrow_forward</span>` +
+          '</a>';
+      }
+      if (type == 'last') {
+        template =
+          `<a href="#" class="tui-page-btn tui-${type}">` +
+          `<span class="tui-ico-${type}">2000</span>` +
+          '</a>';
+      }
+      if (type == 'first') {
+        template = `<a href="#" class="non-display">arrow_back</a>`;
+      }
+      if (type == 'prev') {
+        template =
+          `<a href="#" class="tui-page-btn tui-${type}">` +
+          `<span class="tui-ico-${type} material-icons">arrow_back</span>` +
+          '</a>';
+      }
+      return template;
+    },
     moreButton:
       '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
       '<span class="tui-ico-ellip">...</span>' +
@@ -101,6 +149,41 @@ function displayStartPage() {
     ul.insertAdjacentHTML('beforeend', render);
   });
 }
+repairPagination();
+//Много много костылей
+function repairPagination() {
+  const div = document.querySelector('#tui-pagination-container');
+  div.childNodes[0].before(div.childNodes[1]);
+  div.childNodes[div.childNodes.length - 2].before(
+    div.childNodes[div.childNodes.length - 1],
+  );
+
+  //Костылииииииииииииииииииии
+  const costyl = document.querySelector('.tui-is-selected');
+  const lastCostyl = document.querySelector('.tui-last');
+  const num = Math.ceil(
+    pagination._options.totalItems / pagination._options.itemsPerPage,
+  );
+  lastCostyl.innerHTML = num;
+  console.log('lastCostyl = ', lastCostyl.innerHTML, '  num = ', num);
+  const tuiFirst = document.querySelector('.tui-first');
+  if (costyl.innerHTML == '2' || costyl.innerHTML == '3') {
+    tuiFirst.classList.add('non-display');
+  } else {
+    if (tuiFirst != null) tuiFirst.classList.remove('non-display');
+  }
+  console.log(lastCostyl.innerHTML);
+  if (
+    costyl.innerHTML == num ||
+    costyl.innerHTML == num - 1 ||
+    costyl.innerHTML == num - 2 ||
+    costyl.innerHTML == num + 1
+  ) {
+    lastCostyl.classList.add('non-display');
+  } else {
+    if (lastCostyl != null) lastCostyl.classList.remove('non-display');
+  }
+}
 
 //возвращаем отредактированый объект с ссылками на картинки
 function posterEdit(obj) {
@@ -117,6 +200,7 @@ function posterEdit(obj) {
   // ================ Привет, не удаляй^^ =========================
   refs.currentMoviesList = [...result];
   // ==============================================================
+  repairPagination();
   return result;
 }
 
@@ -171,7 +255,7 @@ pagination.on('afterMove', async function (eventData) {
     apiService.page = indexNumber;
     apiService.getMoviesData().then(response => {
       const data = response.slice(indexStartObj, indexStartObj + itemsPerPage);
-      const render = template(data, Handlebars);
+      const render = template(posterEdit(data), Handlebars);
       ul.innerHTML = '';
       // ul.insertAdjacentHTML('beforeend', render);
     });
