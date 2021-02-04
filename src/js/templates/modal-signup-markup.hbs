@@ -1,15 +1,38 @@
-<div class="modal-form__wrap">
-  <div class="welcome container">
-    <form id="signup-form">
-      <h3>Sign up</h3>
-      <input type="text" name="displayName" placeholder="Display Name" id="signup-displayName" required />
-      <input type="email" name="email" placeholder="Email" id="signup-email" required />
-      <input type="password" name="password" placeholder="Password" id="signup-password" required />
+ <div class="welcome container login-box">
+     <h2>Sign up</h2>
+      <form id="signup-form" autocomplete="off">
+        <div class="user-box">
+      <input type="text"
+        name="displayName" id="signup-displayName" required="">
+      <label>Display Name</label>
+    </div>
+        <div class="user-box">
+      <input type="email"
+        name="email" id="signup-email" required="">
+      <label>Email</label>
+    </div>
+        <div class="user-box">
+      <input type="password"
+        name="password" id="signup-password" required="">
+      <label>Password</label>
+    </div>
       <div class="error-signup error"></div>
-      <button id="signup-btn">Sign up</button>
+      <div class="class-flex">
+     <button id="signup-btn" >
+
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Sign Up
+      
+      
+
+    </button>
       <p>
-        Already registered? <span data-click="click-login">Login</span> instead.
+        Already registered? <span class="click-span" data-toggleLogin="click-login" >Login</span> instead.
       </p>
+      </div>
     </form>
   </div>
 </div>
