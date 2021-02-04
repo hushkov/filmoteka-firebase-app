@@ -58,7 +58,8 @@ a {
   outline: none;
 
   &:hover,
-  &:focus {
+  &:focus,
+  .active-lib-btn {
     background-color: #ff6b01;
     border-color: #ff6b08;
     color: #ffffff;

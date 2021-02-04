@@ -4,6 +4,8 @@ const refs = {
   homeBtn: document.querySelector('.link-home'),
   myLibraryBtn: document.querySelector('.link-library'),
   mainSection: document.querySelector('.js-ul-film'),
+  queueLibBtn: document.querySelector('.queue-btn'),
+  watchedLibBtn: document.querySelector('.watched-btn'),
 };
 
 let libArray = [];

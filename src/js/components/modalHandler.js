@@ -124,10 +124,31 @@ function onCloseModal() {
   rfs.bodyClass.remove('show-modal-signup');
   rfs.bodyClass.remove('show-modal-footer');
 
-  // rfs.closeModal.classList.add('hidden');
-  // rfs.modalContentRef.innerHTML = '';
+  rfs.closeModal.classList.add('hidden');
   window.removeEventListener('keydown', onPressEscape);
 }
+
+// Trailer Modal
+// function showTrailer() {
+//    const trailerModal = document.querySelector('.modal-content__trailer');
+//    const button = document.querySelector('.trailer-btn__overlay');
+
+//    button.addEventListener('click', (e) => {
+//       e.currentTarget || e.target
+//          ? trailerModal.classList.add('show-trailer-modal')
+//          : console.log("No trailer");
+
+//       const trailerCloseModalBtn = document.querySelector('.modal-content__trailer-btn');
+//       trailerCloseModalBtn.addEventListener('click', closeTrailer, trailerCloseModalBtn);
+//    });
+
+//    const closeTrailer = (btn) => {
+//       trailerModal.classList.remove('show-trailer-modal');
+//       btn.path[0].removeEventListener('click', closeTrailer);
+//    };
+// };
+
+// showTrailer();
 
 export default onCloseModal;
 
