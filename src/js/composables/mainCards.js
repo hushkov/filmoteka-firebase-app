@@ -257,8 +257,9 @@ pagination.on('afterMove', async function (eventData) {
       const data = response.slice(indexStartObj, indexStartObj + itemsPerPage);
       const render = template(posterEdit(data), Handlebars);
       ul.innerHTML = '';
-      ul.insertAdjacentHTML('beforeend', render);
+      // ul.insertAdjacentHTML('beforeend', render);
     });
+    generatePage(indexStartObj, itemsPerPage, eventData);
   } else if (screen.name === 'tablet') {
     //Вызывается при условии что сейчас нужно показывать добавленные фильмы
     if (eventListner.addList) {

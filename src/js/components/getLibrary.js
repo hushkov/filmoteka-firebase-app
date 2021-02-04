@@ -1,9 +1,11 @@
-import refs from '../components/refs';
-import getCollection from '../composables/getCollection';
-import getUser from '../composables/getUser';
-import { listOfAddedMovies } from '../composables/mainCards';
+import { listOfAddedMovies, displayStartPage } from '../composables/mainCards';
 
-const movieList = document.querySelector('.getLib');
+const refs = {
+  homeBtn: document.querySelector('.link-home'),
+  myLibraryBtn: document.querySelector('.link-library'),
+  mainSection: document.querySelector('.js-ul-film'),
+};
+
 let libArray = [];
 
 const getLibrary = data => {
@@ -11,20 +13,21 @@ const getLibrary = data => {
     libArray = data.map(doc => doc.data());
   }
 
-  if (data.length) {
-    let html = [];
-    data.forEach(doc => {
-      const movie = doc.data();
-
-      html.push(movie);
-    });
-    // movieList.innerHTML = html;
-    // console.log('html:', html);
-  } else {
-    movieList.innerHTML =
-      '<h5 class="center-align">Add smthing to view yout favorites</h5>';
-  }
   // console.log('lib: ', libArray);
 };
 
 export default getLibrary;
+
+refs.myLibraryBtn.addEventListener('click', event => {
+  if (libArray.length) {
+    listOfAddedMovies(libArray);
+  } else {
+    listOfAddedMovies(libArray);
+    refs.mainSection.innerHTML =
+      '<h3 style="margin:0 auto;">You still don`t have any favorites!</h3>';
+  }
+});
+
+refs.homeBtn.addEventListener('click', event => {
+  displayStartPage();
+});

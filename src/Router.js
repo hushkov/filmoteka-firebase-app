@@ -32,16 +32,14 @@ class Router {
     return this;
   };
 
-  clearSlashes = path =>
-    path
-      .toString()
-      .replace(/\/$/, '')
-      .replace(/^\//, '');
+  clearSlashes = path => path.toString().replace(/\/$/, '').replace(/^\//, '');
 
   getFragment = () => {
     let fragment = '';
     if (this.mode === 'history') {
-      fragment = this.clearSlashes(decodeURI(window.location.pathname + window.location.search));
+      fragment = this.clearSlashes(
+        decodeURI(window.location.pathname + window.location.search),
+      );
       fragment = fragment.replace(/\?(.*)$/, '');
       fragment = this.root !== '/' ? fragment.replace(this.root, '') : fragment;
     } else {
@@ -55,7 +53,10 @@ class Router {
     if (this.mode === 'history') {
       window.history.pushState(null, null, this.root + this.clearSlashes(path));
     } else {
-      window.location.href = `${window.location.href.replace(/#(.*)$/, '')}#${path}`;
+      window.location.href = `${window.location.href.replace(
+        /#(.*)$/,
+        '',
+      )}#${path}`;
     }
     return this;
   };

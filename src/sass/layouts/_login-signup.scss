@@ -44,6 +44,7 @@ a {
   font-weight: 600;
   cursor: pointer;
   display: inline-block;
+  margin-bottom: 15px;
 
   &:hover {
     background: var(--primary);
@@ -91,4 +92,15 @@ form#login-form {
   color: var(--warning);
   font-size: 14px;
   margin: 16px 0;
+}
+//================================
+.welcome {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.welcome span {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
 }
