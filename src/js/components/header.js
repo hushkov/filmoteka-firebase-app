@@ -12,7 +12,7 @@ refs.home.addEventListener('click', onHome);
 refs.library.addEventListener('click', onlibrary);
 
 function onHome(e) {
-  // e.preventDefault();
+  e.preventDefault();
 
   refs.header.classList.replace('header-library', 'header-home');
   refs.search.classList.remove('visually-hidden');
@@ -22,7 +22,7 @@ function onHome(e) {
 }
 
 function onlibrary(e) {
-  // e.preventDefault();
+  e.preventDefault();
 
   refs.header.classList.replace('header-home', 'header-library');
   refs.bottom.classList.remove('visually-hidden');

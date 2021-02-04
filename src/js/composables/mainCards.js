@@ -165,14 +165,14 @@ function repairPagination() {
     pagination._options.totalItems / pagination._options.itemsPerPage,
   );
   lastCostyl.innerHTML = num;
-  console.log('lastCostyl = ', lastCostyl.innerHTML, '  num = ', num);
+  // console.log('lastCostyl = ', lastCostyl.innerHTML, '  num = ', num);
   const tuiFirst = document.querySelector('.tui-first');
   if (costyl.innerHTML == '2' || costyl.innerHTML == '3') {
     tuiFirst.classList.add('non-display');
   } else {
     if (tuiFirst != null) tuiFirst.classList.remove('non-display');
   }
-  console.log(lastCostyl.innerHTML);
+  // console.log(lastCostyl.innerHTML);
   if (
     costyl.innerHTML == num ||
     costyl.innerHTML == num - 1 ||
