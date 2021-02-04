@@ -36,10 +36,13 @@ function onOpenModal(e) {
       const clickLogin = document.querySelector(
         'span[data-click="click-login"]',
       );
-      console.log(signupForm);
+
       signupForm.addEventListener('submit', handleSignup);
-      clickLogin.addEventListener('click', () => {
-        updateModalMarkup(loginMarkup);
+      rfs.modalContentRef.addEventListener('click', e => {
+        const toggle = e.target.dataset.toggleSignup;
+        if (toggle) {
+          updateModalMarkup(loginMarkup);
+        }
       });
       break;
     case 'login':
@@ -50,8 +53,11 @@ function onOpenModal(e) {
         'span[data-click="click-signup"]',
       );
       loginForm.addEventListener('submit', handleLogin);
-      clickSignup.addEventListener('click', () => {
-        updateModalMarkup(signupMarkup);
+      rfs.modalContentRef.addEventListener('click', () => {
+        const toggle = e.target.dataset.toggleLogin;
+        if (toggle) {
+          updateModalMarkup(signupMarkup);
+        }
       });
       break;
     case 'film':
