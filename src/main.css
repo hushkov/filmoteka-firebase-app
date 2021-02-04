@@ -784,10 +784,34 @@ form#login-form {
 
 :root {
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-duration: 250ms;
+  --animation-duration: 300ms;
 }
 
 /* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1001;
+  overflow-y: scroll;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--animation-duration) var(--timing-function), visibility var(--animation-duration) var(--timing-function);
+}
+
+@media screen and (min-width: 768px) {
+  .backdrop {
+    align-items: center;
+  }
+}
+
 body.show-modal-film, body.show-modal-signup, body.show-modal-footer {
   overflow: hidden;
 }
@@ -822,35 +846,11 @@ body.show-modal-film .modal {
   }
 }
 
-.backdrop {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1001;
-  overflow-y: scroll;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
-}
-
-@media screen and (min-width: 768px) {
-  .backdrop {
-    align-items: center;
-  }
-}
-
 .modal {
   display: flex;
   justify-content: center;
   transform: scale(1.1);
-  transition: transform 200ms ease-in-out;
+  transition: transform var(--animation-duration) var(--timing-function);
 }
 
 .close-modal {
@@ -862,6 +862,7 @@ body.show-modal-film .modal {
 }
 
 .modal-container {
+  position: relative;
   background-color: #ffffff;
 }
 
@@ -898,8 +899,51 @@ body.show-modal-film .modal {
   }
 }
 
+.modal-content__trailer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: #000000;
+  visibility: hidden;
+  z-index: 1002;
+  transform: scale(0.9);
+  transition: opacity var(--animation-duration) var(--timing-function), transform var(--animation-duration) var(--timing-function), visibility var(--animation-duration) var(--timing-function);
+}
+
+.modal-content__trailer.show-trailer-modal {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity var(--animation-duration) var(--timing-function), transform var(--animation-duration) var(--timing-function);
+}
+
+.modal-content__trailer .modal-content__trailer-btn {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  transform: scale(1);
+  transition: transform var(--animation-duration) var(--timing-function);
+}
+
+.modal-content__trailer .modal-content__trailer-btn:hover {
+  transform: scale(1.5);
+  transition: transform var(--animation-duration) var(--timing-function);
+}
+
 .modal-section__thumb {
-  height: 416px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   border-radius: 5px;
 }
 
@@ -913,7 +957,7 @@ body.show-modal-film .modal {
   .modal-section__thumb {
     margin-right: 30px;
     width: 294px;
-    height: 416px;
+    overflow: hidden;
   }
 }
 
@@ -925,6 +969,40 @@ body.show-modal-film .modal {
     overflow: hidden;
     align-items: center;
   }
+}
+
+.modal-section__thumb .trailer-btn__overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: opacity var(--animation-duration) var(--timing-function);
+}
+
+.modal-section__thumb .trailer-btn__overlay .trailer-btn {
+  font-size: 80px;
+  transform: scale(0.8);
+  transition: opacity var(--animation-duration) var(--timing-function), transform var(--animation-duration) var(--timing-function);
+}
+
+.modal-section__thumb:hover .trailer-btn__overlay {
+  opacity: 1;
+}
+
+.modal-section__thumb:hover .trailer-btn__overlay .trailer-btn {
+  transform: scale(1.3);
+  transition: color var(--animation-duration) var(--timing-function), transform var(--animation-duration) var(--timing-function);
+}
+
+.modal-section__thumb:hover .trailer-btn__overlay .trailer-btn:hover {
+  color: #ffffff;
+  transform: scale(1.6);
+  transition: color var(--animation-duration) var(--timing-function), transform var(--animation-duration) var(--timing-function);
 }
 
 .modal-section__thumb .modal-section__image {

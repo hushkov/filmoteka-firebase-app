@@ -2,12 +2,20 @@ import signupMarkup from '../templates/modal-signup-markup.hbs';
 import loginMarkup from '../templates/modal-login-markup.hbs';
 import footerMarkup from '../templates/modal-footer-markup.hbs';
 import filmMarkup from '../templates/modal-film-markup.hbs';
+import similarFilmMarkup from '../templates/similar-film-markup.hbs';
+import apiService from './apiService.js';
 import rfs from './modalRefs.js';
 import refs from './refs';
 
+//===============================================================
+import handleLogin from './handleLogin';
+import handleSignup from './handleSignup';
+
+//===============================================================
+
 rfs.openFilmModalBtn.addEventListener('click', onOpenModal);
-// rfs.openSignupModalBtn.addEventListener("click", onOpenModal);
-// rfs.openLoginModalBtn.addEventListener("click", onOpenModal);
+rfs.openSignupModalBtn.addEventListener('click', onOpenModal);
+rfs.openLoginModalBtn.addEventListener('click', onOpenModal);
 rfs.openFooterModalBtn.addEventListener('click', onOpenModal);
 rfs.closeModalBtn.addEventListener('click', onCloseModal);
 rfs.backdropRef.addEventListener('click', onBackdropClick);
@@ -24,14 +32,33 @@ function onOpenModal(e) {
     case 'signup':
       rfs.bodyClass.add('show-modal-signup');
       updateModalMarkup(signupMarkup);
+      const signupForm = document.querySelector('#signup-form');
+      const clickLogin = document.querySelector(
+        'span[data-click="click-login"]',
+      );
+      console.log(signupForm);
+      signupForm.addEventListener('submit', handleSignup);
+      clickLogin.addEventListener('click', () => {
+        updateModalMarkup(loginMarkup);
+      });
       break;
     case 'login':
       rfs.bodyClass.add('show-modal-signup');
       updateModalMarkup(loginMarkup);
+      const loginForm = document.querySelector('#login-form');
+      const clickSignup = document.querySelector(
+        'span[data-click="click-signup"]',
+      );
+      loginForm.addEventListener('submit', handleLogin);
+      clickSignup.addEventListener('click', () => {
+        updateModalMarkup(signupMarkup);
+      });
       break;
     case 'film':
       rfs.bodyClass.add('show-modal-film');
       updateModalMarkup(filmMarkup, preferMovie, dataOpen);
+
+      appendSimilarMovies(preferMovie);
       break;
     case 'footer':
       rfs.bodyClass.add('show-modal-footer');
@@ -40,7 +67,34 @@ function onOpenModal(e) {
   }
 
   window.addEventListener('keydown', onPressEscape);
-  rfs.closeModal.classList.remove('hidden');
+  // rfs.closeModal.classList.remove('hidden');
+}
+
+function appendSimilarMovies(preferMovie) {
+  apiService.fetchSimilarMovies(preferMovie.id).then(data => {
+    const movies = [...data.results];
+    const showTotalMovies = 5;
+
+    const similarRef = rfs.modalContentRef.querySelector(
+      '.modal-meta_similar-movies',
+    );
+    similarRef.classList.add('hidden');
+
+    let content = '';
+
+    if (movies.length) {
+      for (let i = 0; i < showTotalMovies; i++) {
+        const movie = movies[i];
+        movie.release_date = movie.release_date.substr(0, 4);
+        content += similarFilmMarkup(movie);
+      }
+
+      similarRef.querySelector(
+        '.modal-meta_similar-movies-list',
+      ).innerHTML = content;
+      similarRef.classList.remove('hidden');
+    }
+  });
 }
 
 // Update Markup
@@ -71,9 +125,32 @@ function onCloseModal() {
   rfs.bodyClass.remove('show-modal-footer');
 
   rfs.closeModal.classList.add('hidden');
-  rfs.modalContentRef.innerHTML = '';
   window.removeEventListener('keydown', onPressEscape);
 }
+
+// Trailer Modal
+// function showTrailer() {
+//    const trailerModal = document.querySelector('.modal-content__trailer');
+//    const button = document.querySelector('.trailer-btn__overlay');
+
+//    button.addEventListener('click', (e) => {
+//       e.currentTarget || e.target
+//          ? trailerModal.classList.add('show-trailer-modal')
+//          : console.log("No trailer");
+
+//       const trailerCloseModalBtn = document.querySelector('.modal-content__trailer-btn');
+//       trailerCloseModalBtn.addEventListener('click', closeTrailer, trailerCloseModalBtn);
+//    });
+
+//    const closeTrailer = (btn) => {
+//       trailerModal.classList.remove('show-trailer-modal');
+//       btn.path[0].removeEventListener('click', closeTrailer);
+//    };
+// };
+
+// showTrailer();
+
+export default onCloseModal;
 
 // === Del --v
 

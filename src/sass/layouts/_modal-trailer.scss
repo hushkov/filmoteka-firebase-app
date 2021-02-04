@@ -1,0 +1,103 @@
+.modal-youtube.open .modal-youtube__overlay,
+.modal-youtube.open .modal-youtube__window {
+  opacity: 1;
+  z-index: 1002;
+}
+
+.modal-youtube__overlay,
+.modal-youtube__window {
+  opacity: 0;
+  z-index: -1;
+}
+
+.modal-youtube__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #000000;
+}
+
+.modal-youtube__window {
+  position: relative;
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 611px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 882px;
+  }
+}
+
+.modal-youtube__frame {
+  @media screen and (min-width: 320px) {
+    width: 280px;
+    height: 220px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 611px;
+    height: 456px;
+  }
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    margin-left: -7px;
+    width: 882px;
+    height: 514px;
+  }
+}
+
+.modal-youtube__close {
+  position: absolute;
+  top: 20px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 244, 244, 0.74);
+  border-radius: 50%;
+  color: black;
+
+  transition: color 100ms ease-in, background-color 100ms ease-in;
+  cursor: pointer;
+
+  @media screen and (min-width: 320px) {
+    top: -20px;
+    left: -15px;
+
+    width: 20px;
+    height: 20px;
+
+    font-size: 25px;
+  }
+  @media screen and (min-width: 768px) {
+    top: -30px;
+    left: -60px;
+
+    width: 35px;
+    height: 35px;
+
+    font-size: 36px;
+  }
+  @media screen and (min-width: 1024px) {
+    top: -50px;
+
+    width: 50px;
+    height: 50px;
+
+    font-size: 42px;
+  }
+
+  &:hover {
+    color: $accent-color;
+    background-color: #ffffff;
+  }
+}

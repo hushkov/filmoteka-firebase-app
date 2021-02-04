@@ -7,10 +7,12 @@ import './js/components/my-lib';
 import './js/components/library';
 import './js/composables/mainCards';
 import './js/components/apiService';
+import './js/components/youtubeApi';
+import './js/components/trailer-notification';
 // import './js/composables/footerModal';
 import './js/components/singleFilmMarkup';
 import './js/components/spinnerOnOff';
-import posterImg from '/images/poster-not-avalible.jpg';
+import posterImg from '././images/poster-not-avalible.jpg';
 import './js/components/search- film';
 
 import { displayStartPage } from './js/composables/mainCards.js';
@@ -30,6 +32,8 @@ import './js/composables/useLogin';
 import './js/composables/useSignup';
 import './js/composables/useLogout';
 import './js/composables/useCollection';
+// import './js/composables/route';
+//=====================================
 
 //=====================================
 // import './js/route.js';
@@ -37,15 +41,12 @@ import './js/composables/useCollection';
 // import './js/app.js';
 //=====================================
 
-import getCollection from './js/composables/getCollection';
-// getCollection('queue');
 import { projectFirestore } from './firebase/config';
-import apiService from './js/components/apiService';
-
 var app = new Vue({
   el: '#app',
   data: {
     queue: [],
+    isShowing: false,
   },
   mounted() {
     const ref = projectFirestore

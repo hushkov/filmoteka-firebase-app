@@ -1,0 +1,50 @@
+// strong.tui-page-btn.tui-is-selected {
+//   background: #ff6b08;
+//   border-radius: 5px;
+// }
+.tui-pagination {
+  display: flex;
+}
+
+.tui-prev,
+.tui-next {
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+#tui-pagination-container {
+  justify-content: center;
+}
+
+.tui-page-btn {
+  //   padding: 20px 0 20px;
+  width: 44px;
+  height: 44px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 0.75;
+  /* identical to box height, or 133% */
+  //   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+}
+.tui-is-selected {
+  background: #ff6b08;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.non-display {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .tui-first,
+  .tui-last {
+    display: none;
+  }
+}

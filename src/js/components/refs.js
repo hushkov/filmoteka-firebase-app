@@ -9,7 +9,7 @@ export default {
   isPending: false,
   currentMoviesList: [],
   queueFire: [],
-  libraryFire: [],
+  showError: null,
 
   genres: [
     {
