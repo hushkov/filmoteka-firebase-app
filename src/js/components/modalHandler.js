@@ -67,7 +67,7 @@ function onOpenModal(e) {
   }
 
   window.addEventListener('keydown', onPressEscape);
-  rfs.closeModal.classList.remove('hidden');
+  // rfs.closeModal.classList.remove('hidden');
 }
 
 function appendSimilarMovies(preferMovie) {
@@ -115,7 +115,6 @@ function onBackdropClick(e) {
 function onPressEscape(e) {
   if (e.code === 'Escape') {
     onCloseModal();
-    console.log(1);
   }
 }
 
@@ -125,7 +124,7 @@ function onCloseModal() {
   rfs.bodyClass.remove('show-modal-signup');
   rfs.bodyClass.remove('show-modal-footer');
 
-  rfs.closeModal.classList.add('hidden');
+  // rfs.closeModal.classList.add('hidden');
   // rfs.modalContentRef.innerHTML = '';
   window.removeEventListener('keydown', onPressEscape);
 }

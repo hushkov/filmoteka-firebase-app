@@ -9,9 +9,9 @@ router
   .add(/mylibrary/, () => {
     console.log('welcome in mylibrary page');
   })
-  .add(/mylibrary\/watched/, () => {
+  .add(/watched/, () => {
     console.log('welcome in watched list');
   })
-  .add(/mylibrary\/queue/, () => {
+  .add(/queue/, () => {
     console.log('welcome in queue list');
   });

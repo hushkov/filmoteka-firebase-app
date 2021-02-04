@@ -31,6 +31,7 @@ import './js/composables/useLogin';
 import './js/composables/useSignup';
 import './js/composables/useLogout';
 import './js/composables/useCollection';
+import './js/composables/route';
 //=====================================
 
 //=====================================
