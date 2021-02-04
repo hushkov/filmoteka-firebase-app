@@ -7,6 +7,9 @@
     <title>Filmoteka + Firebase</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"/>
+      <!-- Удаляет ошибку favicon.ico 404 (not found) -->
+      <link rel="shortcut icon" href="#">
+      <!-- --------------------------------------- -->
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com" /> -->
     <!-- <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
@@ -36,11 +39,20 @@
           <nav>
             <ul class="site-nav list">
               <li class="nav-item">
-                <a href="" class="link current link-home">Home</a>
+                <a href="/#/" class="link current link-home">Home</a>
               </li>
-              <li class="nav-item">
-                <a href="" class="link link-library">my library</a>
+              <li class="nav-item" >
+               <a href="/#/mylibrary" class="link link-library">my library</a>
               </li>
+              <li class="logged-in" style="display: none;">
+                 <a href="#" class="link link-library" id="logout">Logout</a>
+               </li>
+              <li class="logged-out" style="display: none;">
+                  <a href="#" class="link link-library" data-target="modal-login">Login</a>
+               </li>
+                <li class="logged-out" style="display: none;">
+                  <a href="#" class="link link-library" data-target="modal-signup">Sign up</a>
+                </li>
             </ul>
           </nav>
         </div>
@@ -59,8 +71,8 @@
           </button>
         </form>
         <div class="bottom-header visually-hidden">
-          <button class="button header-button watched-btn">Watched</button>
-          <button class="button header-button queue-btn">queue</button>
+          <a href="/#/mylibrary/watched"><button class="button header-button watched-btn">Watched</button></a>
+         <a href="/#/mylibrary/queue"> <button class="button header-button queue-btn">queue</button></a>
         </div>
 
         <p class="notification">
@@ -69,6 +81,14 @@
         </p>
       </div>
     </header>
+
+
+
+
+  
+
+    <div class="account-details"></div>
+    <ul class="getLib"></ul>
 
     <!-- MAIN -->
 
@@ -88,30 +108,48 @@
 
       <section class="my-library hidden">
         <div class="lib-container">
-          <ul class="my-library__list"></ul>
+          <ul class="my-library__list">
+          </ul>
         </div>
       </section>
+
+      <!-- <section  class="my-library " id="app">
+        <div class="lib-container">
+          <ul class="my-library__list">
+             <li v-for="movie in queue"  class="my-library__item" :data-id=movie.id>
+              <a href="#" class="movie-link" :data-id=movie.id>
+              <img :src=movie.poster_path :alt=movie.title :data-id=movie.id>
+                  <p class="my-library__movie-title" :data-id=movie.id>{{movie.title}} {{movie.name}}</br>
+                <span class="my-library__movie-info">{{movie.genre_ids}} | {{movie.first_air_date}} {{movie.release_date}}</span>
+                <span class="my-library__movie-rate">{{movie.vote_average}}</span>
+                  </p>
+                  </a>
+            </li>
+          </ul>
+        </div>
+      </section> -->
+
+ 
+
     </main>
 
     <!-- Modal -->
-    <button class="button" data-open="signup">Sign Up</button>
-    <button class="button" data-open="login">Log In</button>
+    <!-- <button class="button" data-open="signup">Sign Up</button>
+    <button class="button" data-open="login">Log In</button> -->
     
     <div class=" backdrop js-backdrop">
       <div class="modal">
         <div class="modal-content"></div>
-        <button type="button" class="close-modal" data-close-modal>x</button>
+        <button type="button" class="close-modal hidden" data-close-modal>×</button>
       </div>
     </div>
 
-    <!-- проверка разметки -->
-    <div class="film-container"></div> 
 
-    <!-- Logout -->
-   <button id="logout">Logout</button> 
+
+
 
     <!--Sign up -->
-    <form id="signup-form">
+    <!-- <form id="signup-form">
       <h3>Sign up</h3>
       <input
         type="text"
@@ -136,10 +174,10 @@
       />
       <div class="error-signup error"></div>
       <button id="signup-btn">Sign up</button>
-    </form>
+    </form> -->
 
     <!-- Log in -->
-    <form id="login-form">
+    <!-- <form id="login-form">
       <h3>Log in</h3>
 
       <input
@@ -158,7 +196,7 @@
       />
       <div class="error-login error"></div>
       <button id="login-btn">Log in</button>
-    </form> 
+    </form> -->
 
     <button
       class="scroll-to-top-btn"
@@ -184,6 +222,7 @@
         </p>
       </footer>
     </div>
-   
+        <!-- vue js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   </body>
 </html>
