@@ -318,6 +318,9 @@ function eventDisplayPage(event) {
 
 //отображает  добавленные фильмы
 function listOfAddedMovies(data = dataOfAddedMovies) {
+  // ================ Привет, не удаляй^^ =========================
+  refs.currentMoviesList = [...data];
+  // ==============================================================
   // console.log(data);
   dataOfAddedMovies = data.slice();
   eventListner.displayAddList(); //Нужно запускать. оно выставляет какие страницы нужно листать
