@@ -5,6 +5,8 @@ import Handlebars from 'handlebars';
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
 import refs from '../components/refs';
+import { spinnerOn, spinnerOff } from '../components/spinnerOnOff';
+
 const ul = document.querySelector('.js-ul-film');
 
 const body = document.querySelector('body');
@@ -139,6 +141,7 @@ function displayStartPage() {
 
   apiService.page = 1;
   screen.updateScreenName();
+  spinnerOn();
   apiService.getMoviesData().then(data => {
     pagination.setTotalItems(data[20].totalResults);
     pagination.reset();
@@ -147,6 +150,7 @@ function displayStartPage() {
     const render = template(result, Handlebars);
     ul.innerHTML = '';
     ul.insertAdjacentHTML('beforeend', render);
+    spinnerOff();
   });
 }
 repairPagination();

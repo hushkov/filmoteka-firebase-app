@@ -1,6 +1,7 @@
 import { listOfAddedMovies, displayStartPage } from '../composables/mainCards';
 import { projectAuth } from '../../firebase/config';
 import { projectFirestore } from '../../firebase/config';
+import { spinnerOn, spinnerOff } from './spinnerOnOff';
 
 let user = null;
 let libraryQueue = [];
@@ -12,6 +13,7 @@ const headerAll = document.querySelector('.header');
 headerAll.addEventListener('click', renderCollection);
 
 async function getCollection(collection, lib) {
+  spinnerOn();
   await projectFirestore
     .collection(collection)
     .where(`userId`, '==', user.uid)
@@ -21,6 +23,7 @@ async function getCollection(collection, lib) {
         lib.push(doc.data());
       });
     });
+  spinnerOff();
 }
 
 projectAuth.onAuthStateChanged(_user => {

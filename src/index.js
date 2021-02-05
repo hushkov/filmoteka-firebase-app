@@ -9,7 +9,8 @@ import './js/components/apiService';
 import './js/components/youtubeApi';
 import './js/components/trailer-notification';
 import './js/components/singleFilmMarkup';
-import './js/components/spinnerOnOff';
+// import './js/components/spinnerOnOff';
+import './js/components/changeTheme';
 import posterImg from '././images/poster-not-avalible.jpg';
 import './js/components/search- film';
 
