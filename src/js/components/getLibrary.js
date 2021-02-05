@@ -1,35 +1,69 @@
 import { listOfAddedMovies, displayStartPage } from '../composables/mainCards';
+import { projectAuth } from '../../firebase/config';
+import { projectFirestore } from '../../firebase/config';
 
-const refs = {
-  homeBtn: document.querySelector('.link-home'),
-  myLibraryBtn: document.querySelector('.link-library'),
-  mainSection: document.querySelector('.js-ul-film'),
-  queueLibBtn: document.querySelector('.queue-btn'),
-  watchedLibBtn: document.querySelector('.watched-btn'),
-};
+let user = null;
+let libraryQueue = [];
+let libraryWatched = [];
+const watchedBtn = document.querySelector('.bottom-header .watched-btn');
+const queueBtn = document.querySelector('.bottom-header .queue-btn');
+const headerAll = document.querySelector('.header');
 
-let libArray = [];
+headerAll.addEventListener('click', renderCollection);
 
-const getLibrary = data => {
-  if (data.length) {
-    libArray = data.map(doc => doc.data());
-  }
+async function getCollection(collection, lib) {
+  await projectFirestore
+    .collection(collection)
+    .where(`userId`, '==', user.uid)
+    .get()
+    .then(snap => {
+      snap.forEach(doc => {
+        lib.push(doc.data());
+      });
+    });
+}
 
-  // console.log('lib: ', libArray);
-};
-
-export default getLibrary;
-
-refs.myLibraryBtn.addEventListener('click', event => {
-  if (libArray.length) {
-    listOfAddedMovies(libArray);
+projectAuth.onAuthStateChanged(_user => {
+  if (_user) {
+    user = _user;
   } else {
-    listOfAddedMovies(libArray);
-    refs.mainSection.innerHTML =
-      '<h3 style="margin:0 auto;">You still don`t have any favorites!</h3>';
+    const libraryQueue = [];
+    const libraryWatched = [];
+    // listOfAddedMovies(libraryQueue);
   }
 });
 
-refs.homeBtn.addEventListener('click', event => {
-  displayStartPage();
-});
+async function renderQueue() {
+  libraryQueue = [];
+  await getCollection('queue', libraryQueue);
+
+  listOfAddedMovies(libraryQueue);
+}
+async function renderWatched() {
+  const libraryWatched = [];
+  await getCollection('watched', libraryWatched);
+  listOfAddedMovies(libraryWatched);
+}
+
+function renderCollection(eve) {
+  const target = eve.target.dataset;
+  // console.log(target.collection);
+  if (target.collection === 'collection') {
+    queueBtn.classList.add('active-lib-btn');
+    watchedBtn.classList.remove('active-lib-btn');
+    renderQueue();
+    if (!user) {
+      listOfAddedMovies(libraryQueue);
+    }
+  } else if (target.collection === 'watched') {
+    queueBtn.classList.remove('active-lib-btn');
+    watchedBtn.classList.add('active-lib-btn');
+    renderWatched();
+  } else if (target.collection === 'queue') {
+    queueBtn.classList.add('active-lib-btn');
+    watchedBtn.classList.remove('active-lib-btn');
+    renderQueue();
+  } else if (target.collection === 'home') {
+    displayStartPage();
+  }
+}

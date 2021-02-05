@@ -10,12 +10,12 @@ import refs from './refs';
 //===============================================================
 import handleLogin from './handleLogin';
 import handleSignup from './handleSignup';
-
+import handleFilmID from './handleFilmID';
 //===============================================================
 
 rfs.openFilmModalBtn.addEventListener('click', onOpenModal);
 rfs.openSignupModalBtn.addEventListener('click', onOpenModal);
-rfs.openLoginModalBtn.addEventListener('click', onOpenModal);
+// rfs.openLoginModalBtn.addEventListener('click', onOpenModal);
 rfs.openFooterModalBtn.addEventListener('click', onOpenModal);
 rfs.closeModalBtn.addEventListener('click', onCloseModal);
 rfs.backdropRef.addEventListener('click', onBackdropClick);
@@ -35,47 +35,40 @@ function onOpenModal(e) {
       rfs.bodyClass.add('show-modal-signup');
       updateModalMarkup(signupMarkup);
       const signupForm = document.querySelector('#signup-form');
-      const clickLogin = document.querySelector(
-        'span[data-click="click-login"]',
-      );
-
       signupForm.addEventListener('submit', handleSignup);
       rfs.modalContentRef.addEventListener('click', e => {
-        const toggle = e.target.dataset.toggleSignup;
-        if (toggle) {
+        const toggle = e.target.dataset.toggle;
+        if (toggle === 'login') {
           updateModalMarkup(loginMarkup);
+          const loginForm = document.querySelector('#login-form');
+          loginForm.addEventListener('submit', handleLogin);
         }
-      });
-      break;
-    case 'login':
-      rfs.bodyClass.add('show-modal-signup');
-      updateModalMarkup(loginMarkup);
-      const loginForm = document.querySelector('#login-form');
-      const clickSignup = document.querySelector(
-        'span[data-click="click-signup"]',
-      );
-      loginForm.addEventListener('submit', handleLogin);
-      rfs.modalContentRef.addEventListener('click', () => {
-        const toggle = e.target.dataset.toggleLogin;
-        if (toggle) {
+        if (toggle === 'signup') {
           updateModalMarkup(signupMarkup);
         }
       });
       break;
+    // case 'login':
+    //   rfs.bodyClass.add('show-modal-signup');
+    //   updateModalMarkup(loginMarkup);
+    //   const loginForm = document.querySelector('#login-form');
+    //   loginForm.addEventListener('submit', handleLogin);
+    //   break;
     case 'film':
       rfs.bodyClass.add('show-modal-film');
       updateModalMarkup(filmMarkup, preferMovie, dataOpen);
-
+      const singleFilmBtns = document.querySelector('.modal-meta__btn-wrap');
+      singleFilmBtns.addEventListener('click', handleFilmID);
       appendSimilarMovies(preferMovie);
       break;
     case 'footer':
       rfs.bodyClass.add('show-modal-footer');
       updateModalMarkup(footerMarkup);
       break;
-  };
+  }
 
   window.addEventListener('keydown', onPressEscape);
-};
+}
 
 // Trailer
 function appendSimilarMovies(preferMovie) {
@@ -110,9 +103,9 @@ function updateModalMarkup(fn, data, dataOpen) {
   dataOpen === 'film'
     ? (rfs.modalContentRef.innerHTML = fn(data))
     : (rfs.modalContentRef.innerHTML = fn());
-  
+
   rfs.closeModalBtn.classList.remove('hidden');
-};
+}
 
 // ======= Close Modal =======
 
@@ -138,6 +131,6 @@ function onCloseModal() {
 
   rfs.closeModalBtn.classList.add('hidden');
   window.removeEventListener('keydown', onPressEscape);
-};
+}
 
 export default onCloseModal;

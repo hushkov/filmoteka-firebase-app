@@ -39,24 +39,24 @@ import './js/composables/useCollection';
 // import './js/app.js';
 //=====================================
 
-import { projectFirestore } from './firebase/config';
-var app = new Vue({
-  el: '#app',
-  data: {
-    queue: [],
-    isShowing: false,
-  },
-  mounted() {
-    const ref = projectFirestore
-      .collection('queue')
-      .orderBy('createdAt', 'desc');
-    ref.onSnapshot(snapshot => {
-      let queue = [];
-      snapshot.forEach(doc => {
-        queue.push({ ...doc.data(), idFire: doc.id });
-      });
+// import { projectFirestore } from './firebase/config';
+// var app = new Vue({
+//   el: '#app',
+//   data: {
+//     queue: [],
+//     isShowing: false,
+//   },
+//   mounted() {
+//     const ref = projectFirestore
+//       .collection('queue')
+//       .orderBy('createdAt', 'desc');
+//     ref.onSnapshot(snapshot => {
+//       let queue = [];
+//       snapshot.forEach(doc => {
+//         queue.push({ ...doc.data(), idFire: doc.id });
+//       });
 
-      this.queue = queue;
-    });
-  },
-});
+//       this.queue = queue;
+//     });
+//   },
+// });
