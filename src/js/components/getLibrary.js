@@ -2,6 +2,7 @@ import { listOfAddedMovies, displayStartPage } from '../composables/mainCards';
 import { projectAuth } from '../../firebase/config';
 import { projectFirestore } from '../../firebase/config';
 import { spinnerOn, spinnerOff } from './spinnerOnOff';
+import showStackBarTop from './pnotify';
 
 let user = null;
 let libraryQueue = [];

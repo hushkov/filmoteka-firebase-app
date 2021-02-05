@@ -48,12 +48,6 @@ function onOpenModal(e) {
         }
       });
       break;
-    // case 'login':
-    //   rfs.bodyClass.add('show-modal-signup');
-    //   updateModalMarkup(loginMarkup);
-    //   const loginForm = document.querySelector('#login-form');
-    //   loginForm.addEventListener('submit', handleLogin);
-    //   break;
     case 'film':
       rfs.bodyClass.add('show-modal-film');
       updateModalMarkup(filmMarkup, preferMovie, dataOpen);
@@ -73,7 +67,10 @@ function onOpenModal(e) {
 // Trailer
 function appendSimilarMovies(preferMovie) {
   apiService.fetchSimilarMovies(preferMovie.id).then(data => {
-    const movies = [...data.results];
+    let movies;
+    if (data) {
+      movies = [...data.results];
+    }
     const showTotalMovies = 5;
 
     const similarRef = rfs.modalContentRef.querySelector(
@@ -83,7 +80,7 @@ function appendSimilarMovies(preferMovie) {
 
     let content = '';
 
-    if (movies.length) {
+    if (movies && movies.length) {
       for (let i = 0; i < showTotalMovies; i++) {
         const movie = movies[i];
         movie.release_date = movie.release_date.substr(0, 4);
