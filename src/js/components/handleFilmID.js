@@ -9,6 +9,7 @@ const modalDescription = document.querySelector('.modal-content');
 
 const handleFilmID = async e => {
   e.preventDefault();
+  const target = e.target;
   const targetID = e.target.dataset.id;
   const queueBtn = e.target.dataset.queue;
   const watchedBtn = e.target.dataset.watched;
@@ -22,7 +23,14 @@ const handleFilmID = async e => {
       userId: user.uid,
       createdAt: timestamp(),
     })
-      .then(data => console.log('successfuly added to queue list✔', data))
+      .then(data => {
+        console.log('successfuly added to queue list✔', data);
+
+        if (target.dataset.modalqueue) {
+          target.classList.add('active-modal-btn');
+          target.setAttribute('disabled', '');
+        }
+      })
       .catch(err => console.log('smthing was wrong', err.message));
   } else if (watchedBtn) {
     const { error, addDoc } = useCollection('watched');
@@ -31,7 +39,14 @@ const handleFilmID = async e => {
       userId: user.uid,
       createdAt: timestamp(),
     })
-      .then(data => console.log('successfuly added to watched list✔', data))
+      .then(data => {
+        console.log('successfuly added to watched list✔', data);
+
+        if (target.dataset.modalwatched) {
+          target.classList.add('active-modal-btn');
+          target.setAttribute('disabled', '');
+        }
+      })
       .catch(err => console.log('smthing was wrong', err.message));
   }
 
