@@ -9,6 +9,7 @@ let libraryWatched = [];
 const watchedBtn = document.querySelector('.bottom-header .watched-btn');
 const queueBtn = document.querySelector('.bottom-header .queue-btn');
 const headerAll = document.querySelector('.header');
+const mainUL = document.querySelector('.js-ul-film');
 
 headerAll.addEventListener('click', renderCollection);
 
@@ -22,8 +23,8 @@ async function getCollection(collection, lib) {
       snap.forEach(doc => {
         lib.push(doc.data());
       });
-    });
-  spinnerOff();
+    })
+    .finally(err => spinnerOff());
 }
 
 projectAuth.onAuthStateChanged(_user => {
@@ -32,6 +33,7 @@ projectAuth.onAuthStateChanged(_user => {
   } else {
     const libraryQueue = [];
     const libraryWatched = [];
+
     // listOfAddedMovies(libraryQueue);
   }
 });
@@ -56,17 +58,30 @@ function renderCollection(eve) {
     watchedBtn.classList.remove('active-lib-btn');
     renderQueue();
     if (!user) {
-      listOfAddedMovies(libraryQueue);
+      notUser();
     }
   } else if (target.collection === 'watched') {
     queueBtn.classList.remove('active-lib-btn');
     watchedBtn.classList.add('active-lib-btn');
     renderWatched();
+    if (!user) {
+      notUser();
+    }
   } else if (target.collection === 'queue') {
     queueBtn.classList.add('active-lib-btn');
     watchedBtn.classList.remove('active-lib-btn');
     renderQueue();
+    if (!user) {
+      notUser();
+    }
   } else if (target.collection === 'home') {
     displayStartPage();
+  }
+
+  function notUser() {
+    spinnerOff();
+    listOfAddedMovies(libraryQueue);
+    mainUL.innerHTML =
+      '<h3 style="margin: 0 auto;">Please pass authentification</h3>';
   }
 }
