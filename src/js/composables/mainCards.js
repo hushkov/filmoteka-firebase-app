@@ -338,6 +338,3 @@ function listOfAddedMovies(data = dataOfAddedMovies) {
 }
 
 export { displayStartPage, listOfAddedMovies };
-
-// apiService.query = 'car';
-// console.log(apiService.getMoviesData());
