@@ -5,6 +5,7 @@ import getUser from '../composables/getUser';
 import getLibrary from './getLibrary';
 
 const trendList = document.querySelector('.js-ul-film');
+const modalDescription = document.querySelector('.modal-content');
 
 const handleFilmID = async e => {
   e.preventDefault();
@@ -40,3 +41,6 @@ const handleFilmID = async e => {
 };
 
 trendList.addEventListener('click', handleFilmID);
+// modalDescription.addEventListener('click', handleFilmID);
+
+export default handleFilmID;

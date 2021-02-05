@@ -1,10 +1,7 @@
 <div class="modal-container">
-    <div class="modal-content__trailer">
-        <button type="button" class="modal-content__trailer-btn"></button>
-    </div>
     <div class="modal-section__thumb">
         <div class="trailer-btn__overlay">
-            <span  id="modal-trailer-youtube" class="material-icons trailer-btn" data-id="{{id}}">
+            <span id="modal-trailer-youtube" class="material-icons trailer-btn" data-id="{{id}}">
                 play_circle_outline
             </span>
         </div>
@@ -32,9 +29,9 @@
         </div>
         <h3 class="modal-meta__title description">About</h3>
         <p class="modal-meta__text">{{overview}}</p>
-        <div class="modal-meta__btn-wrap">
-            <button type="button">add to Watched</button>
-            <button type="button">add to queue</button>
+        <div class="modal-meta__btn-wrap" >
+            <button type="button" data-id="{{id}}" data-watched="watched">add to Watched</button>
+            <button type="button" data-id="{{id}}" data-queue="queue">add to queue</button>
         </div>
         <div class="modal-meta_similar-movies">
             <h3>Similar Movies</h3>

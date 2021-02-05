@@ -2,7 +2,7 @@ import apiService from './apiService.js';
 import myLibTemp from '../templates/my-library.hbs';
 // import loaderToggle from './loader';
 import { displayStartPage } from '../composables/mainCards';
-import mainRefs from '../components/refs';
+import mainRefs from './refs';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),

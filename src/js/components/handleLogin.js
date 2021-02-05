@@ -1,7 +1,5 @@
 import useLogin from '../composables/useLogin';
-import onCloseModal from './modalHandler';
-
-import rfs from './modalRefs.js';
+import modalRefs from './modalRefs';
 
 const { error, login, isPending } = useLogin();
 
@@ -32,9 +30,9 @@ async function handleLogin(e) {
 export default handleLogin;
 
 function handleCloseModal() {
-  rfs.bodyClass.remove('show-modal-film');
-  rfs.bodyClass.remove('show-modal-signup');
-  rfs.bodyClass.remove('show-modal-footer');
+  modalRefs.bodyClass.remove('show-modal-film');
+  modalRefs.bodyClass.remove('show-modal-signup');
+  modalRefs.bodyClass.remove('show-modal-footer');
 
-  rfs.closeModal.classList.add('hidden');
+  // modalRefs.closeModal.classList.add('hidden');
 }

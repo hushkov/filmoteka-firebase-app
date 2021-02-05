@@ -1,11 +1,10 @@
 function spinnerOn() {
-    document.getElementById('spinner-loader').style.display = 'block';
-    document.getElementById('content').style.display = 'none';
+  document.querySelector('#spinner-loader').style.display = 'block';
+  document.querySelector('main').style.opacity = 0;
+}
+function spinnerOff() {
+  document.querySelector('#spinner-loader').style.display = 'none';
+  document.querySelector('main').style.opacity = 1;
 }
 
-function spinnerOff() {
-    setTimeout(function() {
-    document.getElementById('spinner-loader').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-    }, 2000)
-}
+export { spinnerOn, spinnerOff };
