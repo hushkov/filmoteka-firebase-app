@@ -1,5 +1,6 @@
 import useLogin from '../composables/useLogin';
 import modalRefs from './modalRefs';
+import showStackBarTop from './pnotify';
 
 const { error, login, isPending } = useLogin();
 
@@ -17,6 +18,9 @@ async function handleLogin(e) {
   let email = form['login-email'].value;
   const password = form['login-password'].value;
 
+  form['login-btn'].setAttribute('disabled', '');
+  form['login-btn'].innerHTML = 'Loading...';
+
   const res = await login(email, password);
   form.reset();
 
@@ -24,7 +28,11 @@ async function handleLogin(e) {
 
   if (!res.user) {
     errorMessage.textContent = res;
+    form['login-btn'].removeAttribute('disabled', '');
+    form['login-btn'].innerHTML = 'Login';
   }
+
+  showStackBarTop('success-login');
 }
 
 export default handleLogin;

@@ -19,7 +19,9 @@ const handleFilmID = async e => {
   const { user } = getUser();
   if (queueBtn) {
     const { error, addDoc } = useCollection('queue');
-
+    if (!user) {
+      showStackBarTop('error');
+    }
     const res = await addDoc({
       ...preferMovie,
       userId: user.uid,
@@ -33,8 +35,14 @@ const handleFilmID = async e => {
           target.setAttribute('disabled', '');
         }
       })
-      .catch(err => console.log('smthing was wrong', err.message));
+      .catch(err => {
+        console.log('smthing was wrong', err.message);
+        showStackBarTop('error');
+      });
   } else if (watchedBtn) {
+    if (!user) {
+      showStackBarTop('error');
+    }
     const { error, addDoc } = useCollection('watched');
     const res = await addDoc({
       ...preferMovie,
@@ -49,7 +57,10 @@ const handleFilmID = async e => {
           target.setAttribute('disabled', '');
         }
       })
-      .catch(err => console.log('smthing was wrong', err.message));
+      .catch(err => {
+        console.log('smthing was wrong', err.message);
+        showStackBarTop('error');
+      });
   }
 
   // console.log(preferMovie);

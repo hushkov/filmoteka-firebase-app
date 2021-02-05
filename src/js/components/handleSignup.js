@@ -1,10 +1,8 @@
 import useSignup from '../composables/useSignup';
 import modalRefs from './modalRefs';
+import showStackBarTop from './pnotify';
 
 const { error, signup, isPending } = useSignup();
-
-const signupForm = document.querySelector('#signup-form');
-const signupBtn = document.querySelector('#signup-btn');
 
 // signupForm.addEventListener('submit', handleSignup);
 
@@ -18,6 +16,8 @@ async function handleSignup(e) {
   const password = form['signup-password'].value;
   const displayName = form['signup-displayName'].value;
 
+  form['signup-btn'].setAttribute('disabled', '');
+  form['signup-btn'].innerHTML = 'Loading...';
   const res = await signup(email, password, displayName);
   form.reset();
   // console.dir(res);
@@ -25,7 +25,11 @@ async function handleSignup(e) {
   res.user ? handleCloseModal() : console.log(res);
   if (!res.user) {
     errorMessage.textContent = res;
+    form['signup-btn'].removeAttribute('disabled', '');
+    form['signup-btn'].innerHTML = 'Sign up';
   }
+
+  showStackBarTop('success-signup');
 }
 
 export default handleSignup;

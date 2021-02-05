@@ -15,7 +15,7 @@ projectAuth.onAuthStateChanged(_user => {
 
 projectAuth.onAuthStateChanged(_user => {
   if (_user) {
-    console.log('user logged in: ', user);
+    // console.log('user logged in: ', user);
     setupUI(user);
 
     // projectFirestore

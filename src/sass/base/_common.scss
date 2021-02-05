@@ -155,3 +155,8 @@ label {
   border: 0;
   clip: rect(0 0 0 0);
 }
+
+.error-login,
+.error-signup {
+  color: $error-color;
+}

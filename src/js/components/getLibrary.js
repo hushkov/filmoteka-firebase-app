@@ -80,6 +80,7 @@ function renderCollection(eve) {
   }
 
   function notUser() {
+    showStackBarTop('error');
     spinnerOff();
     listOfAddedMovies(libraryQueue);
     mainUL.innerHTML =

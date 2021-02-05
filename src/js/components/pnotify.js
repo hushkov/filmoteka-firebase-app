@@ -28,8 +28,8 @@ function showStackBarTop(type) {
   };
   switch (type) {
     case 'error':
-      opts.title = 'Oh No';
-      opts.text = 'Watch out for that water tower!';
+      opts.title = 'Oh No!';
+      opts.text = 'You still didn`t login!';
       opts.type = 'error';
       break;
     case 'info':
@@ -40,6 +40,17 @@ function showStackBarTop(type) {
     case 'success':
       opts.title = 'Good News Everyone';
       opts.text = "I've invented a device that bites shiny metal asses.";
+      opts.type = 'success';
+      break;
+    case 'success-signup':
+      opts.title = 'Congratulation!';
+      opts.text = 'You`ve been successfully signed up';
+      opts.type = 'success';
+      break;
+      break;
+    case 'success-login':
+      opts.title = 'Welcome back!';
+      opts.text = 'Glad to see you again (❁´◡`❁)';
       opts.type = 'success';
       break;
   }
