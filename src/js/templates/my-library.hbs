@@ -4,6 +4,7 @@
         <img  class="my-library__movie-poster" src="{{this.poster_path}}"
             alt="{{title}} {{name}}" data-id="{{id}}">
         <div data-open="film" data-id="{{id}}" class="show-movie-card-buttons">
+            <button type="button" class="btn-remove-movie"><span class="material-icons">delete</span></button>
         </div>
         <p class="my-library__movie-title" data-id="{{id}}">{{title}} {{name}}</br>
             <span class="my-library__movie-info">{{genre_ids}} | {{first_air_date}} {{release_date}}</span>
