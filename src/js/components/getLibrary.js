@@ -16,7 +16,7 @@ headerAll.addEventListener('click', renderCollection);
 
 async function getCollection(collection, lib) {
   spinnerOn();
-  await projectFirestore
+  const unsubscribe = await projectFirestore
     .collection(collection)
     .where(`userId`, '==', user.uid)
     .get()
@@ -25,7 +25,9 @@ async function getCollection(collection, lib) {
         lib.push(doc.data());
       });
     })
-    .finally(err => spinnerOff());
+    .finally(err => {
+      spinnerOff();
+    });
 }
 
 projectAuth.onAuthStateChanged(_user => {
