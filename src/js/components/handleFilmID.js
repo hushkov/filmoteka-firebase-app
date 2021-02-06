@@ -6,9 +6,11 @@ import showStackBarTop from './pnotify';
 import { getCollection, getFullLibrary } from './getLibrary';
 import useDocument from '../composables/useDocument';
 import { listOfAddedMovies } from '../composables/mainCards';
+import _throttle from 'lodash.throttle';
 
 const trendList = document.querySelector('.js-ul-film');
 const modalDescription = document.querySelector('.modal-content');
+const changeStyle = document.querySelector('.film-list');
 
 const handleFilmID = async e => {
   e.preventDefault();
@@ -37,6 +39,7 @@ const handleFilmID = async e => {
         console.log('successfuly added to queue list✔', data);
         showStackBarTop('success');
         getFullLibrary(false);
+
         if (target.dataset.modalqueue) {
           target.classList.add('active-modal-btn');
           target.setAttribute('disabled', '');
@@ -89,6 +92,7 @@ const handleFilmID = async e => {
       let updatedWatched = refs.fullLibrary.filter(
         ({ collection }) => collection === 'watched',
       );
+
       listOfAddedMovies(updatedWatched);
       updatedWatched = [];
     } else {
@@ -108,7 +112,8 @@ const handleFilmID = async e => {
   // getLibrary();
 };
 
-trendList.addEventListener('click', handleFilmID);
+// trendList.addEventListener('click', handleFilmID);
 // modalDescription.addEventListener('click', handleFilmID);
+trendList.addEventListener('click', _throttle(handleFilmID, 1000));
 
 export default handleFilmID;

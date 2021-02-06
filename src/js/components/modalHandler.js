@@ -3,6 +3,7 @@ import loginMarkup from '../templates/modal-login-markup.hbs';
 import footerMarkup from '../templates/modal-footer-markup.hbs';
 import filmMarkup from '../templates/modal-film-markup.hbs';
 import similarFilmMarkup from '../templates/similar-film-markup.hbs';
+
 import apiService from './apiService.js';
 import rfs from './modalRefs.js';
 import refs from './refs';
@@ -71,7 +72,7 @@ function appendSimilarMovies(preferMovie) {
     if (data) {
       movies = [...data.results];
     }
-    const showTotalMovies = 5;
+    const showTotalMovies = 3;
 
     const similarRef = rfs.modalContentRef.querySelector(
       '.modal-meta_similar-movies',

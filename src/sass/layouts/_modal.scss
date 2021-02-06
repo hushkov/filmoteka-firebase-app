@@ -103,3 +103,12 @@ body {
     display: none;
   }
 }
+
+.modal-meta_similar-movies-list {
+  justify-content: start;
+
+  & li {
+    margin-right: 15px;
+    cursor: pointer;
+  }
+}

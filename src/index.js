@@ -45,7 +45,7 @@ import './js/composables/useCollection';
 //   el: '#app',
 //   data: {
 //     queue: [],
-//     isShowing: false,
+//     isShowing: true,
 //   },
 //   mounted() {
 //     const ref = projectFirestore
