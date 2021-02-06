@@ -1,6 +1,5 @@
 import { projectAuth } from '../../firebase/config';
 import { projectFirestore } from '../../firebase/config';
-// import getLibrary from '../components/getLibrary';
 import setupUI from '../components/setupUI';
 
 // refs
@@ -16,6 +15,7 @@ projectAuth.onAuthStateChanged(_user => {
 projectAuth.onAuthStateChanged(_user => {
   if (_user) {
     // console.log('user logged in: ', user);
+
     setupUI(user);
 
     // projectFirestore

@@ -142,16 +142,21 @@ function displayStartPage() {
   apiService.page = 1;
   screen.updateScreenName();
   spinnerOn();
-  apiService.getMoviesData().then(data => {
-    pagination.setTotalItems(data[20].totalResults);
-    pagination.reset();
-    data.length = pagination._options.itemsPerPage;
-    const result = posterEdit(data);
-    const render = template(result, Handlebars);
-    ul.innerHTML = '';
-    ul.insertAdjacentHTML('beforeend', render);
-    spinnerOff();
-  });
+  apiService
+    .getMoviesData()
+    .then(data => {
+      pagination.setTotalItems(data[20].totalResults);
+      pagination.reset();
+      data.length = pagination._options.itemsPerPage;
+      const result = posterEdit(data);
+      const render = template(result, Handlebars);
+      ul.innerHTML = '';
+      ul.insertAdjacentHTML('beforeend', render);
+      spinnerOff();
+    })
+    .catch(err => {
+      console.clear('Ooops...');
+    });
 }
 repairPagination();
 //Много много костылей

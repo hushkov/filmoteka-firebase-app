@@ -10,6 +10,7 @@ export default {
   currentMoviesList: [],
   queueFire: [],
   showError: null,
+  fullLibrary: [],
 
   genres: [
     {

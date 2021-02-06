@@ -34,7 +34,8 @@ export default {
       let res = await axios.get(url);
       return res.data;
     } catch (err) {
-      this.error = 'could not fetch similar movies';
+      this._error = 'could not fetch similar movies';
+      console.clear();
     }
   },
 
@@ -157,6 +158,7 @@ export default {
       })
       .catch(err => {
         // console.log(err);
+        console.clear();
         this._error = 'cillsdfjlsdjfl';
 
         return this._error;

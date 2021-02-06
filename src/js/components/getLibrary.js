@@ -3,6 +3,7 @@ import { projectAuth } from '../../firebase/config';
 import { projectFirestore } from '../../firebase/config';
 import { spinnerOn, spinnerOff } from './spinnerOnOff';
 import showStackBarTop from './pnotify';
+import globalRefs from '../components/refs';
 
 let user = null;
 let libraryQueue = [];
@@ -11,18 +12,21 @@ const watchedBtn = document.querySelector('.bottom-header .watched-btn');
 const queueBtn = document.querySelector('.bottom-header .queue-btn');
 const headerAll = document.querySelector('.header');
 const mainUL = document.querySelector('.js-ul-film');
+const mainError = document.querySelector('#mainError');
 
 headerAll.addEventListener('click', renderCollection);
 
-async function getCollection(collection, lib) {
-  spinnerOn();
+async function getCollection(collection, lib, isShowSpinner = true) {
+  if (isShowSpinner) {
+    spinnerOn();
+  }
   const unsubscribe = await projectFirestore
     .collection(collection)
     .where(`userId`, '==', user.uid)
     .get()
     .then(snap => {
       snap.forEach(doc => {
-        lib.push(doc.data());
+        lib.push({ ...doc.data(), idDoc: doc.id });
       });
     })
     .finally(err => {
@@ -33,13 +37,21 @@ async function getCollection(collection, lib) {
 projectAuth.onAuthStateChanged(_user => {
   if (_user) {
     user = _user;
+    getFullLibrary(false);
   } else {
-    const libraryQueue = [];
-    const libraryWatched = [];
+    libraryQueue = [];
+    libraryWatched = [];
+    globalRefs.fullLibrary = [];
 
     // listOfAddedMovies(libraryQueue);
   }
 });
+
+async function getFullLibrary(isShowSpinner) {
+  globalRefs.fullLibrary = [];
+  await getCollection('queue', globalRefs.fullLibrary, isShowSpinner);
+  await getCollection('watched', globalRefs.fullLibrary, isShowSpinner);
+}
 
 async function renderQueue() {
   libraryQueue = [];
@@ -59,6 +71,7 @@ function renderCollection(eve) {
   if (target.collection === 'collection') {
     queueBtn.classList.add('active-lib-btn');
     watchedBtn.classList.remove('active-lib-btn');
+    mainError.style.opacity = '0';
     renderQueue();
     if (!user) {
       notUser();
@@ -89,3 +102,5 @@ function renderCollection(eve) {
       '<h3 style="margin: 0 auto;">Please pass authentification</h3>';
   }
 }
+
+export { getFullLibrary, getCollection };
