@@ -1,0 +1,87 @@
+// #id {
+//   background: #e3e1ff;
+//   color: #444;
+// }
+
+.vue-container {
+  width: 90%;
+  max-width: 960px;
+  margin: 80px auto;
+  border-radius: 20px;
+  box-shadow: 2px 4px 6px rgba(28, 6, 49, 0.1);
+  background: white;
+  //   background: #e3e1ff;
+  //   color: #444;
+}
+.vue-error {
+  color: #ff3f80;
+  font-size: 14px;
+}
+
+.vue-button {
+  text-decoration: none;
+  background: #5ae4ca;
+  color: white;
+  font-weight: bold;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.vue-box form {
+  margin: 10px;
+}
+
+.vue-box textarea {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 6px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 20px;
+  font-family: inherit;
+  outline: none;
+}
+.vue-chat-window {
+  border-radius: 20px;
+  background-color: #fafafa;
+  padding: 30px 20px;
+}
+.vue-single {
+  margin: 18px 0;
+}
+.vue-created-at {
+  display: block;
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.vue-name {
+  //   color: #e3e1ff;
+  color: $accent-color;
+  font-weight: bold;
+  margin-right: 6px;
+}
+.vue-messages {
+  color: #000;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.vue-nav {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  //   display: flex;
+  //   justify-content: space-between;
+  align-items: center;
+}
+.vue-nav p {
+  margin: 2px auto;
+  font-size: 16px;
+  color: #444;
+}
+.vue-nav p.email {
+  font-size: 14px;
+  color: #999;
+}

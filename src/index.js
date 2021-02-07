@@ -40,24 +40,77 @@ import './js/composables/useCollection';
 // import './js/app.js';
 //=====================================
 
-// import { projectFirestore } from './firebase/config';
-// var app = new Vue({
-//   el: '#app',
-//   data: {
-//     queue: [],
-//     isShowing: true,
-//   },
-//   mounted() {
-//     const ref = projectFirestore
-//       .collection('queue')
-//       .orderBy('createdAt', 'desc');
-//     ref.onSnapshot(snapshot => {
-//       let queue = [];
-//       snapshot.forEach(doc => {
-//         queue.push({ ...doc.data(), idFire: doc.id });
-//       });
+import { projectFirestore } from './firebase/config';
+import { projectAuth } from './firebase/config';
+import chatCollection from './js/composables/chatCollection';
+import getChatCollection from './js/composables/getChatCollection';
+import chatUser from './js/composables/chatUser';
+import { timestamp } from './firebase/config';
+import { formatDistanceToNow } from 'date-fns';
 
-//       this.queue = queue;
-//     });
-//   },
-// });
+var app = new Vue({
+  el: '#app',
+  data: {
+    queue: [],
+    error: null,
+    documents: [],
+    message: '',
+    formattedDocuments: [],
+    handleSubmit: null,
+    displayName: null,
+    email: null,
+    getMessages: [],
+    scrollRef: null,
+  },
+
+  mounted() {
+    const { addDoc, error } = chatCollection('messages');
+    // const { documents } = getChatCollection('messages');
+    //   const message = ref('');
+    // this.formattedDocuments = documents;
+    // console.log(documents);
+
+    projectAuth.onAuthStateChanged(_user => {
+      console.log('User state change. Current user is: ', _user);
+      this.displayName = _user.displayName;
+      this.email = _user.email;
+    });
+
+    this.handleSubmit = async () => {
+      const chat = {
+        name: this.displayName,
+        message: this.message,
+        createdAt: timestamp(),
+      };
+      await addDoc(chat);
+      if (!error) {
+        this.message = '';
+      }
+    };
+
+    const collectionRef = projectFirestore
+      .collection('messages')
+      .orderBy('createdAt');
+    collectionRef.onSnapshot(snapshot => {
+      this.getMessages = [];
+      snapshot.forEach(doc => {
+        // getMessages.push({ ...doc.data(), idFire: doc.id });
+        doc.data().createdAt &&
+          this.getMessages.push({ ...doc.data(), id: doc.id });
+      });
+
+      //   this.formattedDocuments = queue;
+    });
+  },
+  computed: {
+    formattedTime: function () {
+      return this.getMessages.map(doc => {
+        let time = formatDistanceToNow(doc.createdAt.toDate());
+        return { ...doc, createdAt: time };
+      });
+    },
+  },
+  updated() {
+    this.$refs.scrollRef.scrollTop = this.$refs.scrollRef.scrollHeight;
+  },
+});

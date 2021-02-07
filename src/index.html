@@ -128,29 +128,43 @@ AACAAQAA//8AAA==" rel="icon" type="image/x-icon" />
 
       <!-- My Library section -->
 
-      <section class="my-library hidden">
+      <!-- <section class="my-library hidden">
         <div class="lib-container">
           <ul class="my-library__list">
           </ul>
         </div>
-      </section>
-
-      <!-- <section  class="my-library " id="app">
-        <div v-if="isShowing" class="lib-container">
-          <ul class="my-library__list">
-             <li v-for="movie in queue"  class="my-library__item" :data-id=movie.id>
-              <a href="#" class="movie-link" :data-id=movie.id>
-              <img :src=movie.poster_path :alt=movie.title :data-id=movie.id>
-                  <p class="my-library__movie-title" :data-id=movie.id>{{movie.title}} {{movie.name}}</br>
-                <span class="my-library__movie-info">{{movie.genre_ids}} | {{movie.first_air_date}} {{movie.release_date}}</span>
-                <span class="my-library__movie-rate">{{movie.vote_average}}</span>
-                  </p>
-                  </a>
-            </li>
-          </ul>
-        </div>
       </section> -->
 
+
+<div class="">
+<section   id="app">
+   <div class="vue-container vue-box">
+     <div class="vue-nav">
+      <p>Hey there, {{ displayName }}!</p>
+      <p class="email">Currently logged in as {{ email }}</p>
+    </div>
+  <div class="vue-chat-window">
+    <div v-if="error">{{ error }}</div>
+    <div v-if="documents" class="vue-messages" ref="scrollRef">
+      <div v-for="doc in formattedTime" :key="doc.id" class="single">
+        <span class="vue-created-at">{{ doc.createdAt }}</span>
+        <span class="vue-name">{{ doc.name }}</span>
+        <span class="vue-mesage">{{ doc.message }}</span>
+      </div>
+    </div>
+  </div>
+   <form>
+    <textarea
+      placeholder="Type a message and hit enter to send"
+      v-model="message"
+      @keypress.enter.prevent="handleSubmit"
+    >
+    </textarea>
+    <div v-if="error" class="vue-error">{{ error }}</div>
+  </form>
+  </div>
+</section>
+</div>
  
 
     </main>

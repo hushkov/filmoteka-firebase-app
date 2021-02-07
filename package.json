@@ -54,6 +54,7 @@
     "axios": "^0.21.1",
     "basiclightbox": "^5.0.4",
     "core-js": "^3.8.3",
+    "date-fns": "^2.17.0",
     "firebase": "^8.2.4",
     "handlebars": "^4.7.6",
     "lodash.debounce": "^4.0.8",
