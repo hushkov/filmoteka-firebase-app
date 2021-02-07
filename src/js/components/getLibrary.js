@@ -13,6 +13,9 @@ const queueBtn = document.querySelector('.bottom-header .queue-btn');
 const headerAll = document.querySelector('.header');
 const mainUL = document.querySelector('.js-ul-film');
 const mainError = document.querySelector('#mainError');
+const vueChat = document.querySelector('#vue-app');
+const mainFilmSection = document.querySelector('.js-section-film');
+const chatIcon = document.querySelector('#chat-icon');
 
 headerAll.addEventListener('click', renderCollection);
 
@@ -69,6 +72,9 @@ function renderCollection(eve) {
   const target = eve.target.dataset;
   // console.log(target.collection);
   if (target.collection === 'collection') {
+    vueChat.classList.add('hidden');
+    chatIcon.classList.remove('active-chat');
+    mainFilmSection.classList.remove('hidden');
     queueBtn.classList.add('active-lib-btn');
     watchedBtn.classList.remove('active-lib-btn');
     mainError.style.opacity = '0';
@@ -92,7 +98,19 @@ function renderCollection(eve) {
     }
   } else if (target.collection === 'home') {
     displayStartPage();
+    vueChat.classList.add('hidden');
+    chatIcon.classList.remove('active-chat');
+    mainFilmSection.classList.remove('hidden');
   }
+
+  // if (target.chat) {
+  //   mainUL.classList.add('hidden');
+  //   vueChat.classList.remove('hidden');
+  // }
+  // else {
+  //   mainUL.classList.add('hidden');
+  //   vueChat.classList.add('hidden');
+  // }
 
   function notUser() {
     showStackBarTop('error');

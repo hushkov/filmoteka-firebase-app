@@ -49,15 +49,27 @@ AACAAQAA//8AAA==" rel="icon" type="image/x-icon" />
 
           <nav>
             <ul class="site-nav list">
-              <li class="nav-item">
-                <a href="" class="link current link-home" data-collection="home">Home</a>
+               <li class="nav-item">
+                <a href="" class="link current link-home remove-active-home" data-collection="home">Home</a>
               </li>
               <li class="nav-item" >
-               <a href="" class="link link-library" data-collection="collection">my library</a>
+               <a href="" class="link link-library remove-active-lib" data-collection="collection">my library</a>
               </li>
+
+
+              <li class="nav-item logged-in" style="display: none;">
+                 <a href="" class="link link-library " id="chat" data-chat="show-chat"><span class="material-icons" id="chat-icon">
+chat
+</span></a>
+</li>
               <li class="logged-in" style="display: none;">
-                 <a href="" class="link link-library" id="logout">Logout</a>
+                 <a href="" class="link link-library" id="logout"><span class="material-icons">
+logout
+</span></a>
                </li>
+               
+
+
               <!-- <li class="logged-out" style="display: none;">
                   <a href="" class="link link-library" data-target="modal-login" data-open="login">Login</a>
                </li> -->
@@ -119,7 +131,7 @@ AACAAQAA//8AAA==" rel="icon" type="image/x-icon" />
     </div>
 
     <main>
-      <section class="js-section-film">
+      <section class="js-section-film ">
         <h2 class="visually-hidden">Аcсортимент фильмов</h2>
         <ul class="film-list js-ul-film"></ul>
 
@@ -136,7 +148,7 @@ AACAAQAA//8AAA==" rel="icon" type="image/x-icon" />
       </section> -->
 
 
-<div class="">
+<div id="vue-app" class=" hidden">
 <section   id="app">
    <div class="vue-container vue-box">
      <div class="vue-nav">
@@ -184,55 +196,6 @@ AACAAQAA//8AAA==" rel="icon" type="image/x-icon" />
 
 
 
-    <!--Sign up -->
-    <!-- <form id="signup-form">
-      <h3>Sign up</h3>
-      <input
-        type="text"
-        name="displayName"
-        placeholder="Display Name"
-        id="signup-displayName"
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        id="signup-email"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        id="signup-password"
-        required
-      />
-      <div class="error-signup error"></div>
-      <button id="signup-btn">Sign up</button>
-    </form> -->
-
-    <!-- Log in -->
-    <!-- <form id="login-form">
-      <h3>Log in</h3>
-
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        id="login-email"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        id="login-password"
-        required
-      />
-      <div class="error-login error"></div>
-      <button id="login-btn">Log in</button>
-    </form> -->
 
     <button
       class="scroll-to-top-btn"

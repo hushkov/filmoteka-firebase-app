@@ -22,6 +22,7 @@ displayStartPage();
 // import './js/components/handleLogin';
 import './js/components/handleLogout';
 import './js/components/handleFilmID';
+import './js/components/handleChat';
 import './js/composables/getUser';
 import './js/components/getLibrary';
 import './js/components/setupUI';
