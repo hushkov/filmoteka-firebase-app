@@ -66,10 +66,6 @@ var app = new Vue({
 
   mounted() {
     const { addDoc, error } = chatCollection('messages');
-    // const { documents } = getChatCollection('messages');
-    //   const message = ref('');
-    // this.formattedDocuments = documents;
-    // console.log(documents);
 
     projectAuth.onAuthStateChanged(_user => {
       console.log('User state change. Current user is: ', _user);
@@ -78,8 +74,9 @@ var app = new Vue({
     });
 
     this.handleSubmit = async () => {
+      let nick = this.displayName;
       const chat = {
-        name: this.displayName,
+        name: nick,
         message: this.message,
         createdAt: timestamp(),
       };
