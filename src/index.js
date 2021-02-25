@@ -66,15 +66,16 @@ var app = new Vue({
 
   mounted() {
     const { addDoc, error } = chatCollection('messages');
+    let nick = null;
 
     projectAuth.onAuthStateChanged(_user => {
       console.log('User state change. Current user is: ', _user);
       this.displayName = _user.displayName;
       this.email = _user.email;
+      nick = _user.displayName;
     });
 
     this.handleSubmit = async () => {
-      let nick = this.displayName;
       const chat = {
         name: nick,
         message: this.message,
